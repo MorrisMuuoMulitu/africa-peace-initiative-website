@@ -3,7 +3,7 @@ import React from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Star, MessageSquare, Award } from "lucide-react";
+import { Star, MessageSquare } from "lucide-react";
 import { useInView } from "react-intersection-observer";
 
 const Testimonials = () => {
@@ -85,33 +85,33 @@ const Testimonials = () => {
                     transitionDuration: "700ms" 
                   }}
                 >
-                  <Card className="bg-gradient-to-br from-api-green/90 to-api-green/70 backdrop-blur-sm border border-api-sage/20 shadow-xl h-full transform hover:scale-[1.02] transition-all duration-300">
-                    <CardContent className="p-6">
-                      <div className="relative">
-                        <div className="absolute -top-4 -left-4 text-api-terracotta/10">
-                          <svg width="60" height="60" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M11.9997 2C6.47972 2 2.00008 6.48 2.00008 12C2.00008 17.52 6.47972 22 11.9997 22C17.5197 22 21.9994 17.52 21.9994 12C21.9994 6.48 17.5197 2 11.9997 2ZM17.9997 13H12.9997V17H10.9997V13H5.99972V11H10.9997V7H12.9997V11H17.9997V13Z" />
-                          </svg>
-                        </div>
-                        <div className="flex items-center mb-6 mt-3">
-                          <Avatar className="h-14 w-14 border-2 border-api-terracotta/50 shadow-md">
-                            <AvatarImage src={testimonial.image} alt={testimonial.name} />
-                            <AvatarFallback className="bg-api-terracotta/20 text-white font-medium">
-                              {testimonial.name.split(' ').map(n => n[0]).join('')}
-                            </AvatarFallback>
-                          </Avatar>
+                  <Card className="bg-api-green border-none rounded-xl shadow-lg overflow-hidden h-full transform hover:scale-[1.02] transition-all duration-300">
+                    <CardContent className="p-0">
+                      <div className="p-7">
+                        <div className="flex items-center mb-5">
+                          <div className="relative">
+                            <Avatar className="h-16 w-16 border-4 border-white shadow-md bg-api-darkgreen">
+                              <AvatarFallback className="text-white font-bold text-xl">
+                                {testimonial.name.split(' ').map(n => n[0]).join('')}
+                              </AvatarFallback>
+                            </Avatar>
+                          </div>
                           <div className="ml-4">
-                            <div className="text-white font-semibold text-lg">{testimonial.name}</div>
+                            <div className="text-white font-semibold text-xl">{testimonial.name}</div>
                             <div className="text-white/80 text-sm">{testimonial.role}</div>
                           </div>
                         </div>
+                        
+                        <div className="flex mb-4">
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={i} size={18} className="text-api-gold fill-api-gold mr-1" />
+                          ))}
+                        </div>
+                        
+                        <p className="text-white/95 leading-relaxed text-lg font-medium">
+                          "{testimonial.quote}"
+                        </p>
                       </div>
-                      <div className="flex mb-4">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} size={16} className="text-api-gold fill-api-gold mr-1" />
-                        ))}
-                      </div>
-                      <p className="text-white/90 leading-relaxed font-medium italic">"<span className="text-white">{testimonial.quote}</span>"</p>
                     </CardContent>
                   </Card>
                 </CarouselItem>

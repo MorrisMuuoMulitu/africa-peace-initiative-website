@@ -41,35 +41,41 @@ const News = () => {
               Our most important upcoming event.
             </p>
           </div>
+          <Button 
+            variant="outline"
+            className="mt-6 md:mt-0 border-api-terracotta text-api-terracotta hover:bg-api-terracotta/10"
+          >
+            View All Updates
+          </Button>
         </div>
 
         <Card 
-          className={`border border-api-terracotta/10 shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 ${
+          className={`border-none rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 ${
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
           <div className="grid grid-cols-1 lg:grid-cols-2">
-            <div className="h-full overflow-hidden bg-api-green/10">
+            <div className="h-full overflow-hidden bg-api-green/10 min-h-[300px]">
               <img 
                 src={newsItem.image} 
                 alt={newsItem.title} 
                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
               />
             </div>
-            <div className="p-8">
-              <div className="flex items-center justify-between mb-4">
-                <Badge variant="outline" className="bg-api-terracotta/10 text-api-terracotta border-api-terracotta/20 font-medium">
+            <div className="p-8 lg:p-10">
+              <div className="flex items-center justify-between mb-6">
+                <Badge variant="outline" className="bg-api-terracotta text-white border-none font-medium px-4 py-1">
                   {newsItem.category}
                 </Badge>
               </div>
               
-              <CardTitle className="text-2xl md:text-3xl text-api-midnight mb-4">{newsItem.title}</CardTitle>
+              <CardTitle className="text-2xl md:text-3xl text-api-midnight mb-4 font-montserrat font-bold">{newsItem.title}</CardTitle>
               
               <CardDescription className="text-api-midnight/70 text-base mb-6 leading-relaxed">
                 {newsItem.excerpt}
               </CardDescription>
               
-              <div className="space-y-3 mb-8">
+              <div className="space-y-4 mb-8 bg-api-cream/40 p-4 rounded-lg border border-api-cream">
                 <div className="flex items-center text-api-midnight/80">
                   <Calendar className="h-5 w-5 mr-3 text-api-terracotta" />
                   <span className="font-medium">{newsItem.date}</span>
@@ -86,7 +92,7 @@ const News = () => {
               
               <Button 
                 variant="default" 
-                className="bg-api-terracotta hover:bg-api-terracotta/90 text-white"
+                className="bg-api-terracotta hover:bg-api-terracotta/90 text-white rounded-full px-6"
               >
                 Register Now <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
