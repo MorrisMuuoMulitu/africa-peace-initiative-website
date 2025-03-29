@@ -28,8 +28,8 @@ const FocusAreaCard = ({
       <div className="text-api-gold mb-6 p-4 bg-api-midnight bg-opacity-30 rounded-full">
         <Icon size={36} />
       </div>
-      <h3 className="text-xl font-montserrat font-semibold text-api-ivory mb-3">{title}</h3>
-      <p className="text-api-ivory opacity-90 text-center">{description}</p>
+      <h3 className="text-xl font-montserrat font-semibold text-white mb-3">{title}</h3>
+      <p className="text-white opacity-90 text-center">{description}</p>
     </div>
   );
 };
