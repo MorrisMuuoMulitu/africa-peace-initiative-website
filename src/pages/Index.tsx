@@ -11,8 +11,14 @@ import Footer from "@/components/Footer";
 import Testimonials from "@/components/Testimonials";
 import ImpactMetrics from "@/components/ImpactMetrics";
 import Timeline from "@/components/Timeline";
-import Gallery from "@/components/Gallery";
 import News from "@/components/News";
+import DataVisualization from "@/components/DataVisualization";
+import SuccessStories from "@/components/SuccessStories";
+import ResourceLibrary from "@/components/ResourceLibrary";
+import EnhancedGallery from "@/components/EnhancedGallery";
+import Newsletter from "@/components/Newsletter";
+import InteractiveMap from "@/components/InteractiveMap";
+import TeamMembers from "@/components/TeamMembers";
 
 const Index = () => {
   useEffect(() => {
@@ -74,23 +80,41 @@ const Index = () => {
       <div className="section-animate" data-animation="fade-up">
         <ImpactMetrics />
       </div>
-      <div id="events" className="section-animate" data-animation="fade-left">
+      <div className="section-animate" data-animation="fade-left">
+        <DataVisualization />
+      </div>
+      <div id="events" className="section-animate" data-animation="fade-up">
         <Event />
       </div>
+      <div className="section-animate" data-animation="fade-right">
+        <InteractiveMap />
+      </div>
       <div className="section-animate" data-animation="fade-up">
+        <SuccessStories />
+      </div>
+      <div className="section-animate" data-animation="fade-left">
         <Timeline />
       </div>
       <div className="section-animate" data-animation="fade-right">
+        <TeamMembers />
+      </div>
+      <div className="section-animate" data-animation="fade-up">
         <Testimonials />
       </div>
-      <div className="section-animate" data-animation="fade-up">
+      <div className="section-animate" data-animation="fade-left">
         <Partners />
       </div>
-      <div className="section-animate" data-animation="fade-left">
-        <Gallery />
+      <div className="section-animate" data-animation="fade-right">
+        <ResourceLibrary />
       </div>
       <div className="section-animate" data-animation="fade-up">
+        <EnhancedGallery />
+      </div>
+      <div className="section-animate" data-animation="fade-right">
         <News />
+      </div>
+      <div className="section-animate" data-animation="fade-up">
+        <Newsletter />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 section-animate" data-animation="fade-right">
         <div id="contact">
