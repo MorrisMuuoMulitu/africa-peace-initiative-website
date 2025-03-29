@@ -34,9 +34,8 @@ const Navbar = () => {
             <img 
               src="https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/API%20logo-12.png?updatedAt=1741074058148" 
               alt="Africa Peace Initiative Logo" 
-              className="h-14 w-auto mr-3 transition-all duration-300"
+              className="h-14 w-auto transition-all duration-300"
             />
-            <span className="text-api-ivory font-montserrat font-bold text-xl hidden sm:inline">Africa Peace Initiative</span>
           </a>
         </div>
         
