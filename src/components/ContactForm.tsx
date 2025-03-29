@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { CheckCircle } from "lucide-react";
 import { useInView } from "react-intersection-observer";
+import { Card } from "@/components/ui/card";
 
 const ContactForm = () => {
   const { toast } = useToast();
@@ -35,20 +36,20 @@ const ContactForm = () => {
   };
 
   return (
-    <div ref={ref} className="py-20 px-4 sm:px-6 bg-gradient-to-b from-gray-50 to-white">
+    <div ref={ref} className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
       <div className={`max-w-md mx-auto transition-all duration-700 transform ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         <div className="text-center mb-10">
-          <div className="w-16 h-1 bg-api-terracotta mx-auto mb-8"></div>
-          <h2 className="text-3xl md:text-4xl font-montserrat font-bold text-api-terracotta mb-4">
+          <div className="w-16 h-1 bg-api-terracotta mx-auto mb-6"></div>
+          <h2 className="text-4xl font-montserrat font-bold text-api-terracotta mb-4">
             Join Our Community
           </h2>
-          <p className="text-lg text-api-midnight">
+          <p className="text-lg text-api-midnight mb-2">
             Shape East Africa's peaceful future together
           </p>
         </div>
         
         {isSubmitted ? (
-          <div className="text-center p-10 bg-gradient-to-br from-api-ivory to-white rounded-xl shadow-md animate-fade-in">
+          <Card className="text-center p-10 bg-gradient-to-br from-api-ivory to-white rounded-xl shadow-md animate-fade-in">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-api-forest mb-6">
               <CheckCircle size={32} className="text-api-gold" />
             </div>
@@ -64,51 +65,51 @@ const ContactForm = () => {
             >
               Sign Up Another Person
             </Button>
-          </div>
+          </Card>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 rounded-xl shadow-md">
-            <div className="space-y-2">
-              <Label htmlFor="name" className="text-api-midnight font-medium">Name</Label>
-              <Input 
-                id="name" 
-                name="name" 
-                placeholder="Your Name" 
-                required 
-                className="border-api-midnight/20 focus:border-api-terracotta focus:ring-api-terracotta/20"
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="email" className="text-api-midnight font-medium">Email</Label>
-              <Input 
-                id="email" 
-                name="email" 
-                type="email" 
-                placeholder="Your Email" 
-                required 
-                className="border-api-midnight/20 focus:border-api-terracotta focus:ring-api-terracotta/20"
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="organization" className="flex items-center text-api-midnight font-medium">
-                Organization
-                <span className="text-sm text-gray-500 ml-2">(Optional)</span>
-              </Label>
-              <Input 
-                id="organization" 
-                name="organization" 
-                placeholder="Your Organization" 
-                className="border-api-midnight/20 focus:border-api-terracotta focus:ring-api-terracotta/20"
-              />
-            </div>
-            <Button 
-              type="submit" 
-              className="w-full bg-api-gold hover:bg-api-terracotta text-api-midnight hover:text-api-ivory font-semibold py-5 rounded-md shadow-md hover:shadow-lg transition-all duration-300 text-lg"
-              aria-label="Join Now"
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? "Submitting..." : "Join Now"}
-            </Button>
-          </form>
+          <Card className="overflow-hidden shadow-lg border border-gray-100 rounded-lg">
+            <form onSubmit={handleSubmit} className="space-y-6 p-8">
+              <div className="space-y-2">
+                <Label htmlFor="name" className="text-api-midnight font-semibold">Name</Label>
+                <Input 
+                  id="name" 
+                  name="name" 
+                  placeholder="Your Name" 
+                  required 
+                  className="border-gray-200 focus:border-api-terracotta focus:ring-api-terracotta/20 rounded-md py-3 text-base"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="email" className="text-api-midnight font-semibold">Email</Label>
+                <Input 
+                  id="email" 
+                  name="email" 
+                  type="email" 
+                  placeholder="Your Email" 
+                  required 
+                  className="border-gray-200 focus:border-api-terracotta focus:ring-api-terracotta/20 rounded-md py-3 text-base"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="organization" className="text-api-midnight font-semibold">
+                  Organization <span className="text-sm text-gray-500 font-normal">(Optional)</span>
+                </Label>
+                <Input 
+                  id="organization" 
+                  name="organization" 
+                  placeholder="Your Organization" 
+                  className="border-gray-200 focus:border-api-terracotta focus:ring-api-terracotta/20 rounded-md py-3 text-base"
+                />
+              </div>
+              <Button 
+                type="submit" 
+                className="w-full bg-api-gold hover:bg-api-terracotta text-api-midnight hover:text-white font-semibold py-6 text-base rounded-md shadow-md hover:shadow-lg transition-all duration-300"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Submitting..." : "Join Now"}
+              </Button>
+            </form>
+          </Card>
         )}
       </div>
     </div>
