@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Mission from "@/components/Mission";
 import FocusAreas from "@/components/FocusAreas";
+import Partners from "@/components/Partners";
 import Event from "@/components/Event";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
@@ -19,6 +20,7 @@ const Index = () => {
       <div id="focus">
         <FocusAreas />
       </div>
+      <Partners />
       <div className="grid grid-cols-1 md:grid-cols-2">
         <Event />
         <div id="contact">

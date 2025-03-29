@@ -1,8 +1,8 @@
 
 import React from "react";
-import { Twitter, Mail, ArrowUp, ExternalLink, MapPin, Phone } from "lucide-react";
+import { Twitter, Mail, ArrowUp, MapPin, Phone, Facebook, Linkedin, Instagram } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -12,9 +12,13 @@ const Footer = () => {
     });
   };
 
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="pt-20 pb-8 px-4 sm:px-6 bg-api-forest relative">
+      {/* Decorative elements */}
       <div className="absolute top-0 right-0 left-0 h-24 bg-gradient-to-b from-white to-transparent opacity-10"></div>
+      <div className="absolute top-0 left-0 w-64 h-64 bg-api-gold opacity-5 rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
       
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
@@ -45,76 +49,57 @@ const Footer = () => {
           </div>
           
           <div className="text-center">
-            <h3 className="text-xl font-montserrat text-api-ivory mb-8 font-semibold">Our Partners</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
-              <div className="partner-card group">
-                <div className="p-4 bg-api-ivory/5 backdrop-blur-sm rounded-lg border border-api-ivory/10 hover:border-api-gold/30 transition-all duration-300 flex flex-col items-center justify-center h-full">
-                  <Avatar className="h-16 w-16 mb-3 bg-white/10">
-                    <AvatarImage src="/kas-logo.png" alt="Konrad Adenauer Stiftung" />
-                    <AvatarFallback className="bg-api-ivory/10 text-api-ivory font-bold">KAS</AvatarFallback>
-                  </Avatar>
-                  <h4 className="text-api-ivory text-sm font-medium group-hover:text-api-gold transition-colors">
-                    Konrad Adenauer Stiftung
-                  </h4>
-                  <a 
-                    href="https://www.kas.de/en/home" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="mt-2 inline-flex items-center text-xs text-api-ivory/50 hover:text-api-gold"
-                  >
-                    <ExternalLink size={12} className="mr-1" />
-                    Visit
-                  </a>
-                </div>
-              </div>
-              
-              <div className="partner-card group">
-                <div className="p-4 bg-api-ivory/5 backdrop-blur-sm rounded-lg border border-api-ivory/10 hover:border-api-gold/30 transition-all duration-300 flex flex-col items-center justify-center h-full">
-                  <Avatar className="h-16 w-16 mb-3 bg-white/10">
-                    <AvatarImage src="/bosch-logo.png" alt="Bosch Alumni Network" />
-                    <AvatarFallback className="bg-api-ivory/10 text-api-ivory font-bold">BAN</AvatarFallback>
-                  </Avatar>
-                  <h4 className="text-api-ivory text-sm font-medium group-hover:text-api-gold transition-colors">
-                    Bosch Alumni Network
-                  </h4>
-                  <a 
-                    href="https://www.boschalumni.net/" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="mt-2 inline-flex items-center text-xs text-api-ivory/50 hover:text-api-gold"
-                  >
-                    <ExternalLink size={12} className="mr-1" />
-                    Visit
-                  </a>
-                </div>
-              </div>
-              
-              <div className="partner-card group">
-                <div className="p-4 bg-api-ivory/5 backdrop-blur-sm rounded-lg border border-api-ivory/10 hover:border-api-gold/30 transition-all duration-300 flex flex-col items-center justify-center h-full">
-                  <Avatar className="h-16 w-16 mb-3 bg-white/10">
-                    <AvatarImage src="/ned-logo.png" alt="National Endowment for Democracy" />
-                    <AvatarFallback className="bg-api-ivory/10 text-api-ivory font-bold">NED</AvatarFallback>
-                  </Avatar>
-                  <h4 className="text-api-ivory text-sm font-medium group-hover:text-api-gold transition-colors">
-                    National Endowment for Democracy
-                  </h4>
-                  <a 
-                    href="https://www.ned.org/" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="mt-2 inline-flex items-center text-xs text-api-ivory/50 hover:text-api-gold"
-                  >
-                    <ExternalLink size={12} className="mr-1" />
-                    Visit
-                  </a>
-                </div>
+            <h3 className="text-xl font-montserrat text-api-ivory mb-6 font-semibold">Quick Links</h3>
+            <div className="flex flex-col space-y-3">
+              <a href="#mission" className="text-api-ivory/70 hover:text-api-gold transition-colors duration-300">Our Mission</a>
+              <a href="#focus" className="text-api-ivory/70 hover:text-api-gold transition-colors duration-300">Focus Areas</a>
+              <a href="#partners" className="text-api-ivory/70 hover:text-api-gold transition-colors duration-300">Our Partners</a>
+              <a href="#contact" className="text-api-ivory/70 hover:text-api-gold transition-colors duration-300">Contact Us</a>
+            </div>
+            
+            <div className="mt-8">
+              <h4 className="text-md font-montserrat text-api-ivory mb-4 font-medium">Follow Us</h4>
+              <div className="flex justify-center md:justify-start gap-4">
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-api-ivory/10 rounded-full hover:bg-api-gold/20 transition-colors text-api-ivory">
+                  <Twitter size={18} />
+                </a>
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-api-ivory/10 rounded-full hover:bg-api-gold/20 transition-colors text-api-ivory">
+                  <Facebook size={18} />
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-api-ivory/10 rounded-full hover:bg-api-gold/20 transition-colors text-api-ivory">
+                  <Linkedin size={18} />
+                </a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-api-ivory/10 rounded-full hover:bg-api-gold/20 transition-colors text-api-ivory">
+                  <Instagram size={18} />
+                </a>
               </div>
             </div>
           </div>
           
           <div className="text-center md:text-right">
-            <h3 className="text-xl font-montserrat text-api-ivory mb-6 font-semibold">Contact Us</h3>
-            <div className="flex flex-col space-y-4 items-center md:items-end">
+            <h3 className="text-xl font-montserrat text-api-ivory mb-6 font-semibold">Stay Connected</h3>
+            <p className="text-api-ivory/70 text-sm mb-4">
+              Join our newsletter to receive updates on our initiatives, events, and impact stories.
+            </p>
+            
+            <form className="mt-4">
+              <div className="flex flex-col gap-3">
+                <input 
+                  type="email" 
+                  placeholder="Your email address" 
+                  className="w-full px-4 py-3 bg-api-ivory/10 border border-api-ivory/20 rounded-lg text-api-ivory placeholder:text-api-ivory/50 focus:outline-none focus:border-api-gold/50 transition-colors"
+                  aria-label="Email for newsletter"
+                />
+                <Button 
+                  type="submit" 
+                  className="w-full bg-api-gold hover:bg-api-terracotta text-api-midnight font-medium transition-colors"
+                >
+                  Subscribe
+                </Button>
+              </div>
+            </form>
+            
+            <div className="mt-8">
               <a 
                 href="mailto:info@africapeaceinitiative.org" 
                 className="text-api-ivory hover:text-api-gold transition-colors duration-300 flex items-center gap-2 justify-center md:justify-end group"
@@ -122,34 +107,6 @@ const Footer = () => {
                 <Mail size={18} className="group-hover:scale-110 transition-transform" />
                 <span>info@africapeaceinitiative.org</span>
               </a>
-              <a 
-                href="https://x.com" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-api-ivory hover:text-api-gold transition-colors duration-300 flex items-center gap-2 justify-center md:justify-end group"
-                aria-label="Follow us on Twitter"
-              >
-                <Twitter size={18} className="group-hover:scale-110 transition-transform" />
-                <span>@AfricaPeaceInit</span>
-              </a>
-            </div>
-            
-            <div className="mt-8 bg-api-ivory/5 backdrop-blur-sm rounded-lg border border-api-ivory/10 p-4">
-              <h4 className="text-api-ivory font-medium mb-3">Stay Connected</h4>
-              <p className="text-api-ivory/70 text-xs mb-4">Sign up for our newsletter to receive updates about our initiatives and events.</p>
-              <form className="flex flex-col sm:flex-row gap-2">
-                <input 
-                  type="email" 
-                  placeholder="Your email address" 
-                  className="px-3 py-2 bg-api-ivory/10 text-api-ivory placeholder:text-api-ivory/50 rounded border border-api-ivory/20 focus:outline-none focus:border-api-gold/40 text-sm flex-grow"
-                />
-                <button 
-                  type="submit" 
-                  className="px-4 py-2 bg-api-gold text-api-midnight font-medium rounded text-sm hover:bg-api-terracotta transition-colors duration-300"
-                >
-                  Subscribe
-                </button>
-              </form>
             </div>
           </div>
         </div>
@@ -157,12 +114,13 @@ const Footer = () => {
         <Separator className="bg-api-ivory/10 my-8" />
         
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-4 md:mb-0">
-            <p className="text-api-ivory/70 text-sm">&copy; {new Date().getFullYear()} Africa Peace Initiative. All rights reserved.</p>
-            <div className="flex gap-4 mt-2 text-xs text-api-ivory/50">
+          <div className="mb-6 md:mb-0">
+            <p className="text-api-ivory/70 text-sm">&copy; {currentYear} Africa Peace Initiative. All rights reserved.</p>
+            <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-2 text-xs text-api-ivory/50">
               <a href="#" className="hover:text-api-gold transition-colors">Privacy Policy</a>
               <a href="#" className="hover:text-api-gold transition-colors">Terms of Service</a>
               <a href="#" className="hover:text-api-gold transition-colors">Cookie Policy</a>
+              <a href="#" className="hover:text-api-gold transition-colors">Accessibility</a>
             </div>
           </div>
           <button 
