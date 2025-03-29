@@ -15,7 +15,6 @@ const Gallery = () => {
   const categories = [
     { id: "all", label: "All Photos" },
     { id: "events", label: "Events" },
-    { id: "trainings", label: "Trainings" },
     { id: "communities", label: "Communities" },
   ];
 
