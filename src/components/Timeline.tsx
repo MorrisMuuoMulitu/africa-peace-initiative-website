@@ -2,6 +2,7 @@
 import React from "react";
 import { useInView } from "react-intersection-observer";
 import { Separator } from "@/components/ui/separator";
+import { Award, Book, Flag } from "lucide-react";
 
 const Timeline = () => {
   const [ref, inView] = useInView({
@@ -14,16 +15,19 @@ const Timeline = () => {
       year: "Feb 2025",
       title: "Foundation",
       description: "The Africa Peace Initiative was established to address emerging conflicts in East Africa.",
+      icon: <Flag className="w-6 h-6 text-api-terracotta" />,
     },
     {
       year: "Mar 2025",
       title: "Regional Dialogue",
       description: "Hosted our first event on 'The Conflict in Eastern Congo' with participants from 5 African nations.",
+      icon: <Book className="w-6 h-6 text-api-terracotta" />,
     },
     {
       year: "Apr 2025",
       title: "Planning Phase",
       description: "Currently planning our next series of regional dialogues and community engagement initiatives.",
+      icon: <Award className="w-6 h-6 text-api-terracotta" />,
     },
   ];
 
@@ -44,43 +48,46 @@ const Timeline = () => {
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-16">
           <div className="w-16 h-1 bg-api-terracotta mx-auto mb-6"></div>
-          <h2 className="text-3xl md:text-4xl font-bold font-montserrat text-white mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold font-montserrat text-white mb-6 tracking-tight">
             Our Journey
           </h2>
-          <p className="text-lg text-white max-w-2xl mx-auto">
+          <p className="text-lg text-white/90 max-w-2xl mx-auto">
             Though we're just beginning, we've already taken important first steps in our mission to foster peace and dialogue.
           </p>
         </div>
 
         <div className="relative mt-20">
           {/* Timeline center line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-api-terracotta/30 top-0"></div>
+          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-gradient-to-b from-api-terracotta/10 via-api-terracotta/50 to-api-terracotta/10 top-0"></div>
 
           {milestones.map((milestone, index) => {
             const isEven = index % 2 === 0;
             return (
               <div
                 key={index}
-                className={`flex items-center mb-12 relative ${
+                className={`flex items-center mb-20 relative ${
                   isEven ? "flex-row" : "flex-row-reverse"
                 } ${
                   inView
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-10"
                 }`}
-                style={{ transitionDelay: `${index * 150}ms`, transitionDuration: "700ms", transitionTimingFunction: "ease-out" }}
+                style={{ transitionDelay: `${index * 200}ms`, transitionDuration: "800ms", transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)" }}
               >
-                {/* Year marker */}
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-10 h-10 rounded-full bg-api-terracotta z-10 flex items-center justify-center">
-                  <span className="text-white font-semibold text-xs">{milestone.year}</span>
+                {/* Year marker with icon */}
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-16 h-16 rounded-full bg-api-green border-4 border-api-darkgreen z-10 flex items-center justify-center shadow-lg">
+                  {milestone.icon}
                 </div>
 
                 {/* Content */}
-                <div className={`w-5/12 ${isEven ? "pr-12 text-right" : "pl-12 text-left"}`}>
-                  <div className="bg-api-green border border-api-sage/20 rounded-lg p-6 shadow-lg transform hover:scale-105 transition-transform duration-300">
-                    <h3 className="text-xl text-white font-bold mb-2">{milestone.title}</h3>
+                <div className={`w-5/12 ${isEven ? "pr-16 text-right" : "pl-16 text-left"}`}>
+                  <div className="bg-gradient-to-br from-api-green to-api-green/80 border border-api-sage/20 rounded-lg p-6 shadow-xl transform hover:scale-105 transition-transform duration-300 backdrop-blur-sm">
+                    <div className="inline-block bg-api-terracotta/20 text-api-terracotta font-semibold text-sm py-1 px-3 rounded-full mb-3">
+                      {milestone.year}
+                    </div>
+                    <h3 className="text-xl text-white font-bold mb-2 tracking-tight">{milestone.title}</h3>
                     <Separator className="mb-3 bg-api-terracotta/30" />
-                    <p className="text-white">{milestone.description}</p>
+                    <p className="text-white/90 leading-relaxed">{milestone.description}</p>
                   </div>
                 </div>
 

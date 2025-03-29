@@ -4,7 +4,7 @@ import { useInView } from "react-intersection-observer";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Calendar, ArrowRight } from "lucide-react";
+import { Calendar, ArrowRight, Clock, MapPin } from "lucide-react";
 
 const News = () => {
   const [ref, inView] = useInView({
@@ -12,29 +12,15 @@ const News = () => {
     threshold: 0.2,
   });
 
-  const newsItems = [
-    {
-      title: "New Peace Dialog Initiative Launched in Somalia",
-      excerpt: "API announces a major new dialog initiative bringing together tribal leaders from across Somalia's south region.",
-      date: "June 12, 2023",
-      category: "Program Launch",
-      image: "/placeholder.svg"
-    },
-    {
-      title: "Research Report: Women's Role in East African Peace Processes",
-      excerpt: "Our new study reveals the critical impact of women's involvement in sustainable peace agreements across the region.",
-      date: "May 23, 2023",
-      category: "Research",
-      image: "/placeholder.svg"
-    },
-    {
-      title: "API Partners with United Nations Development Programme",
-      excerpt: "Strategic partnership formed to enhance conflict early warning systems in border communities.",
-      date: "April 8, 2023",
-      category: "Partnership",
-      image: "/placeholder.svg"
-    },
-  ];
+  const newsItem = {
+    title: "Regional Dialogue: The Conflict in Eastern Congo",
+    excerpt: "Our inaugural event brought together participants from 5 African nations to analyze the complexities of the conflict in Eastern Congo and identify solutions for sustainable peace.",
+    date: "March 27, 2025",
+    time: "9:00 AM",
+    location: "Trademark Hotel, Gigiri, Nairobi",
+    category: "Upcoming Event",
+    image: "/placeholder.svg"
+  };
 
   return (
     <div
@@ -44,78 +30,69 @@ const News = () => {
       }`}
       id="news"
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
           <div>
             <div className="w-16 h-1 bg-api-terracotta mb-6"></div>
-            <h2 className="text-3xl md:text-4xl font-bold font-montserrat text-api-midnight mb-4">
-              Latest Updates
+            <h2 className="text-3xl md:text-4xl font-bold font-montserrat text-api-midnight mb-4 tracking-tight">
+              Latest Update
             </h2>
             <p className="text-lg text-api-midnight/80 max-w-xl">
-              News and insights from our ongoing peace initiatives and research.
+              Our most important upcoming event.
             </p>
           </div>
-          <Button 
-            variant="outline" 
-            className="hidden md:flex mt-6 md:mt-0 border-api-terracotta text-api-terracotta hover:bg-api-terracotta hover:text-white"
-          >
-            View All News <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {newsItems.map((item, index) => (
-            <Card 
-              key={index} 
-              className={`border border-api-terracotta/10 shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 ${
-                inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-              }`}
-              style={{ transitionDelay: `${index * 150}ms` }}
-            >
-              <div className="h-48 overflow-hidden">
-                <img 
-                  src={item.image} 
-                  alt={item.title} 
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                />
+        <Card 
+          className={`border border-api-terracotta/10 shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 ${
+            inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-2">
+            <div className="h-full overflow-hidden bg-api-green/10">
+              <img 
+                src={newsItem.image} 
+                alt={newsItem.title} 
+                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+              />
+            </div>
+            <div className="p-8">
+              <div className="flex items-center justify-between mb-4">
+                <Badge variant="outline" className="bg-api-terracotta/10 text-api-terracotta border-api-terracotta/20 font-medium">
+                  {newsItem.category}
+                </Badge>
               </div>
-              <CardHeader className="pb-2">
-                <div className="flex items-center justify-between mb-2">
-                  <Badge variant="outline" className="bg-api-terracotta/10 text-api-terracotta border-api-terracotta/20">
-                    {item.category}
-                  </Badge>
-                  <div className="flex items-center text-api-midnight/60 text-sm">
-                    <Calendar className="h-3 w-3 mr-1" />
-                    {item.date}
-                  </div>
+              
+              <CardTitle className="text-2xl md:text-3xl text-api-midnight mb-4">{newsItem.title}</CardTitle>
+              
+              <CardDescription className="text-api-midnight/70 text-base mb-6 leading-relaxed">
+                {newsItem.excerpt}
+              </CardDescription>
+              
+              <div className="space-y-3 mb-8">
+                <div className="flex items-center text-api-midnight/80">
+                  <Calendar className="h-5 w-5 mr-3 text-api-terracotta" />
+                  <span className="font-medium">{newsItem.date}</span>
                 </div>
-                <CardTitle className="text-xl text-api-midnight">{item.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-api-midnight/70">
-                  {item.excerpt}
-                </CardDescription>
-              </CardContent>
-              <CardFooter>
-                <Button 
-                  variant="link" 
-                  className="p-0 text-api-terracotta hover:text-api-midngiht font-medium"
-                >
-                  Read More <ArrowRight className="ml-1 h-4 w-4" />
-                </Button>
-              </CardFooter>
-            </Card>
-          ))}
-        </div>
-        
-        <div className="flex justify-center mt-8">
-          <Button 
-            variant="outline" 
-            className="md:hidden border-api-terracotta text-api-terracotta hover:bg-api-terracotta hover:text-white"
-          >
-            View All News <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
-        </div>
+                <div className="flex items-center text-api-midnight/80">
+                  <Clock className="h-5 w-5 mr-3 text-api-terracotta" />
+                  <span className="font-medium">{newsItem.time}</span>
+                </div>
+                <div className="flex items-center text-api-midnight/80">
+                  <MapPin className="h-5 w-5 mr-3 text-api-terracotta" />
+                  <span className="font-medium">{newsItem.location}</span>
+                </div>
+              </div>
+              
+              <Button 
+                variant="default" 
+                className="bg-api-terracotta hover:bg-api-terracotta/90 text-white"
+              >
+                Register Now <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
+          </div>
+        </Card>
       </div>
     </div>
   );
