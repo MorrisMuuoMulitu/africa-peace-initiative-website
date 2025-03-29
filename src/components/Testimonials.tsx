@@ -49,10 +49,10 @@ const Testimonials = () => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <div className="w-16 h-1 bg-api-terracotta mx-auto mb-6"></div>
-          <h2 className="text-3xl md:text-4xl font-bold font-montserrat text-api-cream mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold font-montserrat text-white mb-4">
             Voices of Impact
           </h2>
-          <p className="text-lg text-api-sage/90 max-w-2xl mx-auto">
+          <p className="text-lg text-white max-w-2xl mx-auto">
             Hear from participants of our inaugural Regional Dialogue on the conflict in Eastern Congo.
           </p>
         </div>
@@ -73,13 +73,13 @@ const Testimonials = () => {
                       <div className="flex items-center mb-4">
                         <Avatar className="h-12 w-12 border-2 border-api-terracotta/50">
                           <AvatarImage src={testimonial.image} alt={testimonial.name} />
-                          <AvatarFallback className="bg-api-terracotta/20 text-api-cream">
+                          <AvatarFallback className="bg-api-terracotta/20 text-white">
                             {testimonial.name.split(' ').map(n => n[0]).join('')}
                           </AvatarFallback>
                         </Avatar>
                         <div className="ml-4">
-                          <div className="text-api-cream font-semibold">{testimonial.name}</div>
-                          <div className="text-api-sage text-sm">{testimonial.role}</div>
+                          <div className="text-white font-semibold">{testimonial.name}</div>
+                          <div className="text-white/80 text-sm">{testimonial.role}</div>
                         </div>
                       </div>
                       <div className="flex mb-3">
@@ -87,7 +87,7 @@ const Testimonials = () => {
                           <Star key={i} size={16} className="text-api-gold fill-api-gold" />
                         ))}
                       </div>
-                      <p className="text-api-cream leading-relaxed font-medium italic">"{testimonial.quote}"</p>
+                      <p className="text-white leading-relaxed font-medium italic">"{testimonial.quote}"</p>
                     </CardContent>
                   </Card>
                 </CarouselItem>
