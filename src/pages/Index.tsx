@@ -8,19 +8,31 @@ import Partners from "@/components/Partners";
 import Event from "@/components/Event";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
+import Testimonials from "@/components/Testimonials";
+import ImpactMetrics from "@/components/ImpactMetrics";
+import Timeline from "@/components/Timeline";
+import Gallery from "@/components/Gallery";
+import Donation from "@/components/Donation";
+import News from "@/components/News";
 
 const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <Hero />
+      <ImpactMetrics />
       <div id="mission">
         <Mission />
       </div>
       <div id="focus">
         <FocusAreas />
       </div>
+      <Timeline />
+      <Testimonials />
       <Partners />
+      <Gallery />
+      <News />
+      <Donation />
       <div className="grid grid-cols-1 md:grid-cols-2">
         <div id="events">
           <Event />

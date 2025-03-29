@@ -48,13 +48,21 @@ const Navbar = () => {
         </div>
         
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-6">
           <a href="#mission" className="text-api-ivory hover:text-api-gold transition-colors duration-300 relative group">
             Our Mission
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-api-gold transition-all duration-300 group-hover:w-full"></span>
           </a>
           <a href="#focus" className="text-api-ivory hover:text-api-gold transition-colors duration-300 relative group">
             Focus Areas
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-api-gold transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="#gallery" className="text-api-ivory hover:text-api-gold transition-colors duration-300 relative group">
+            Gallery
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-api-gold transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="#news" className="text-api-ivory hover:text-api-gold transition-colors duration-300 relative group">
+            News
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-api-gold transition-all duration-300 group-hover:w-full"></span>
           </a>
           <a href="#events" className="text-api-ivory hover:text-api-gold transition-colors duration-300 relative group">
@@ -66,6 +74,13 @@ const Navbar = () => {
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
           >
             Join Us
+          </Button>
+          <Button 
+            variant="outline"
+            className="border-api-ivory text-api-ivory hover:bg-api-ivory/10"
+            onClick={() => document.getElementById('donate')?.scrollIntoView({ behavior: 'smooth' })}
+          >
+            Donate
           </Button>
         </div>
         
@@ -107,6 +122,20 @@ const Navbar = () => {
               Focus Areas
             </a>
             <a 
+              href="#gallery" 
+              className="text-api-ivory hover:text-api-gold transition-colors duration-300 py-2 text-lg font-medium"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Gallery
+            </a>
+            <a 
+              href="#news" 
+              className="text-api-ivory hover:text-api-gold transition-colors duration-300 py-2 text-lg font-medium"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              News
+            </a>
+            <a 
               href="#events" 
               className="text-api-ivory hover:text-api-gold transition-colors duration-300 py-2 text-lg font-medium"
               onClick={() => setIsMenuOpen(false)}
@@ -121,6 +150,16 @@ const Navbar = () => {
               }}
             >
               Join Us
+            </Button>
+            <Button 
+              variant="outline"
+              className="border-api-ivory text-api-ivory hover:bg-api-ivory/10 w-full"
+              onClick={() => {
+                document.getElementById('donate')?.scrollIntoView({ behavior: 'smooth' });
+                setIsMenuOpen(false);
+              }}
+            >
+              Donate
             </Button>
           </div>
         </div>
