@@ -44,10 +44,10 @@ const Timeline = () => {
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-16">
           <div className="w-16 h-1 bg-api-terracotta mx-auto mb-6"></div>
-          <h2 className="text-3xl md:text-4xl font-bold font-montserrat text-api-cream mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold font-montserrat text-white mb-6">
             Our Journey
           </h2>
-          <p className="text-lg text-api-sage/90 max-w-2xl mx-auto">
+          <p className="text-lg text-white max-w-2xl mx-auto">
             Though we're just beginning, we've already taken important first steps in our mission to foster peace and dialogue.
           </p>
         </div>
@@ -72,15 +72,15 @@ const Timeline = () => {
               >
                 {/* Year marker */}
                 <div className="absolute left-1/2 transform -translate-x-1/2 w-10 h-10 rounded-full bg-api-terracotta z-10 flex items-center justify-center">
-                  <span className="text-api-cream font-semibold text-xs">{milestone.year}</span>
+                  <span className="text-white font-semibold text-xs">{milestone.year}</span>
                 </div>
 
                 {/* Content */}
                 <div className={`w-5/12 ${isEven ? "pr-12 text-right" : "pl-12 text-left"}`}>
                   <div className="bg-api-forest border border-api-sage/20 rounded-lg p-6 shadow-lg transform hover:scale-105 transition-transform duration-300">
-                    <h3 className="text-xl text-api-cream font-bold mb-2">{milestone.title}</h3>
+                    <h3 className="text-xl text-white font-bold mb-2">{milestone.title}</h3>
                     <Separator className="mb-3 bg-api-terracotta/30" />
-                    <p className="text-api-sage/90">{milestone.description}</p>
+                    <p className="text-white">{milestone.description}</p>
                   </div>
                 </div>
 
