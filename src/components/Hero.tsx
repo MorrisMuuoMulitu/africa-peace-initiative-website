@@ -20,15 +20,22 @@ const Hero = () => {
   };
   
   return (
-    <div className="relative min-h-[100vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-api-darkgreen via-api-green/80 to-api-forestgreen">
-      {/* Enhanced background elements with better opacity balance */}
+    <div className="relative min-h-[100vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-api-darkgreen via-api-forestgreen to-api-green">
+      {/* Enhanced background elements with richer colors and patterns */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-[url('/africa-outline.svg')] bg-no-repeat bg-center opacity-15 bg-contain"></div>
-        <div className="absolute inset-0 bg-sankofa opacity-20 bg-repeat"></div>
+        <div className="absolute inset-0 bg-[url('/africa-outline.svg')] bg-no-repeat bg-center opacity-25 bg-contain"></div>
+        <div className="absolute inset-0 bg-sankofa opacity-25 bg-repeat"></div>
         <div className="absolute top-0 left-0 w-full h-full">
-          <div className="absolute top-[15%] left-[5%] w-80 h-80 rounded-full bg-api-gold opacity-10 blur-3xl animate-pulse-slow"></div>
-          <div className="absolute bottom-[20%] right-[5%] w-96 h-96 rounded-full bg-api-terracotta opacity-10 blur-3xl animate-pulse-slow"></div>
-          <div className="absolute top-[60%] right-[20%] w-64 h-64 rounded-full bg-api-cream opacity-5 blur-3xl animate-pulse-slow" style={{ animationDelay: "2s" }}></div>
+          <div className="absolute top-[15%] left-[5%] w-80 h-80 rounded-full bg-api-gold opacity-20 blur-3xl animate-pulse-slow"></div>
+          <div className="absolute bottom-[20%] right-[5%] w-96 h-96 rounded-full bg-api-terracotta opacity-20 blur-3xl animate-pulse-slow"></div>
+          <div className="absolute top-[60%] right-[20%] w-64 h-64 rounded-full bg-api-cream opacity-15 blur-3xl animate-pulse-slow" style={{ animationDelay: "2s" }}></div>
+          <div className="absolute top-[40%] left-[30%] w-72 h-72 rounded-full bg-api-brightgreen opacity-10 blur-3xl animate-pulse-slow" style={{ animationDelay: "3s" }}></div>
+        </div>
+        
+        {/* Animated light streaks */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-[10%] left-[20%] w-1 h-[30%] bg-api-gold opacity-30 rotate-[30deg] blur-sm animate-pulse"></div>
+          <div className="absolute top-[40%] right-[30%] w-1 h-[40%] bg-api-terracotta opacity-30 rotate-[-45deg] blur-sm animate-pulse" style={{ animationDelay: "1.5s" }}></div>
         </div>
       </div>
       
@@ -39,24 +46,24 @@ const Hero = () => {
           <div className={`lg:col-span-7 text-left transition-all duration-1000 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="flex items-center mb-6">
               <div className="h-1 w-20 bg-api-terracotta mr-4"></div>
-              <span className="text-white font-medium tracking-wider uppercase text-sm animate-slide-left drop-shadow-md" style={{
+              <span className="text-api-cream font-medium tracking-wider uppercase text-sm animate-slide-left drop-shadow-md" style={{
                 animationDelay: '0.3s',
-                textShadow: '0 2px 4px rgba(0,0,0,0.2)'
+                textShadow: '0 2px 4px rgba(0,0,0,0.3)'
               }}>Africa Peace Initiative</span>
             </div>
             
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold font-montserrat mb-6 lg:mb-8 leading-tight animate-slide-left" style={{
               animationDelay: '0.5s',
-              textShadow: '0 3px 6px rgba(0,0,0,0.3)'
+              textShadow: '0 3px 6px rgba(0,0,0,0.4)'
             }}>
               <span className="text-white">Building Peace</span>{" "}
               <span className="text-api-terracotta">Across</span>{" "}
-              <span className="text-white">Africa</span>
+              <span className="text-api-ivory">Africa</span>
             </h1>
             
             <p className="text-lg md:text-xl lg:text-2xl font-lora text-white mb-8 lg:mb-10 max-w-xl animate-slide-left leading-relaxed drop-shadow-md" style={{
               animationDelay: '0.7s',
-              textShadow: '0 2px 4px rgba(0,0,0,0.2)'
+              textShadow: '0 2px 4px rgba(0,0,0,0.3)'
             }}>
               {isMobile ? 
                 "Creating stability through dialogue and community action" : 
@@ -67,21 +74,21 @@ const Hero = () => {
             <div className="flex flex-wrap gap-4 lg:gap-5 animate-slide-left" style={{
               animationDelay: '0.9s'
             }}>
-              <Button onClick={scrollToMission} className="bg-api-terracotta hover:bg-api-terracotta/90 text-white font-semibold px-6 sm:px-8 py-5 sm:py-6 rounded-md shadow-lg hover:shadow-xl transition-all duration-300 text-base sm:text-lg group">
+              <Button onClick={scrollToMission} className="bg-api-terracotta hover:bg-api-gold text-white font-semibold px-6 sm:px-8 py-5 sm:py-6 rounded-md shadow-lg hover:shadow-xl transition-all duration-300 text-base sm:text-lg group">
                 Our Approach
                 <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
               
               <Button onClick={() => document.getElementById('contact')?.scrollIntoView({
                 behavior: 'smooth'
-              })} variant="outline" className="bg-transparent hover:bg-white/10 border-2 border-white text-white font-semibold px-6 sm:px-8 py-5 sm:py-6 rounded-md shadow-md hover:shadow-lg transition-all duration-300 text-base sm:text-lg">
+              })} variant="outline" className="bg-transparent hover:bg-white/15 border-2 border-api-cream text-api-cream font-semibold px-6 sm:px-8 py-5 sm:py-6 rounded-md shadow-md hover:shadow-lg transition-all duration-300 text-base sm:text-lg">
                 Join Our Efforts
               </Button>
             </div>
             
-            <div className="mt-16 lg:mt-20 hidden lg:flex items-center text-white animate-slide-left" style={{
+            <div className="mt-16 lg:mt-20 hidden lg:flex items-center text-api-cream animate-slide-left" style={{
               animationDelay: '1.1s',
-              textShadow: '0 1px 3px rgba(0,0,0,0.2)'
+              textShadow: '0 1px 3px rgba(0,0,0,0.3)'
             }}>
               <ArrowDown className="mr-3 animate-bounce" />
               <span className="text-sm font-medium">Scroll to explore our work</span>
@@ -98,25 +105,25 @@ const Hero = () => {
                 {isMobile ? (
                   <HoverCard>
                     <HoverCardTrigger>
-                      <div className="glass-card bg-gradient-to-br from-api-darkgreen/90 to-api-forestgreen/90 backdrop-blur-md p-4 rounded-lg shadow-xl border border-api-cream/20">
+                      <div className="glass-card bg-gradient-to-br from-api-darkgreen/90 to-api-green/90 backdrop-blur-md p-4 rounded-lg shadow-xl border border-api-brightgreen/30">
                         <div className="flex items-center mb-2">
-                          <Globe className="text-white mr-2" size={18} />
-                          <h3 className="text-white font-semibold text-base">Regional Impact</h3>
+                          <Globe className="text-api-cream mr-2" size={18} />
+                          <h3 className="text-api-cream font-semibold text-base">Regional Impact</h3>
                         </div>
-                        <p className="text-white font-medium text-sm">Cross-border dialogue in 5 countries</p>
+                        <p className="text-api-cream font-medium text-sm">Cross-border dialogue in 5 countries</p>
                       </div>
                     </HoverCardTrigger>
-                    <HoverCardContent className="bg-gradient-to-br from-api-darkgreen/95 to-api-forestgreen/95 text-white border-api-cream/20">
+                    <HoverCardContent className="bg-gradient-to-br from-api-darkgreen/95 to-api-forestgreen/95 text-api-cream border-api-brightgreen/30">
                       Facilitating cross-border dialogue in 5 East African countries with expanding influence
                     </HoverCardContent>
                   </HoverCard>
                 ) : (
-                  <div className="glass-card bg-gradient-to-br from-api-darkgreen/90 to-api-forestgreen/90 backdrop-blur-md p-6 rounded-lg shadow-xl border border-api-cream/20">
+                  <div className="glass-card bg-gradient-to-br from-api-darkgreen/95 to-api-green/95 backdrop-blur-md p-6 rounded-lg shadow-xl border border-api-brightgreen/30 hover:border-api-brightgreen/50 transition-all duration-300">
                     <div className="flex items-center mb-3">
-                      <Globe className="text-white mr-3" size={22} />
-                      <h3 className="text-white font-semibold text-lg drop-shadow-sm">Regional Impact</h3>
+                      <Globe className="text-api-cream mr-3" size={22} />
+                      <h3 className="text-api-cream font-semibold text-lg drop-shadow-sm">Regional Impact</h3>
                     </div>
-                    <p className="text-white font-medium text-base drop-shadow-sm">Facilitating cross-border dialogue in 5 East African countries with expanding influence</p>
+                    <p className="text-api-cream font-medium text-base drop-shadow-sm">Facilitating cross-border dialogue in 5 East African countries with expanding influence</p>
                   </div>
                 )}
               </div>
@@ -128,25 +135,25 @@ const Hero = () => {
                 {isMobile ? (
                   <HoverCard>
                     <HoverCardTrigger>
-                      <div className="glass-card bg-gradient-to-br from-api-green/90 to-api-brightgreen/90 backdrop-blur-md p-4 rounded-lg shadow-xl border border-api-cream/20">
+                      <div className="glass-card bg-gradient-to-br from-api-forestgreen/95 to-api-brightgreen/95 backdrop-blur-md p-4 rounded-lg shadow-xl border border-api-cream/20">
                         <div className="flex items-center mb-2">
-                          <Users className="text-white mr-2" size={18} />
-                          <h3 className="text-white font-semibold text-base">Community Focus</h3>
+                          <Users className="text-api-cream mr-2" size={18} />
+                          <h3 className="text-api-cream font-semibold text-base">Community Focus</h3>
                         </div>
-                        <p className="text-white font-medium text-sm">200+ leaders trained</p>
+                        <p className="text-api-cream font-medium text-sm">200+ leaders trained</p>
                       </div>
                     </HoverCardTrigger>
-                    <HoverCardContent className="bg-gradient-to-br from-api-green/95 to-api-brightgreen/95 text-white border-api-cream/20">
+                    <HoverCardContent className="bg-gradient-to-br from-api-forestgreen/95 to-api-brightgreen/95 text-api-cream border-api-cream/20">
                       200+ community leaders trained in conflict resolution and reconciliation strategies
                     </HoverCardContent>
                   </HoverCard>
                 ) : (
-                  <div className="glass-card bg-gradient-to-br from-api-green/90 to-api-brightgreen/90 backdrop-blur-md p-6 rounded-lg shadow-xl border border-api-cream/20">
+                  <div className="glass-card bg-gradient-to-br from-api-forestgreen/95 to-api-brightgreen/95 backdrop-blur-md p-6 rounded-lg shadow-xl border border-api-cream/20 hover:border-api-cream/40 transition-all duration-300">
                     <div className="flex items-center mb-3">
-                      <Users className="text-white mr-3" size={22} />
-                      <h3 className="text-white font-semibold text-lg drop-shadow-sm">Community Focus</h3>
+                      <Users className="text-api-cream mr-3" size={22} />
+                      <h3 className="text-api-cream font-semibold text-lg drop-shadow-sm">Community Focus</h3>
                     </div>
-                    <p className="text-white font-medium text-base drop-shadow-sm">200+ community leaders trained in conflict resolution and reconciliation strategies</p>
+                    <p className="text-api-cream font-medium text-base drop-shadow-sm">200+ community leaders trained in conflict resolution and reconciliation strategies</p>
                   </div>
                 )}
               </div>
@@ -158,7 +165,7 @@ const Hero = () => {
                 {isMobile ? (
                   <HoverCard>
                     <HoverCardTrigger>
-                      <div className="glass-card bg-gradient-to-br from-api-terracotta/90 to-api-sand/70 backdrop-blur-md p-4 rounded-lg shadow-xl border border-api-cream/20">
+                      <div className="glass-card bg-gradient-to-br from-api-terracotta/95 to-api-sand/95 backdrop-blur-md p-4 rounded-lg shadow-xl border border-api-gold/30">
                         <div className="flex items-center mb-2">
                           <Heart className="text-white mr-2" size={18} />
                           <h3 className="text-white font-semibold text-base">Ongoing Programs</h3>
@@ -166,12 +173,12 @@ const Hero = () => {
                         <p className="text-white font-medium text-sm">12+ peace initiatives</p>
                       </div>
                     </HoverCardTrigger>
-                    <HoverCardContent className="bg-gradient-to-br from-api-terracotta/95 to-api-sand/80 text-white border-api-cream/20">
+                    <HoverCardContent className="bg-gradient-to-br from-api-terracotta/95 to-api-sand/95 text-white border-api-gold/30">
                       12+ peace-building initiatives with measurable conflict reduction in fragile regions
                     </HoverCardContent>
                   </HoverCard>
                 ) : (
-                  <div className="glass-card bg-gradient-to-br from-api-terracotta/90 to-api-sand/70 backdrop-blur-md p-6 rounded-lg shadow-xl border border-api-cream/20">
+                  <div className="glass-card bg-gradient-to-br from-api-terracotta/95 to-api-sand/95 backdrop-blur-md p-6 rounded-lg shadow-xl border border-api-gold/30 hover:border-api-gold/50 transition-all duration-300">
                     <div className="flex items-center mb-3">
                       <Heart className="text-white mr-3" size={22} />
                       <h3 className="text-white font-semibold text-lg drop-shadow-sm">Ongoing Programs</h3>
