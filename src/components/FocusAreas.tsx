@@ -22,14 +22,14 @@ const FocusAreaCard = ({
   return (
     <div 
       ref={ref}
-      className={`bg-api-forest border-b-4 border-api-terracotta rounded-lg shadow-xl p-8 flex flex-col items-center transform transition-all duration-700 ease-out ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}
+      className={`bg-api-forestgreen border-b-4 border-api-terracotta rounded-lg shadow-xl p-8 flex flex-col items-center transform transition-all duration-700 ease-out ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
-      <div className="text-api-gold mb-6 p-4 bg-api-midnight bg-opacity-30 rounded-full">
+      <div className="text-api-gold mb-6 p-4 bg-api-darkgreen rounded-full">
         <Icon size={36} />
       </div>
       <h3 className="text-xl font-montserrat font-semibold text-white mb-3">{title}</h3>
-      <p className="text-white opacity-90 text-center">{description}</p>
+      <p className="text-white text-center">{description}</p>
     </div>
   );
 };
@@ -46,7 +46,7 @@ const FocusAreas = () => {
         <div className={`text-center mb-16 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="w-16 h-1 bg-api-terracotta mx-auto mb-8"></div>
           <h2 className="text-3xl md:text-4xl font-montserrat font-bold text-white mb-4">Our Focus Areas</h2>
-          <p className="text-lg text-white opacity-90 max-w-2xl mx-auto">
+          <p className="text-lg text-white max-w-2xl mx-auto">
             Strategic initiatives that guide our approach to building lasting peace
           </p>
         </div>
