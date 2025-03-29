@@ -2,16 +2,23 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, ArrowDown, Globe, Users, Heart } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { HoverCard, HoverCardTrigger, HoverCardContent } from "@/components/ui/hover-card";
+
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const isMobile = useIsMobile();
+  
   useEffect(() => {
     setIsVisible(true);
   }, []);
+  
   const scrollToMission = () => {
     document.getElementById('mission')?.scrollIntoView({
       behavior: 'smooth'
     });
   };
+  
   return <div className="relative min-h-[100vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-api-darkgreen to-api-green/90">
       {/* Background elements with reduced opacity for better text visibility */}
       <div className="absolute inset-0 z-0">
@@ -44,7 +51,10 @@ const Hero = () => {
             <p className="text-lg md:text-xl lg:text-2xl font-lora text-api-ivory/95 mb-8 lg:mb-10 max-w-xl animate-slide-left leading-relaxed" style={{
             animationDelay: '0.7s'
           }}>
-              Creating stability through dialogue, community action, and collaborative diplomacy—transforming conflict into cooperation
+              {isMobile ? 
+                "Creating stability through dialogue and community action" : 
+                "Creating stability through dialogue, community action, and collaborative diplomacy—transforming conflict into cooperation"
+              }
             </p>
             
             <div className="flex flex-wrap gap-4 lg:gap-5 animate-slide-left" style={{
@@ -77,39 +87,90 @@ const Hero = () => {
               <div className="absolute -top-6 -right-4 rotate-3 animate-slide-right" style={{
               animationDelay: '0.7s'
             }}>
-                <div className="glass-card bg-api-forestgreen/80 backdrop-blur-md p-6 rounded-lg shadow-xl border border-white/20">
-                  <div className="flex items-center mb-3">
-                    <Globe className="text-white mr-3" size={22} />
-                    <h3 className="text-white font-semibold text-lg">Regional Impact</h3>
+                {isMobile ? (
+                  <HoverCard>
+                    <HoverCardTrigger>
+                      <div className="glass-card bg-api-forestgreen/80 backdrop-blur-md p-4 rounded-lg shadow-xl border border-white/20">
+                        <div className="flex items-center mb-2">
+                          <Globe className="text-white mr-2" size={18} />
+                          <h3 className="text-white font-semibold text-base">Regional Impact</h3>
+                        </div>
+                        <p className="text-white font-medium text-sm">Cross-border dialogue in 5 countries</p>
+                      </div>
+                    </HoverCardTrigger>
+                    <HoverCardContent className="bg-api-forestgreen/90 text-white border-white/20">
+                      Facilitating cross-border dialogue in 5 East African countries with expanding influence
+                    </HoverCardContent>
+                  </HoverCard>
+                ) : (
+                  <div className="glass-card bg-api-forestgreen/80 backdrop-blur-md p-6 rounded-lg shadow-xl border border-white/20">
+                    <div className="flex items-center mb-3">
+                      <Globe className="text-white mr-3" size={22} />
+                      <h3 className="text-white font-semibold text-lg">Regional Impact</h3>
+                    </div>
+                    <p className="text-white font-medium text-base">Facilitating cross-border dialogue in 5 East African countries with expanding influence</p>
                   </div>
-                  <p className="text-white font-medium text-base">Facilitating cross-border dialogue in 5 East African countries with expanding influence</p>
-                </div>
+                )}
               </div>
               
               {/* Community Focus Card */}
               <div className="absolute top-1/3 left-0 -rotate-2 animate-slide-right z-10" style={{
               animationDelay: '0.9s'
             }}>
-                <div className="glass-card bg-api-green/80 backdrop-blur-md p-6 rounded-lg shadow-xl border border-white/20">
-                  <div className="flex items-center mb-3">
-                    <Users className="text-white mr-3" size={22} />
-                    <h3 className="text-white font-semibold text-lg">Community Focus</h3>
+                {isMobile ? (
+                  <HoverCard>
+                    <HoverCardTrigger>
+                      <div className="glass-card bg-api-green/80 backdrop-blur-md p-4 rounded-lg shadow-xl border border-white/20">
+                        <div className="flex items-center mb-2">
+                          <Users className="text-white mr-2" size={18} />
+                          <h3 className="text-white font-semibold text-base">Community Focus</h3>
+                        </div>
+                        <p className="text-white font-medium text-sm">200+ leaders trained</p>
+                      </div>
+                    </HoverCardTrigger>
+                    <HoverCardContent className="bg-api-green/90 text-white border-white/20">
+                      200+ community leaders trained in conflict resolution and reconciliation strategies
+                    </HoverCardContent>
+                  </HoverCard>
+                ) : (
+                  <div className="glass-card bg-api-green/80 backdrop-blur-md p-6 rounded-lg shadow-xl border border-white/20">
+                    <div className="flex items-center mb-3">
+                      <Users className="text-white mr-3" size={22} />
+                      <h3 className="text-white font-semibold text-lg">Community Focus</h3>
+                    </div>
+                    <p className="text-white font-medium text-base">200+ community leaders trained in conflict resolution and reconciliation strategies</p>
                   </div>
-                  <p className="text-white font-medium text-base">200+ community leaders trained in conflict resolution and reconciliation strategies</p>
-                </div>
+                )}
               </div>
               
               {/* Ongoing Programs Card */}
               <div className="absolute bottom-0 right-8 rotate-2 animate-slide-right" style={{
               animationDelay: '1.1s'
             }}>
-                <div className="glass-card bg-api-terracotta/80 backdrop-blur-md p-6 rounded-lg shadow-xl border border-white/20">
-                  <div className="flex items-center mb-3">
-                    <Heart className="text-white mr-3" size={22} />
-                    <h3 className="text-white font-semibold text-lg">Ongoing Programs</h3>
+                {isMobile ? (
+                  <HoverCard>
+                    <HoverCardTrigger>
+                      <div className="glass-card bg-api-terracotta/80 backdrop-blur-md p-4 rounded-lg shadow-xl border border-white/20">
+                        <div className="flex items-center mb-2">
+                          <Heart className="text-white mr-2" size={18} />
+                          <h3 className="text-white font-semibold text-base">Ongoing Programs</h3>
+                        </div>
+                        <p className="text-white font-medium text-sm">12+ peace initiatives</p>
+                      </div>
+                    </HoverCardTrigger>
+                    <HoverCardContent className="bg-api-terracotta/90 text-white border-white/20">
+                      12+ peace-building initiatives with measurable conflict reduction in fragile regions
+                    </HoverCardContent>
+                  </HoverCard>
+                ) : (
+                  <div className="glass-card bg-api-terracotta/80 backdrop-blur-md p-6 rounded-lg shadow-xl border border-white/20">
+                    <div className="flex items-center mb-3">
+                      <Heart className="text-white mr-3" size={22} />
+                      <h3 className="text-white font-semibold text-lg">Ongoing Programs</h3>
+                    </div>
+                    <p className="text-white font-medium text-base">12+ peace-building initiatives with measurable conflict reduction in fragile regions</p>
                   </div>
-                  <p className="text-white font-medium text-base">12+ peace-building initiatives with measurable conflict reduction in fragile regions</p>
-                </div>
+                )}
               </div>
             </div>
           </div>
