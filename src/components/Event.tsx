@@ -1,19 +1,15 @@
-
 import React from "react";
 import { CalendarDays, MapPin, Clock, Users, CheckCircle } from "lucide-react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useInView } from "react-intersection-observer";
-
 const Event = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.2,
+    threshold: 0.2
   });
-
-  return (
-    <div ref={ref} id="events" className="py-20 px-4 sm:px-6 bg-api-cream">
+  return <div ref={ref} id="events" className="py-20 px-4 sm:px-6 bg-api-cream">
       <div className={`max-w-4xl mx-auto transition-all duration-700 transform ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-montserrat font-bold text-api-darkgreen mb-4">
@@ -80,7 +76,7 @@ const Event = () => {
                   <Users className="text-api-green h-5 w-5 mt-0.5" />
                   <div>
                     <p className="font-medium text-api-charcoal">Attendees</p>
-                    <p className="text-api-gray">32 participants from Kenya, DRC, Rwanda, Uganda, and Ghana</p>
+                    <p className="text-api-gray">57 participants from Kenya, DRC, Rwanda, Uganda, and Ghana</p>
                   </div>
                 </div>
                 
@@ -100,10 +96,9 @@ const Event = () => {
               <p className="text-api-charcoal mb-4">
                 Interested in our upcoming events? Contact us to stay informed about future dialogues and initiatives.
               </p>
-              <Button 
-                className="bg-api-green hover:bg-api-darkgreen text-white transition-all duration-300"
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              >
+              <Button className="bg-api-green hover:bg-api-darkgreen text-white transition-all duration-300" onClick={() => document.getElementById('contact')?.scrollIntoView({
+              behavior: 'smooth'
+            })}>
                 Contact Us
               </Button>
             </div>
@@ -116,17 +111,13 @@ const Event = () => {
             We're planning more dialogues and forums to promote peace and cooperation across Africa. 
             Subscribe to our newsletter to be notified about upcoming events.
           </p>
-          <Button 
-            variant="outline" 
-            className="mt-6 border-api-green text-api-green hover:bg-api-green hover:text-white"
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-          >
+          <Button variant="outline" className="mt-6 border-api-green text-api-green hover:bg-api-green hover:text-white" onClick={() => document.getElementById('contact')?.scrollIntoView({
+          behavior: 'smooth'
+        })}>
             Subscribe to Updates
           </Button>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default Event;
