@@ -1,27 +1,52 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <nav className="bg-api-forest py-4 px-4 sm:px-6 sticky top-0 z-50">
+    <nav className={`py-4 px-4 sm:px-6 sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-api-forest shadow-md' : 'bg-api-forest bg-opacity-90 backdrop-blur-sm'}`}>
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <div className="flex items-center">
           <span className="text-api-ivory font-montserrat font-bold text-xl">Africa Peace Initiative</span>
         </div>
         
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-6">
-          <a href="#mission" className="text-api-ivory hover:text-api-gold transition-colors duration-300">Our Mission</a>
-          <a href="#focus" className="text-api-ivory hover:text-api-gold transition-colors duration-300">Focus Areas</a>
-          <a href="#events" className="text-api-ivory hover:text-api-gold transition-colors duration-300">Events</a>
+        <div className="hidden md:flex items-center space-x-8">
+          <a href="#mission" className="text-api-ivory hover:text-api-gold transition-colors duration-300 relative group">
+            Our Mission
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-api-gold transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="#focus" className="text-api-ivory hover:text-api-gold transition-colors duration-300 relative group">
+            Focus Areas
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-api-gold transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="#events" className="text-api-ivory hover:text-api-gold transition-colors duration-300 relative group">
+            Events
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-api-gold transition-all duration-300 group-hover:w-full"></span>
+          </a>
           <Button 
             className="bg-api-terracotta hover:bg-api-gold text-api-ivory font-semibold transition-colors duration-300"
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
@@ -44,31 +69,31 @@ const Navbar = () => {
       
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden mt-4 bg-api-forest bg-opacity-95 absolute left-0 right-0 p-4 shadow-lg">
-          <div className="flex flex-col space-y-4">
+        <div className="md:hidden mt-4 bg-api-forest bg-opacity-95 backdrop-blur-md absolute left-0 right-0 p-6 shadow-lg border-t border-api-terracotta/20 animate-fade-in">
+          <div className="flex flex-col space-y-5">
             <a 
               href="#mission" 
-              className="text-api-ivory hover:text-api-gold transition-colors duration-300 py-2"
+              className="text-api-ivory hover:text-api-gold transition-colors duration-300 py-2 text-lg font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
               Our Mission
             </a>
             <a 
               href="#focus" 
-              className="text-api-ivory hover:text-api-gold transition-colors duration-300 py-2"
+              className="text-api-ivory hover:text-api-gold transition-colors duration-300 py-2 text-lg font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
               Focus Areas
             </a>
             <a 
               href="#events" 
-              className="text-api-ivory hover:text-api-gold transition-colors duration-300 py-2"
+              className="text-api-ivory hover:text-api-gold transition-colors duration-300 py-2 text-lg font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
               Events
             </a>
             <Button 
-              className="bg-api-terracotta hover:bg-api-gold text-api-ivory font-semibold transition-colors duration-300 w-full"
+              className="bg-api-terracotta hover:bg-api-gold text-api-ivory font-semibold transition-colors duration-300 w-full mt-2"
               onClick={() => {
                 document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
                 setIsMenuOpen(false);
