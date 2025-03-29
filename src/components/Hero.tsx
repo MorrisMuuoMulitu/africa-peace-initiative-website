@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, ArrowDown, Globe, Users, Heart } from "lucide-react";
@@ -37,8 +38,7 @@ const Hero = () => {
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold font-montserrat text-api-cream mb-6 lg:mb-8 leading-tight animate-slide-left" style={{
             animationDelay: '0.5s'
           }}>
-              <span className="text-white">Building</span> <span className="text-api-terracotta">Peace</span><br className="hidden md:block" />
-              Across <span className="text-api-ivory">Africa</span>
+              <span className="text-white">Building Peace</span> <span className="text-api-terracotta">Across</span> <span className="text-api-ivory">Africa</span>
             </h1>
             
             <p className="text-lg md:text-xl lg:text-2xl font-lora text-api-ivory/95 mb-8 lg:mb-10 max-w-xl animate-slide-left leading-relaxed" style={{
