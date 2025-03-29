@@ -1,13 +1,6 @@
 
-import React, { useState } from "react";
+import React from "react";
 import { useInView } from "react-intersection-observer";
-import { 
-  Carousel, 
-  CarouselContent, 
-  CarouselItem, 
-  CarouselNext, 
-  CarouselPrevious 
-} from "@/components/ui/carousel";
 
 const Testimonials = () => {
   const [ref, inView] = useInView({
@@ -33,18 +26,6 @@ const Testimonials = () => {
       name: "Sophia Mwangi",
       role: "Policy Advisor, Ministry of Foreign Affairs",
       image: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-    },
-    {
-      quote: "I've witnessed firsthand how the peace education programs have transformed youth perspectives in conflict-prone regions. Their methodology builds lasting bridges.",
-      name: "Emmanuel Diop",
-      role: "Youth Coordinator, Pan-African Peace Network",
-      image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-    },
-    {
-      quote: "The Africa Peace Initiative creates neutral spaces where opposing sides can meet as humans first, before addressing political differences. This approach has proven invaluable.",
-      name: "Grace Mutumbai",
-      role: "Regional Representative, UN Peace Operations",
-      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=761&q=80"
     }
   ];
 
@@ -67,49 +48,41 @@ const Testimonials = () => {
           </p>
         </div>
 
-        <Carousel
-          opts={{
-            align: "start",
-            loop: true,
-          }}
-          className="w-full max-w-5xl mx-auto"
-        >
-          <CarouselContent>
-            {testimonials.map((testimonial, index) => (
-              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 p-2">
-                <div
-                  className={`bg-white rounded-xl shadow-lg p-6 relative overflow-hidden transform transition-all duration-500 hover:shadow-xl h-full`}
-                >
-                  {/* Decorative elements */}
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-api-terracotta to-api-sage"></div>
-                  <div className="absolute top-8 right-8 text-api-terracotta/10 text-6xl font-serif">"</div>
-                  
-                  <div className="mb-6 relative z-10">
-                    <p className="text-api-midnight/90 font-lora italic">"{testimonial.quote}"</p>
-                  </div>
-                  
-                  <div className="flex items-center mt-6">
-                    <div className="flex-shrink-0 mr-4">
-                      <img 
-                        src={testimonial.image} 
-                        alt={testimonial.name}
-                        className="h-14 w-14 rounded-full object-cover border-2 border-api-terracotta"
-                      />
-                    </div>
-                    <div>
-                      <h4 className="text-api-midnight font-bold">{testimonial.name}</h4>
-                      <p className="text-api-midnight/70 text-sm">{testimonial.role}</p>
-                    </div>
-                  </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {testimonials.map((testimonial, index) => (
+            <div
+              key={index}
+              className={`bg-white rounded-xl shadow-lg p-6 relative overflow-hidden transform transition-all duration-500 hover:shadow-xl ${
+                inView
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-12"
+              }`}
+              style={{ transitionDelay: `${index * 200}ms` }}
+            >
+              {/* Decorative elements */}
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-api-terracotta to-api-sage"></div>
+              <div className="absolute top-8 right-8 text-api-terracotta/10 text-6xl font-serif">"</div>
+              
+              <div className="mb-6 relative z-10">
+                <p className="text-api-midnight/90 font-lora italic">"{testimonial.quote}"</p>
+              </div>
+              
+              <div className="flex items-center mt-6">
+                <div className="flex-shrink-0 mr-4">
+                  <img 
+                    src={testimonial.image} 
+                    alt={testimonial.name}
+                    className="h-14 w-14 rounded-full object-cover border-2 border-api-terracotta"
+                  />
                 </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <div className="flex justify-center mt-8">
-            <CarouselPrevious className="relative static mr-2 left-0 translate-y-0" />
-            <CarouselNext className="relative static ml-2 right-0 translate-y-0" />
-          </div>
-        </Carousel>
+                <div>
+                  <h4 className="text-api-midnight font-bold">{testimonial.name}</h4>
+                  <p className="text-api-midnight/70 text-sm">{testimonial.role}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

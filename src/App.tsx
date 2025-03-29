@@ -23,8 +23,6 @@ const App = () => (
           <Route path="/donate" element={<DonationPage />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/archive" element={<BlogArchive />} />
-          <Route path="/blog/congo-dialogue-report" element={<Blog />} />
-          <Route path="/events/:eventId" element={<Blog />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
