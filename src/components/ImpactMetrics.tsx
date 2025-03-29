@@ -10,17 +10,17 @@ const ImpactMetrics = () => {
   });
 
   const [counts, setCounts] = useState({
-    communities: 0,
-    leaders: 0,
-    years: 0,
-    programs: 0,
+    countries: 0,
+    attendees: 0,
+    months: 0,
+    events: 0,
   });
 
   const targetCounts = {
-    communities: 48,
-    leaders: 215,
-    years: 7,
-    programs: 12,
+    countries: 5,
+    attendees: 32,
+    months: 2,
+    events: 1,
   };
 
   useEffect(() => {
@@ -31,10 +31,10 @@ const ImpactMetrics = () => {
       
       const incrementCounts = () => {
         setCounts(prev => ({
-          communities: Math.min(prev.communities + Math.ceil(targetCounts.communities / steps), targetCounts.communities),
-          leaders: Math.min(prev.leaders + Math.ceil(targetCounts.leaders / steps), targetCounts.leaders),
-          years: Math.min(prev.years + Math.ceil(targetCounts.years / steps), targetCounts.years),
-          programs: Math.min(prev.programs + Math.ceil(targetCounts.programs / steps), targetCounts.programs),
+          countries: Math.min(prev.countries + Math.ceil(targetCounts.countries / steps), targetCounts.countries),
+          attendees: Math.min(prev.attendees + Math.ceil(targetCounts.attendees / steps), targetCounts.attendees),
+          months: Math.min(prev.months + Math.ceil(targetCounts.months / steps), targetCounts.months),
+          events: Math.min(prev.events + Math.ceil(targetCounts.events / steps), targetCounts.events),
         }));
       };
       
@@ -42,10 +42,10 @@ const ImpactMetrics = () => {
         incrementCounts();
         
         if (
-          counts.communities === targetCounts.communities &&
-          counts.leaders === targetCounts.leaders &&
-          counts.years === targetCounts.years &&
-          counts.programs === targetCounts.programs
+          counts.countries === targetCounts.countries &&
+          counts.attendees === targetCounts.attendees &&
+          counts.months === targetCounts.months &&
+          counts.events === targetCounts.events
         ) {
           clearInterval(interval);
         }
@@ -58,27 +58,27 @@ const ImpactMetrics = () => {
   const metrics = [
     {
       icon: <Users className="h-12 w-12 text-api-terracotta" />,
-      value: counts.communities,
-      label: "Communities Impacted",
-      suffix: "+",
+      value: counts.countries,
+      label: "African Nations",
+      suffix: "",
     },
     {
       icon: <Award className="h-12 w-12 text-api-terracotta" />,
-      value: counts.leaders,
-      label: "Leaders Trained",
-      suffix: "+",
+      value: counts.attendees,
+      label: "Event Participants",
+      suffix: "",
     },
     {
       icon: <Calendar className="h-12 w-12 text-api-terracotta" />,
-      value: counts.years,
-      label: "Years of Impact",
+      value: counts.months,
+      label: "Months of Operation",
       suffix: "",
     },
     {
       icon: <Compass className="h-12 w-12 text-api-terracotta" />,
-      value: counts.programs,
-      label: "Peace Programs",
-      suffix: "+",
+      value: counts.events,
+      label: "Events Hosted",
+      suffix: "",
     },
   ];
 
@@ -93,11 +93,11 @@ const ImpactMetrics = () => {
         <div className="text-center mb-16">
           <div className="w-16 h-1 bg-api-terracotta mx-auto mb-6"></div>
           <h2 className="text-3xl md:text-4xl font-bold font-montserrat text-api-midnight mb-6">
-            Our Impact By Numbers
+            Our Journey So Far
           </h2>
           <p className="text-lg text-api-midnight/80 max-w-2xl mx-auto">
-            Through dedicated partnership and indigenous approaches to peacebuilding, 
-            our work continues to transform communities across East Africa.
+            Though we're just getting started, our inaugural event has already brought together key 
+            stakeholders from across East Africa to address critical regional issues.
           </p>
         </div>
 

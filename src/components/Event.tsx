@@ -29,7 +29,7 @@ const Event = () => {
             <div className="flex items-center justify-between">
               <div>
                 <Badge variant="outline" className="bg-white/10 text-white border-white/20 mb-3">
-                  Past Event
+                  Inaugural Event
                 </Badge>
                 <CardTitle className="text-2xl sm:text-3xl mb-2">Regional Dialogue: The Conflict in Eastern Congo</CardTitle>
                 <CardDescription className="text-white/90 text-base">
@@ -73,14 +73,14 @@ const Event = () => {
               <div className="space-y-4 md:border-l md:border-api-sage/20 md:pl-6">
                 <h3 className="text-lg font-semibold text-api-darkgreen mb-4">About This Event</h3>
                 <p className="text-api-gray">
-                  This dialogue brought together top diplomats, security experts, and researchers under Chatham House rules to analyze the complexities of the conflict and identify solutions for sustainable peace.
+                  This dialogue brought together participants from 5 African nations to analyze the complexities of the conflict in Eastern Congo and identify solutions for sustainable peace.
                 </p>
                 
                 <div className="flex items-start gap-3 mt-4">
                   <Users className="text-api-green h-5 w-5 mt-0.5" />
                   <div>
                     <p className="font-medium text-api-charcoal">Attendees</p>
-                    <p className="text-api-gray">Diplomats, Security Experts, Researchers</p>
+                    <p className="text-api-gray">32 participants from Kenya, DRC, Rwanda, Uganda, and Ghana</p>
                   </div>
                 </div>
                 
@@ -113,7 +113,7 @@ const Event = () => {
         <div className="mt-12 text-center">
           <h3 className="text-xl font-semibold text-api-darkgreen mb-4">Stay Tuned for Our Next Event</h3>
           <p className="text-api-gray max-w-2xl mx-auto">
-            We regularly organize dialogues, forums, and conferences across Africa to promote peace and cooperation. 
+            We're planning more dialogues and forums to promote peace and cooperation across Africa. 
             Subscribe to our newsletter to be notified about upcoming events.
           </p>
           <Button 

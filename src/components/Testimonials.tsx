@@ -15,27 +15,27 @@ const Testimonials = () => {
   const testimonials = [
     {
       name: "Sarah Mwangi",
-      role: "Community Leader, Nairobi",
+      role: "Conference Attendee, Kenya",
       image: "",
-      quote: "The Africa Peace Initiative transformed our community's approach to conflict resolution. Their training programs equipped us with practical skills that we use every day.",
+      quote: "The Regional Dialogue on Eastern Congo was well-organized and brought together diverse perspectives. I'm looking forward to future events by API.",
     },
     {
       name: "Dr. Emmanuel Osei",
-      role: "Academic Researcher, Ghana",
+      role: "Conflict Resolution Expert, Ghana",
       image: "",
-      quote: "Their methodologies blend traditional wisdom with modern conflict resolution techniques. The impact of their work extends beyond immediate conflicts to building lasting peace.",
+      quote: "As a participant in API's first dialogue, I was impressed by the depth of discussion and the commitment to finding practical solutions.",
     },
     {
       name: "Amina Hassan",
-      role: "Youth Advocate, Somalia",
+      role: "Youth Representative, Somalia",
       image: "",
-      quote: "As a young person, I never thought my voice mattered in peace processes. API created space for youth leadership and now we're driving positive change in our communities.",
+      quote: "API created an inclusive space where young voices like mine were valued. The dialogue was a crucial first step toward regional cooperation.",
     },
     {
-      name: "Patel Foundation",
-      role: "Partner Organization",
+      name: "Jean-Claude Muhindo",
+      role: "Community Advocate, DRC",
       image: "",
-      quote: "Working alongside API has amplified our impact. Their approach to partnership is truly collaborative, respecting local expertise while bringing valuable external perspectives.",
+      quote: "The discussion on Eastern Congo addressed real challenges faced by our communities. I appreciate API's initiative in bringing stakeholders together.",
     },
   ];
 
@@ -53,8 +53,7 @@ const Testimonials = () => {
             Voices of Impact
           </h2>
           <p className="text-lg text-api-sage/90 max-w-2xl mx-auto">
-            Hear from community leaders, partners, and individuals whose lives have been transformed
-            through our peace-building initiatives.
+            Hear from participants of our inaugural Regional Dialogue on the conflict in Eastern Congo.
           </p>
         </div>
 
@@ -79,8 +78,8 @@ const Testimonials = () => {
                           </AvatarFallback>
                         </Avatar>
                         <div className="ml-4">
-                          <div className="text-api-cream font-medium">{testimonial.name}</div>
-                          <div className="text-api-sage/70 text-sm">{testimonial.role}</div>
+                          <div className="text-api-cream font-semibold">{testimonial.name}</div>
+                          <div className="text-api-sage text-sm">{testimonial.role}</div>
                         </div>
                       </div>
                       <div className="flex mb-3">
@@ -88,7 +87,7 @@ const Testimonials = () => {
                           <Star key={i} size={16} className="text-api-gold fill-api-gold" />
                         ))}
                       </div>
-                      <p className="text-api-ivory/90 italic leading-relaxed">"{testimonial.quote}"</p>
+                      <p className="text-api-cream leading-relaxed font-medium italic">"{testimonial.quote}"</p>
                     </CardContent>
                   </Card>
                 </CarouselItem>

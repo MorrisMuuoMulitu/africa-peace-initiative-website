@@ -20,12 +20,15 @@ const Index = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <Hero />
-      <ImpactMetrics />
       <div id="mission">
         <Mission />
       </div>
       <div id="focus">
         <FocusAreas />
+      </div>
+      <ImpactMetrics />
+      <div id="events">
+        <Event />
       </div>
       <Timeline />
       <Testimonials />
@@ -34,9 +37,6 @@ const Index = () => {
       <News />
       <Donation />
       <div className="grid grid-cols-1 md:grid-cols-2">
-        <div id="events">
-          <Event />
-        </div>
         <div id="contact">
           <ContactForm />
         </div>

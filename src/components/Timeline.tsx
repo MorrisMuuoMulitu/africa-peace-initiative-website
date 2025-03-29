@@ -11,39 +11,19 @@ const Timeline = () => {
 
   const milestones = [
     {
-      year: "2017",
+      year: "Feb 2025",
       title: "Foundation",
       description: "The Africa Peace Initiative was established to address emerging conflicts in East Africa.",
     },
     {
-      year: "2018",
-      title: "First Regional Conference",
-      description: "Brought together over 150 peace actors from across East Africa to share knowledge and strategies.",
+      year: "Mar 2025",
+      title: "Regional Dialogue",
+      description: "Hosted our first event on 'The Conflict in Eastern Congo' with participants from 5 African nations.",
     },
     {
-      year: "2019",
-      title: "Community Mediator Program",
-      description: "Launched our flagship training program that has now certified over 200 community mediators.",
-    },
-    {
-      year: "2020",
-      title: "Cross-Border Initiative",
-      description: "Expanded work to address cross-border conflicts between pastoral communities.",
-    },
-    {
-      year: "2021",
-      title: "Youth Peace Network",
-      description: "Created platform to empower young peacebuilders across the region.",
-    },
-    {
-      year: "2022",
-      title: "Peace Innovation Hub",
-      description: "Established center for developing and testing new approaches to conflict resolution.",
-    },
-    {
-      year: "2023",
-      title: "Regional Expansion",
-      description: "Extended operations to two additional countries in East Africa.",
+      year: "Apr 2025",
+      title: "Planning Phase",
+      description: "Currently planning our next series of regional dialogues and community engagement initiatives.",
     },
   ];
 
@@ -68,7 +48,7 @@ const Timeline = () => {
             Our Journey
           </h2>
           <p className="text-lg text-api-sage/90 max-w-2xl mx-auto">
-            Tracing our path of growth and impact over the years, building peace one step at a time.
+            Though we're just beginning, we've already taken important first steps in our mission to foster peace and dialogue.
           </p>
         </div>
 
@@ -92,7 +72,7 @@ const Timeline = () => {
               >
                 {/* Year marker */}
                 <div className="absolute left-1/2 transform -translate-x-1/2 w-10 h-10 rounded-full bg-api-terracotta z-10 flex items-center justify-center">
-                  <span className="text-api-cream font-semibold text-sm">{milestone.year}</span>
+                  <span className="text-api-cream font-semibold text-xs">{milestone.year}</span>
                 </div>
 
                 {/* Content */}
