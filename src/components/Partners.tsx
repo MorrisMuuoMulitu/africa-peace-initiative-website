@@ -9,7 +9,7 @@ const Partners = () => {
     {
       id: 1,
       name: "Konrad Adenauer Stiftung",
-      avatar: "/kas-logo.png",
+      avatar: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/konrad.png?updatedAt=1741679164315",
       fallback: "KAS",
       url: "https://www.kas.de/en/home",
       description: "A German political foundation committed to promoting democracy, dialogue and development worldwide."
@@ -17,26 +17,10 @@ const Partners = () => {
     {
       id: 2,
       name: "Bosch Alumni Network",
-      avatar: "/bosch-logo.png",
+      avatar: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/bosch.png?updatedAt=1741675559148",
       fallback: "BAN",
       url: "https://www.boschalumni.net/",
       description: "A platform connecting former and current Bosch Fellows fostering collaboration and knowledge exchange."
-    },
-    {
-      id: 3,
-      name: "National Endowment for Democracy",
-      avatar: "/ned-logo.png",
-      fallback: "NED",
-      url: "https://www.ned.org/",
-      description: "Supporting freedom around the world through grants that promote democratic institutions."
-    },
-    {
-      id: 4,
-      name: "United Nations Development Programme",
-      avatar: "/placeholder.svg",
-      fallback: "UNDP",
-      url: "https://www.undp.org/",
-      description: "Working to eradicate poverty and reduce inequalities through sustainable development."
     }
   ];
 
@@ -64,7 +48,7 @@ const Partners = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
           {partners.map((partner, index) => (
             <Card 
               key={partner.id} 
@@ -72,13 +56,12 @@ const Partners = () => {
               style={{ animationDelay: `${0.1 * index}s` }}
             >
               <CardContent className="p-6 flex flex-col items-center text-center h-full">
-                <div className="mb-6 p-4 rounded-full bg-api-cream/50 border border-api-sage/20 transform group-hover:scale-105 transition-transform duration-300">
-                  <Avatar className="h-20 w-20">
-                    <AvatarImage src={partner.avatar} alt={partner.name} />
-                    <AvatarFallback className="bg-api-sage text-api-darkgreen font-bold text-xl">
-                      {partner.fallback}
-                    </AvatarFallback>
-                  </Avatar>
+                <div className="mb-6 p-4 rounded-full bg-white border border-api-sage/20 transform group-hover:scale-105 transition-transform duration-300 w-full max-w-[240px] h-auto flex items-center justify-center">
+                  <img 
+                    src={partner.avatar} 
+                    alt={partner.name} 
+                    className="h-auto w-full object-contain"
+                  />
                 </div>
                 
                 <h3 className="font-montserrat font-semibold text-lg text-api-darkgreen mb-3 group-hover:text-api-green transition-colors">
