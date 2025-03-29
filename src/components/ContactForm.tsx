@@ -4,9 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { CheckCircle, Mail, User, Building, ArrowRight } from "lucide-react";
+import { CheckCircle, Mail, User, Building, ArrowRight, Users, BookOpen, Globe, MessageCircle } from "lucide-react";
 import { useInView } from "react-intersection-observer";
 import { Card, CardContent } from "@/components/ui/card";
+import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
+import { useForm } from "react-hook-form";
 
 const ContactForm = () => {
   const { toast } = useToast();
@@ -15,6 +17,14 @@ const ContactForm = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.2,
+  });
+  
+  const form = useForm({
+    defaultValues: {
+      name: "",
+      email: "",
+      organization: "",
+    }
   });
   
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -36,75 +46,154 @@ const ContactForm = () => {
   };
 
   return (
-    <div ref={ref} className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
-      <div className={`max-w-6xl mx-auto transition-all duration-700 transform ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+    <div ref={ref} className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-api-ivory/50">
+      <div className={`max-w-7xl mx-auto transition-all duration-700 transform ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         <div className="text-center mb-12">
           <div className="w-16 h-1 bg-api-terracotta mx-auto mb-6"></div>
           <h2 className="text-4xl font-montserrat font-bold text-api-terracotta mb-4">
             Join Our Community
           </h2>
-          <p className="text-lg text-api-midnight mb-6 max-w-2xl mx-auto">
+          <p className="text-lg text-api-midnight mb-6 max-w-3xl mx-auto">
             Shape East Africa's peaceful future together. Join our network of peacebuilders, activists, and community leaders working towards a more harmonious region.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          <div className="space-y-6">
-            <div className="bg-api-ivory/50 p-8 rounded-xl">
-              <h3 className="text-2xl font-semibold text-api-forest mb-4 flex items-center">
-                <span className="bg-api-gold/20 p-2 rounded-full mr-3">
-                  <Mail className="h-5 w-5 text-api-forest" />
-                </span>
-                Why Join Our Network?
-              </h3>
-              <ul className="space-y-4">
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-api-gold mt-1 mr-3 flex-shrink-0" />
-                  <p className="text-api-midnight">Connect with peacebuilders from across East Africa</p>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-api-gold mt-1 mr-3 flex-shrink-0" />
-                  <p className="text-api-midnight">Access exclusive resources and training opportunities</p>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-api-gold mt-1 mr-3 flex-shrink-0" />
-                  <p className="text-api-midnight">Participate in regional peace forums and events</p>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-api-gold mt-1 mr-3 flex-shrink-0" />
-                  <p className="text-api-midnight">Contribute to policy discussions and advocacy efforts</p>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-api-gold mt-1 mr-3 flex-shrink-0" />
-                  <p className="text-api-midnight">Be part of a movement transforming communities</p>
-                </li>
-              </ul>
-            </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          {/* Left Content - Why Join */}
+          <div className="lg:col-span-4 space-y-6">
+            <Card className="bg-gradient-to-br from-api-ivory/80 to-white shadow-md border-none overflow-hidden">
+              <CardContent className="p-6">
+                <h3 className="text-2xl font-semibold text-api-forest mb-6 flex items-center">
+                  <span className="bg-api-gold/20 p-2 rounded-full mr-3">
+                    <Users className="h-5 w-5 text-api-forest" />
+                  </span>
+                  Why Join Our Network?
+                </h3>
+                <ul className="space-y-4">
+                  <li className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-api-gold mt-1 mr-3 flex-shrink-0" />
+                    <p className="text-api-midnight">Connect with peacebuilders from across East Africa</p>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-api-gold mt-1 mr-3 flex-shrink-0" />
+                    <p className="text-api-midnight">Access exclusive resources and training opportunities</p>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-api-gold mt-1 mr-3 flex-shrink-0" />
+                    <p className="text-api-midnight">Participate in regional peace forums and events</p>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+            
+            <Card className="bg-gradient-to-br from-white to-api-sage/10 shadow-md border-none overflow-hidden">
+              <CardContent className="p-6">
+                <h3 className="text-2xl font-semibold text-api-forest mb-6 flex items-center">
+                  <span className="bg-api-gold/20 p-2 rounded-full mr-3">
+                    <BookOpen className="h-5 w-5 text-api-forest" />
+                  </span>
+                  What You'll Receive
+                </h3>
+                <ul className="space-y-4">
+                  <li className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-api-gold mt-1 mr-3 flex-shrink-0" />
+                    <p className="text-api-midnight">Monthly newsletter with peace initiatives and opportunities</p>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-api-gold mt-1 mr-3 flex-shrink-0" />
+                    <p className="text-api-midnight">Invitations to virtual and in-person networking events</p>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-api-gold mt-1 mr-3 flex-shrink-0" />
+                    <p className="text-api-midnight">Early access to our research publications and resources</p>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
           </div>
           
-          {isSubmitted ? (
-            <Card className="text-center p-10 bg-gradient-to-br from-api-ivory to-white rounded-xl shadow-md animate-fade-in">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-api-forest mb-6">
-                <CheckCircle size={32} className="text-api-gold" />
-              </div>
-              <h3 className="text-2xl font-montserrat font-semibold text-api-forest mb-3">
-                Thank You for Joining!
-              </h3>
-              <p className="text-api-midnight mb-6">
-                We've received your information and will keep you updated on our events and initiatives.
-              </p>
-              <Button 
-                onClick={() => setIsSubmitted(false)}
-                className="bg-api-gold hover:bg-api-terracotta text-api-midnight hover:text-white transition-all duration-300"
-              >
-                Sign Up Another Person
-              </Button>
+          {/* Center Content - Story */}
+          <div className="lg:col-span-4 space-y-6">
+            <Card className="bg-api-forest text-white h-full shadow-xl border-none overflow-hidden">
+              <CardContent className="p-6">
+                <div className="mb-6">
+                  <Globe className="h-10 w-10 text-api-gold mb-4" />
+                  <h3 className="text-2xl font-semibold mb-4">
+                    Our Community Impact
+                  </h3>
+                  <p className="opacity-90 mb-6">
+                    Since 2015, our network has grown to over 500 active members working across borders to promote peace through:
+                  </p>
+                </div>
+                
+                <div className="space-y-6">
+                  <div className="flex items-start">
+                    <div className="bg-api-gold/20 p-2 rounded-full mr-3 mt-1">
+                      <MessageCircle className="h-5 w-5 text-api-gold" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-api-gold">Community Dialogue</h4>
+                      <p className="text-sm opacity-90">Facilitated over 200 community dialogues in conflict-affected areas</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start">
+                    <div className="bg-api-gold/20 p-2 rounded-full mr-3 mt-1">
+                      <Users className="h-5 w-5 text-api-gold" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-api-gold">Youth Engagement</h4>
+                      <p className="text-sm opacity-90">Trained 1,500+ young leaders in conflict resolution and mediation</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start">
+                    <div className="bg-api-gold/20 p-2 rounded-full mr-3 mt-1">
+                      <Globe className="h-5 w-5 text-api-gold" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-api-gold">Policy Advocacy</h4>
+                      <p className="text-sm opacity-90">Contributed to 12 regional policies supporting peace and security</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="mt-8 pt-6 border-t border-api-gold/20">
+                  <p className="italic text-sm opacity-80">"Joining this community has transformed my understanding of peacebuilding and connected me with allies across borders."</p>
+                  <p className="mt-2 font-semibold text-api-gold">— Sarah M., Community Organizer</p>
+                </div>
+              </CardContent>
             </Card>
-          ) : (
-            <Card className="overflow-hidden shadow-lg border border-gray-100 rounded-lg">
-              <CardContent className="p-0">
-                <div className="bg-api-forest/10 py-4 px-6 border-b border-gray-100">
-                  <h3 className="text-xl font-montserrat font-semibold text-api-forest">Sign Up for Updates</h3>
+          </div>
+          
+          {/* Right Content - Sign Up Form */}
+          <div className="lg:col-span-4">
+            {isSubmitted ? (
+              <Card className="text-center p-8 bg-gradient-to-br from-api-ivory/50 to-white rounded-xl shadow-lg animate-fade-in h-full border-none">
+                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-api-forest mb-8">
+                  <CheckCircle size={40} className="text-api-gold" />
+                </div>
+                <h3 className="text-2xl font-montserrat font-semibold text-api-forest mb-4">
+                  Thank You for Joining!
+                </h3>
+                <p className="text-api-midnight mb-8 text-lg">
+                  We've received your information and will keep you updated on our events and initiatives. Welcome to our community of peacebuilders!
+                </p>
+                <Button 
+                  onClick={() => setIsSubmitted(false)}
+                  className="bg-api-gold hover:bg-api-terracotta text-api-midnight hover:text-white transition-all duration-300 px-8 py-6 text-base"
+                  size="lg"
+                >
+                  Sign Up Another Person
+                </Button>
+              </Card>
+            ) : (
+              <Card className="shadow-lg border-none overflow-hidden bg-white h-full">
+                <div className="bg-api-gold/10 py-5 px-6 border-b border-api-gold/30">
+                  <h3 className="text-xl font-montserrat font-semibold text-api-forest flex items-center">
+                    <Mail className="h-5 w-5 text-api-terracotta mr-2" />
+                    Sign Up for Updates
+                  </h3>
                 </div>
                 <form onSubmit={handleSubmit} className="space-y-6 p-8">
                   <div className="space-y-2">
@@ -115,9 +204,9 @@ const ContactForm = () => {
                     <Input 
                       id="name" 
                       name="name" 
-                      placeholder="Your Name" 
+                      placeholder="Your Full Name" 
                       required 
-                      className="border-gray-200 focus:border-api-terracotta focus:ring-api-terracotta/20 rounded-md py-3 text-base"
+                      className="border-gray-200 focus:border-api-terracotta focus:ring-api-terracotta/20 rounded-md py-3 text-base shadow-sm"
                     />
                   </div>
                   <div className="space-y-2">
@@ -129,9 +218,9 @@ const ContactForm = () => {
                       id="email" 
                       name="email" 
                       type="email" 
-                      placeholder="Your Email" 
+                      placeholder="Your Email Address" 
                       required 
-                      className="border-gray-200 focus:border-api-terracotta focus:ring-api-terracotta/20 rounded-md py-3 text-base"
+                      className="border-gray-200 focus:border-api-terracotta focus:ring-api-terracotta/20 rounded-md py-3 text-base shadow-sm"
                     />
                   </div>
                   <div className="space-y-2">
@@ -143,21 +232,26 @@ const ContactForm = () => {
                       id="organization" 
                       name="organization" 
                       placeholder="Your Organization" 
-                      className="border-gray-200 focus:border-api-terracotta focus:ring-api-terracotta/20 rounded-md py-3 text-base"
+                      className="border-gray-200 focus:border-api-terracotta focus:ring-api-terracotta/20 rounded-md py-3 text-base shadow-sm"
                     />
                   </div>
-                  <Button 
-                    type="submit" 
-                    className="w-full bg-api-gold hover:bg-api-terracotta text-api-midnight hover:text-white font-semibold py-6 text-base rounded-md shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? "Submitting..." : "Join Now"}
-                    {!isSubmitting && <ArrowRight className="h-4 w-4" />}
-                  </Button>
+                  
+                  <div className="pt-2">
+                    <p className="text-xs text-gray-500 mb-4">By joining, you agree to receive updates from us. We respect your privacy and will never share your information.</p>
+                    
+                    <Button 
+                      type="submit" 
+                      className="w-full bg-api-gold hover:bg-api-terracotta text-api-midnight hover:text-white font-semibold py-6 text-base rounded-md shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? "Submitting..." : "Join Our Community"}
+                      {!isSubmitting && <ArrowRight className="h-4 w-4" />}
+                    </Button>
+                  </div>
                 </form>
-              </CardContent>
-            </Card>
-          )}
+              </Card>
+            )}
+          </div>
         </div>
       </div>
     </div>

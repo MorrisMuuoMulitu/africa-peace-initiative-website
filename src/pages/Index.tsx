@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -92,10 +91,8 @@ const Index = () => {
       <div className="section-animate" data-animation="fade-up">
         <News />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 section-animate" data-animation="fade-right">
-        <div id="contact">
-          <ContactForm />
-        </div>
+      <div id="contact" className="section-animate" data-animation="fade-right">
+        <ContactForm />
       </div>
       <Footer />
     </div>
