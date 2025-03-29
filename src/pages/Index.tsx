@@ -22,7 +22,9 @@ const Index = () => {
       </div>
       <Partners />
       <div className="grid grid-cols-1 md:grid-cols-2">
-        <Event />
+        <div id="events">
+          <Event />
+        </div>
         <div id="contact">
           <ContactForm />
         </div>
