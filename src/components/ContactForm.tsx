@@ -1,13 +1,13 @@
+
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { CheckCircle, Mail, User, Building, ArrowRight, Users, BookOpen, Globe, MessageCircle } from "lucide-react";
+import { CheckCircle, Mail, User, Building, ArrowRight, Users, BookOpen } from "lucide-react";
 import { useInView } from "react-intersection-observer";
 import { Card, CardContent } from "@/components/ui/card";
-import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
-import { useForm } from "react-hook-form";
+
 const ContactForm = () => {
   const {
     toast
@@ -18,13 +18,7 @@ const ContactForm = () => {
     triggerOnce: true,
     threshold: 0.2
   });
-  const form = useForm({
-    defaultValues: {
-      name: "",
-      email: "",
-      organization: ""
-    }
-  });
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -42,6 +36,7 @@ const ContactForm = () => {
       });
     }, 1000);
   };
+
   return <div ref={ref} className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-api-ivory/50">
       <div className={`max-w-7xl mx-auto transition-all duration-700 transform ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         <div className="text-center mb-12">
@@ -54,7 +49,7 @@ const ContactForm = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-8 gap-8 items-start">
           {/* Left Content - Why Join */}
           <div className="lg:col-span-4 space-y-6">
             <Card className="bg-gradient-to-br from-api-ivory/80 to-white shadow-md border-none overflow-hidden">
@@ -105,13 +100,6 @@ const ContactForm = () => {
                   </li>
                 </ul>
               </CardContent>
-            </Card>
-          </div>
-          
-          {/* Center Content - Story */}
-          <div className="lg:col-span-4 space-y-6">
-            <Card className="bg-api-forest text-white h-full shadow-xl border-none overflow-hidden">
-              
             </Card>
           </div>
           
