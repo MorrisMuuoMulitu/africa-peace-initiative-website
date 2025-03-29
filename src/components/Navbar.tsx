@@ -22,7 +22,7 @@ const Navbar = () => {
     };
   }, []);
   return <nav className={`py-3 px-4 sm:px-6 sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-api-forest shadow-md' : 'bg-api-forest bg-opacity-90 backdrop-blur-sm'}`}>
-      <div className="max-w-7xl mx-auto flex justify-between items-center bg-gray-900">
+      <div className="max-w-7xl mx-auto flex justify-between items-center bg-slate-50">
         <div className="flex items-center">
           <a href="/" className="flex items-center">
             <img src="https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/API%20logo-12.png?updatedAt=1741074058148" alt="Africa Peace Initiative Logo" className="h-14 w-auto transition-all duration-300" />
