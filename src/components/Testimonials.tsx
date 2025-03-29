@@ -1,129 +1,87 @@
 
 import React from "react";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Star, MessageSquare } from "lucide-react";
 import { useInView } from "react-intersection-observer";
 
 const Testimonials = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.2,
+    threshold: 0.1,
   });
 
   const testimonials = [
     {
-      name: "Sarah Mwangi",
-      role: "Conference Attendee, Kenya",
-      image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=1887&auto=format&fit=crop",
-      quote: "The Regional Dialogue on Eastern Congo was well-organized and brought together diverse perspectives. I'm looking forward to future events by API.",
+      quote: "The Africa Peace Initiative's approach to conflict resolution is revolutionary. Their focus on inclusive dialogue has transformed how we address community tensions.",
+      name: "Dr. Amina Osei",
+      role: "Director, Center for Peace Studies, Nairobi",
+      image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
     },
     {
-      name: "Dr. Emmanuel Osei",
-      role: "Conflict Resolution Expert, Ghana",
-      image: "https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?q=80&w=2076&auto=format&fit=crop",
-      quote: "As a participant in API's first dialogue, I was impressed by the depth of discussion and the commitment to finding practical solutions.",
+      quote: "Working with API has given me new tools to advocate for peace in my community. Their training programs are thorough and culturally sensitive.",
+      name: "Ibrahim Kabila",
+      role: "Community Leader, Eastern DRC",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
     },
     {
-      name: "Amina Hassan",
-      role: "Youth Representative, Somalia",
-      image: "https://images.unsplash.com/photo-1589156229687-496a31ad1d1f?q=80&w=2086&auto=format&fit=crop",
-      quote: "API created an inclusive space where young voices like mine were valued. The dialogue was a crucial first step toward regional cooperation.",
-    },
-    {
-      name: "Jean-Claude Muhindo",
-      role: "Community Advocate, DRC",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop",
-      quote: "The discussion on Eastern Congo addressed real challenges faced by our communities. I appreciate API's initiative in bringing stakeholders together.",
-    },
+      quote: "The thoughtful approach to bringing diverse stakeholders together created space for honest dialogue about difficult issues affecting our region.",
+      name: "Sophia Mwangi",
+      role: "Policy Advisor, Ministry of Foreign Affairs",
+      image: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+    }
   ];
 
   return (
     <div
       ref={ref}
-      className={`py-28 px-4 sm:px-6 bg-gradient-to-b from-api-darkgreen to-api-darkgreen/90 relative transition-all duration-700 ${
+      className={`py-24 px-4 sm:px-6 bg-gradient-to-b from-white to-api-cream/20 transition-all duration-700 ${
         inView ? "opacity-100" : "opacity-0"
       }`}
+      id="testimonials"
     >
-      {/* Background patterns */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-api-terracotta opacity-[0.03] rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-api-gold opacity-[0.03] rounded-full blur-3xl translate-y-1/2 -translate-x-1/3"></div>
-        <div className="absolute top-1/4 left-1/4 w-4 h-4 bg-api-cream opacity-10 rounded-full"></div>
-        <div className="absolute top-3/4 right-1/4 w-6 h-6 bg-api-terracotta opacity-10 rounded-full"></div>
-        <div className="absolute top-1/2 left-3/4 w-8 h-8 bg-api-gold opacity-10 rounded-full"></div>
-      </div>
-
-      <div className="max-w-6xl mx-auto relative z-10">
-        <div className="text-center mb-16 transform transition-all duration-700 ease-out" 
-             style={{ transitionDelay: "200ms" }}>
-          <MessageSquare className="w-12 h-12 text-api-terracotta/30 mx-auto mb-4" />
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
           <div className="w-16 h-1 bg-api-terracotta mx-auto mb-6"></div>
-          <h2 className="text-3xl md:text-4xl font-bold font-montserrat text-white mb-4 tracking-tight">
+          <h2 className="text-3xl md:text-4xl font-bold font-montserrat text-api-midnight mb-4">
             Voices of Impact
           </h2>
-          <p className="text-lg text-white/90 max-w-2xl mx-auto">
-            Hear from participants of our inaugural Regional Dialogue on the conflict in Eastern Congo.
+          <p className="text-lg text-api-midnight/80 max-w-2xl mx-auto">
+            Hear from those who have experienced our work firsthand
           </p>
         </div>
 
-        <div className="mt-12">
-          <Carousel 
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            className="w-full"
-          >
-            <CarouselContent>
-              {testimonials.map((testimonial, index) => (
-                <CarouselItem 
-                  key={index} 
-                  className="md:basis-1/2 lg:basis-1/3 pl-4"
-                  style={{ 
-                    transitionDelay: `${index * 100}ms`, 
-                    transitionDuration: "700ms" 
-                  }}
-                >
-                  <Card className="bg-api-green border-none rounded-xl shadow-lg overflow-hidden h-full transform hover:scale-[1.02] transition-all duration-300">
-                    <CardContent className="p-0">
-                      <div className="p-7">
-                        <div className="flex items-center mb-5">
-                          <div className="relative">
-                            <Avatar className="h-16 w-16 border-4 border-white shadow-md bg-api-darkgreen">
-                              <AvatarImage src={testimonial.image} alt={testimonial.name} className="object-cover" />
-                              <AvatarFallback className="text-white font-bold text-xl">
-                                {testimonial.name.split(' ').map(n => n[0]).join('')}
-                              </AvatarFallback>
-                            </Avatar>
-                          </div>
-                          <div className="ml-4">
-                            <div className="text-white font-semibold text-xl">{testimonial.name}</div>
-                            <div className="text-white/80 text-sm">{testimonial.role}</div>
-                          </div>
-                        </div>
-                        
-                        <div className="flex mb-4">
-                          {[...Array(5)].map((_, i) => (
-                            <Star key={i} size={18} className="text-api-gold fill-api-gold mr-1" />
-                          ))}
-                        </div>
-                        
-                        <p className="text-white/95 leading-relaxed text-lg font-medium">
-                          "{testimonial.quote}"
-                        </p>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <div className="flex justify-center mt-10 gap-4">
-              <CarouselPrevious className="relative static left-0 right-0 translate-y-0 bg-api-cream hover:bg-api-gold text-api-forest shadow-md" />
-              <CarouselNext className="relative static left-0 right-0 translate-y-0 bg-api-cream hover:bg-api-gold text-api-forest shadow-md" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {testimonials.map((testimonial, index) => (
+            <div
+              key={index}
+              className={`bg-white rounded-xl shadow-lg p-6 relative overflow-hidden transform transition-all duration-500 hover:shadow-xl ${
+                inView
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-12"
+              }`}
+              style={{ transitionDelay: `${index * 200}ms` }}
+            >
+              {/* Decorative elements */}
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-api-terracotta to-api-sage"></div>
+              <div className="absolute top-8 right-8 text-api-terracotta/10 text-6xl font-serif">"</div>
+              
+              <div className="mb-6 relative z-10">
+                <p className="text-api-midnight/90 font-lora italic">"{testimonial.quote}"</p>
+              </div>
+              
+              <div className="flex items-center mt-6">
+                <div className="flex-shrink-0 mr-4">
+                  <img 
+                    src={testimonial.image} 
+                    alt={testimonial.name}
+                    className="h-14 w-14 rounded-full object-cover border-2 border-api-terracotta"
+                  />
+                </div>
+                <div>
+                  <h4 className="text-api-midnight font-bold">{testimonial.name}</h4>
+                  <p className="text-api-midnight/70 text-sm">{testimonial.role}</p>
+                </div>
+              </div>
             </div>
-          </Carousel>
+          ))}
         </div>
       </div>
     </div>

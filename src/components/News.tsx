@@ -47,7 +47,7 @@ const News = () => {
             className="mt-6 md:mt-0 border-api-terracotta text-api-terracotta hover:bg-api-terracotta/10"
             asChild
           >
-            <Link to="/blog">
+            <Link to="/blog/archive">
               View All Updates
             </Link>
           </Button>

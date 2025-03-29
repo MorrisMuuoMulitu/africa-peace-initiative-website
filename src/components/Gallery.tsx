@@ -23,57 +23,44 @@ const Gallery = () => {
   const images = [
     {
       id: 1,
-      src: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/placeholder-1.jpg",
+      src: "https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1769&q=80",
       alt: "Peace conference in Nairobi",
       category: "events",
     },
     {
       id: 2,
-      src: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/placeholder-2.jpg",
+      src: "https://images.unsplash.com/photo-1529070538774-1843cb3265df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
       alt: "Community training session",
       category: "trainings",
     },
     {
       id: 3,
-      src: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/placeholder-3.jpg",
+      src: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1769&q=80",
       alt: "Village elder meeting",
       category: "communities",
     },
     {
       id: 4,
-      src: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/placeholder-4.jpg",
+      src: "https://images.unsplash.com/photo-1526976668912-1a811878dd37?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
       alt: "Youth peace forum",
       category: "events",
     },
     {
       id: 5,
-      src: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/placeholder-5.jpg",
+      src: "https://images.unsplash.com/photo-1579389083078-4e7018379f7e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
       alt: "Women's leadership training",
       category: "trainings",
     },
     {
       id: 6,
-      src: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/placeholder-6.jpg",
+      src: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
       alt: "Rural community gathering",
       category: "communities",
     },
   ];
 
-  // You can replace these placeholder image URLs with actual images from your project
-  const placeholderImages = [
-    "/placeholder.svg",
-    "/placeholder.svg",
-    "/placeholder.svg",
-    "/placeholder.svg",
-    "/placeholder.svg",
-    "/placeholder.svg",
-  ];
-
-  // For demonstration, we'll use the placeholder images
-  const galleryImages = images.map((img, index) => ({
-    ...img,
-    src: placeholderImages[index % placeholderImages.length]
-  }));
+  // Use placeholder images if needed
+  const galleryImages = images;
 
   return (
     <div
@@ -95,7 +82,7 @@ const Gallery = () => {
         </div>
 
         <Tabs defaultValue="all" className="w-full mt-12">
-          <div className="flex justify-center mb-8">
+          <div className="flex justify-center mb-8 overflow-x-auto pb-2">
             <TabsList className="bg-api-cream/20">
               {categories.map((category) => (
                 <TabsTrigger
@@ -143,7 +130,7 @@ const Gallery = () => {
                           </div>
                         </div>
                       </DialogTrigger>
-                      <DialogContent className="max-w-3xl p-0 bg-transparent border-none">
+                      <DialogContent className="max-w-4xl p-2 bg-transparent border-none">
                         <img
                           src={image.src}
                           alt={image.alt}
@@ -153,6 +140,13 @@ const Gallery = () => {
                     </Dialog>
                   ))}
               </div>
+
+              {/* Empty state if no images in category */}
+              {galleryImages.filter(img => category.id === "all" || img.category === category.id).length === 0 && (
+                <div className="text-center py-16">
+                  <p className="text-api-midnight/70">No images available in this category yet.</p>
+                </div>
+              )}
             </TabsContent>
           ))}
         </Tabs>
