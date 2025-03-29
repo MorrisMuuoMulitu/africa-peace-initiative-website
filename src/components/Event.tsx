@@ -1,76 +1,128 @@
 
-import React, { useState } from "react";
-import { CalendarDays, ChevronRight, MapPin, Users } from "lucide-react";
+import React from "react";
+import { CalendarDays, MapPin, Clock, Users, CheckCircle } from "lucide-react";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { useInView } from "react-intersection-observer";
 
 const Event = () => {
-  const [showDetails, setShowDetails] = useState(false);
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.2,
   });
 
   return (
-    <div ref={ref} id="events" className="py-20 px-4 sm:px-6 bg-gradient-to-br from-api-gold to-amber-300">
-      <div className={`max-w-3xl mx-auto transition-all duration-700 transform ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-        <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-8 md:p-10">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6 text-center md:text-left">
-            <div className="text-api-gold">
-              <div className="p-4 rounded-full bg-api-midnight">
-                <CalendarDays size={40} />
+    <div ref={ref} id="events" className="py-20 px-4 sm:px-6 bg-api-cream">
+      <div className={`max-w-4xl mx-auto transition-all duration-700 transform ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl font-montserrat font-bold text-api-darkgreen mb-4">
+            Recent Events
+          </h2>
+          <p className="text-lg text-api-charcoal max-w-2xl mx-auto">
+            Bringing together key stakeholders to foster understanding and advance peace initiatives in Africa.
+          </p>
+        </div>
+
+        <Card className="overflow-hidden border-api-sage/20 shadow-lg">
+          <CardHeader className="bg-gradient-to-r from-api-darkgreen to-api-forestgreen text-white p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <Badge variant="outline" className="bg-white/10 text-white border-white/20 mb-3">
+                  Past Event
+                </Badge>
+                <CardTitle className="text-2xl sm:text-3xl mb-2">Regional Dialogue: The Conflict in Eastern Congo</CardTitle>
+                <CardDescription className="text-white/90 text-base">
+                  A critical discussion on conflict resolution and peace pathways in the Great Lakes Region.
+                </CardDescription>
               </div>
             </div>
-            <div>
-              <div className="bg-api-terracotta/10 px-4 py-1 rounded-full inline-block mb-2">
-                <span className="text-sm font-medium text-api-terracotta">Upcoming Event</span>
-              </div>
-              <h2 className="text-2xl md:text-3xl font-montserrat font-bold text-api-midnight mb-2">
-                Shared Responsibility, Shared Future
-              </h2>
-              <p className="text-lg font-lora text-api-midnight/80 mb-6">
-                Virtual Conversation, Feb 27th/March 6th, 2025
-              </p>
-              
-              <Button 
-                variant="outline" 
-                className="border-api-midnight text-api-midnight hover:bg-api-terracotta hover:text-api-ivory hover:border-api-terracotta transition-all duration-300"
-                onClick={() => setShowDetails(!showDetails)}
-              >
-                {showDetails ? "Hide Details" : "View Details"}
-                <ChevronRight size={16} className={`ml-2 transition-transform duration-300 ${showDetails ? 'rotate-90' : ''}`} />
-              </Button>
-              
-              {showDetails && (
-                <div className="mt-6 bg-api-ivory rounded-lg p-6 text-api-midnight animate-fade-in">
-                  <p className="text-base font-lora mb-4">
-                    Join our virtual conversation on the challenges and opportunities for peace in East Africa,
-                    featuring regional experts and peace practitioners from across the continent.
-                  </p>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                    <div className="flex items-center gap-2 text-api-midnight/80">
-                      <MapPin size={16} />
-                      <span>Online (Zoom)</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-api-midnight/80">
-                      <Users size={16} />
-                      <span>Limited to 100 participants</span>
-                    </div>
-                  </div>
-                  
-                  <div className="mt-6">
-                    <Button 
-                      className="bg-api-terracotta hover:bg-api-midnight text-white transition-all duration-300 w-full md:w-auto"
-                      onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                    >
-                      Register Now
-                    </Button>
+          </CardHeader>
+          
+          <CardContent className="p-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-api-darkgreen mb-4">Event Details</h3>
+                
+                <div className="flex items-start gap-3">
+                  <CalendarDays className="text-api-green h-5 w-5 mt-0.5" />
+                  <div>
+                    <p className="font-medium text-api-charcoal">Date</p>
+                    <p className="text-api-gray">March 27, 2025</p>
                   </div>
                 </div>
-              )}
+                
+                <div className="flex items-start gap-3">
+                  <Clock className="text-api-green h-5 w-5 mt-0.5" />
+                  <div>
+                    <p className="font-medium text-api-charcoal">Time</p>
+                    <p className="text-api-gray">9:00 AM</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-3">
+                  <MapPin className="text-api-green h-5 w-5 mt-0.5" />
+                  <div>
+                    <p className="font-medium text-api-charcoal">Venue</p>
+                    <p className="text-api-gray">Trademark Hotel, Village Market</p>
+                    <p className="text-api-gray">Gigiri, Nairobi</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="space-y-4 md:border-l md:border-api-sage/20 md:pl-6">
+                <h3 className="text-lg font-semibold text-api-darkgreen mb-4">About This Event</h3>
+                <p className="text-api-gray">
+                  This dialogue brought together top diplomats, security experts, and researchers under Chatham House rules to analyze the complexities of the conflict and identify solutions for sustainable peace.
+                </p>
+                
+                <div className="flex items-start gap-3 mt-4">
+                  <Users className="text-api-green h-5 w-5 mt-0.5" />
+                  <div>
+                    <p className="font-medium text-api-charcoal">Attendees</p>
+                    <p className="text-api-gray">Diplomats, Security Experts, Researchers</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-3 mt-4">
+                  <CheckCircle className="text-api-green h-5 w-5 mt-0.5" />
+                  <div>
+                    <p className="font-medium text-api-charcoal">Status</p>
+                    <p className="text-api-gray">Completed</p>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+          </CardContent>
+          
+          <CardFooter className="bg-api-cream/50 border-t border-api-sage/20 p-6">
+            <div className="w-full">
+              <p className="text-api-charcoal mb-4">
+                Interested in our upcoming events? Contact us to stay informed about future dialogues and initiatives.
+              </p>
+              <Button 
+                className="bg-api-green hover:bg-api-darkgreen text-white transition-all duration-300"
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Contact Us
+              </Button>
+            </div>
+          </CardFooter>
+        </Card>
+        
+        <div className="mt-12 text-center">
+          <h3 className="text-xl font-semibold text-api-darkgreen mb-4">Stay Tuned for Our Next Event</h3>
+          <p className="text-api-gray max-w-2xl mx-auto">
+            We regularly organize dialogues, forums, and conferences across Africa to promote peace and cooperation. 
+            Subscribe to our newsletter to be notified about upcoming events.
+          </p>
+          <Button 
+            variant="outline" 
+            className="mt-6 border-api-green text-api-green hover:bg-api-green hover:text-white"
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+          >
+            Subscribe to Updates
+          </Button>
         </div>
       </div>
     </div>
