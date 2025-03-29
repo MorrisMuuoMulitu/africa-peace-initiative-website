@@ -5,12 +5,12 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import LanguageSelector from "./LanguageSelector";
-import { useMobile } from "@/hooks/use-mobile";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const isMobile = useMobile();
+  const isMobile = useIsMobile();
   const location = useLocation();
   const isHomePage = location.pathname === "/";
 

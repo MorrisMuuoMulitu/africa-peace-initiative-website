@@ -41,7 +41,7 @@ const Newsletter = () => {
     toast({
       title: "Thank you for subscribing!",
       description: "You've been added to our newsletter list.",
-      variant: "success"
+      variant: "default"
     });
     
     setIsSubscribed(true);
