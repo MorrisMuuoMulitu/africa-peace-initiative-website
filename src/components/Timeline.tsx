@@ -49,7 +49,8 @@ const Timeline = () => {
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 transform transition-all duration-700" 
+             style={{ transitionDelay: "100ms" }}>
           <div className="w-16 h-1 bg-api-terracotta mx-auto mb-6"></div>
           <h2 className="text-3xl md:text-4xl font-bold font-montserrat text-white mb-6 tracking-tight">
             Our Journey
@@ -60,7 +61,7 @@ const Timeline = () => {
         </div>
 
         <div className="relative mt-20">
-          {/* Timeline center line */}
+          {/* Timeline center line with animation */}
           <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-api-terracotta/10 via-api-terracotta/70 to-api-terracotta/10 top-0 rounded-full"></div>
 
           {milestones.map((milestone, index) => {
@@ -75,7 +76,11 @@ const Timeline = () => {
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-10"
                 }`}
-                style={{ transitionDelay: `${index * 200}ms`, transitionDuration: "800ms", transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)" }}
+                style={{ 
+                  transitionDelay: `${index * 200}ms`, 
+                  transitionDuration: "800ms", 
+                  transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)" 
+                }}
               >
                 {/* Year marker with icon */}
                 <div className="absolute left-1/2 transform -translate-x-1/2 w-16 h-16 rounded-full bg-api-green border-2 border-white/20 z-10 flex items-center justify-center shadow-lg">

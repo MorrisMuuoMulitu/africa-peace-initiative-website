@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Calendar, ArrowRight, Clock, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const News = () => {
   const [ref, inView] = useInView({
@@ -44,8 +45,11 @@ const News = () => {
           <Button 
             variant="outline"
             className="mt-6 md:mt-0 border-api-terracotta text-api-terracotta hover:bg-api-terracotta/10"
+            asChild
           >
-            View All Updates
+            <Link to="/blog">
+              View All Updates
+            </Link>
           </Button>
         </div>
 

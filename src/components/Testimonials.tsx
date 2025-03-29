@@ -16,25 +16,25 @@ const Testimonials = () => {
     {
       name: "Sarah Mwangi",
       role: "Conference Attendee, Kenya",
-      image: "",
+      image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=1887&auto=format&fit=crop",
       quote: "The Regional Dialogue on Eastern Congo was well-organized and brought together diverse perspectives. I'm looking forward to future events by API.",
     },
     {
       name: "Dr. Emmanuel Osei",
       role: "Conflict Resolution Expert, Ghana",
-      image: "",
+      image: "https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?q=80&w=2076&auto=format&fit=crop",
       quote: "As a participant in API's first dialogue, I was impressed by the depth of discussion and the commitment to finding practical solutions.",
     },
     {
       name: "Amina Hassan",
       role: "Youth Representative, Somalia",
-      image: "",
+      image: "https://images.unsplash.com/photo-1589156229687-496a31ad1d1f?q=80&w=2086&auto=format&fit=crop",
       quote: "API created an inclusive space where young voices like mine were valued. The dialogue was a crucial first step toward regional cooperation.",
     },
     {
       name: "Jean-Claude Muhindo",
       role: "Community Advocate, DRC",
-      image: "",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop",
       quote: "The discussion on Eastern Congo addressed real challenges faced by our communities. I appreciate API's initiative in bringing stakeholders together.",
     },
   ];
@@ -56,7 +56,8 @@ const Testimonials = () => {
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 transform transition-all duration-700 ease-out" 
+             style={{ transitionDelay: "200ms" }}>
           <MessageSquare className="w-12 h-12 text-api-terracotta/30 mx-auto mb-4" />
           <div className="w-16 h-1 bg-api-terracotta mx-auto mb-6"></div>
           <h2 className="text-3xl md:text-4xl font-bold font-montserrat text-white mb-4 tracking-tight">
@@ -91,6 +92,7 @@ const Testimonials = () => {
                         <div className="flex items-center mb-5">
                           <div className="relative">
                             <Avatar className="h-16 w-16 border-4 border-white shadow-md bg-api-darkgreen">
+                              <AvatarImage src={testimonial.image} alt={testimonial.name} className="object-cover" />
                               <AvatarFallback className="text-white font-bold text-xl">
                                 {testimonial.name.split(' ').map(n => n[0]).join('')}
                               </AvatarFallback>

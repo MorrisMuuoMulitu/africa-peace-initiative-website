@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Mission from "@/components/Mission";
@@ -15,26 +15,66 @@ import Gallery from "@/components/Gallery";
 import News from "@/components/News";
 
 const Index = () => {
+  useEffect(() => {
+    // Add scroll-based animations
+    const sections = document.querySelectorAll(".section-animate");
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-fade-in");
+            entry.target.classList.remove("opacity-0");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    
+    sections.forEach((section) => {
+      section.classList.add("opacity-0");
+      observer.observe(section);
+    });
+    
+    return () => {
+      sections.forEach((section) => {
+        observer.unobserve(section);
+      });
+    };
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <Hero />
-      <div id="mission">
+      <div id="mission" className="section-animate">
         <Mission />
       </div>
-      <div id="focus">
+      <div id="focus" className="section-animate">
         <FocusAreas />
       </div>
-      <ImpactMetrics />
-      <div id="events">
+      <div className="section-animate">
+        <ImpactMetrics />
+      </div>
+      <div id="events" className="section-animate">
         <Event />
       </div>
-      <Timeline />
-      <Testimonials />
-      <Partners />
-      <Gallery />
-      <News />
-      <div className="grid grid-cols-1 md:grid-cols-2">
+      <div className="section-animate">
+        <Timeline />
+      </div>
+      <div className="section-animate">
+        <Testimonials />
+      </div>
+      <div className="section-animate">
+        <Partners />
+      </div>
+      <div className="section-animate">
+        <Gallery />
+      </div>
+      <div className="section-animate">
+        <News />
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 section-animate">
         <div id="contact">
           <ContactForm />
         </div>
