@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
@@ -36,6 +36,14 @@ const Navbar = () => {
               alt="Africa Peace Initiative Logo" 
               className="h-14 w-auto transition-all duration-300"
             />
+          </a>
+        </div>
+
+        {/* Contact Info - Desktop */}
+        <div className="hidden md:flex items-center mr-4">
+          <a href="tel:+254706767226" className="flex items-center text-api-ivory hover:text-api-gold transition-colors duration-300">
+            <Phone size={18} className="mr-2" />
+            <span>+254 706 767226</span>
           </a>
         </div>
         
@@ -77,6 +85,13 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="md:hidden mt-4 bg-api-forest bg-opacity-95 backdrop-blur-md absolute left-0 right-0 p-6 shadow-lg border-t border-api-terracotta/20 animate-fade-in">
           <div className="flex flex-col space-y-5">
+            <a 
+              href="tel:+254706767226" 
+              className="flex items-center text-api-ivory hover:text-api-gold transition-colors duration-300 py-2"
+            >
+              <Phone size={18} className="mr-2" />
+              <span>+254 706 767226</span>
+            </a>
             <a 
               href="#mission" 
               className="text-api-ivory hover:text-api-gold transition-colors duration-300 py-2 text-lg font-medium"

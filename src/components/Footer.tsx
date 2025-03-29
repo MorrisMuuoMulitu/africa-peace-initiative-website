@@ -39,11 +39,11 @@ const Footer = () => {
                 <span>Nairobi, Kenya</span>
               </a>
               <a 
-                href="tel:+254123456789" 
+                href="tel:+254706767226" 
                 className="text-api-ivory/70 hover:text-api-gold transition-colors duration-300 flex items-center gap-2"
               >
                 <Phone size={18} />
-                <span>+254 123 456 789</span>
+                <span>+254 706 767226</span>
               </a>
             </div>
           </div>
@@ -59,17 +59,17 @@ const Footer = () => {
             
             <div className="mt-8">
               <h4 className="text-md font-montserrat text-api-ivory mb-4 font-medium">Follow Us</h4>
-              <div className="flex justify-center md:justify-start gap-4">
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-api-ivory/10 rounded-full hover:bg-api-gold/20 transition-colors text-api-ivory">
+              <div className="flex justify-center space-x-4">
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-api-ivory/10 rounded-full hover:bg-api-gold/20 transition-colors text-api-ivory hover:scale-110 transform duration-300">
                   <Twitter size={18} />
                 </a>
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-api-ivory/10 rounded-full hover:bg-api-gold/20 transition-colors text-api-ivory">
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-api-ivory/10 rounded-full hover:bg-api-gold/20 transition-colors text-api-ivory hover:scale-110 transform duration-300">
                   <Facebook size={18} />
                 </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-api-ivory/10 rounded-full hover:bg-api-gold/20 transition-colors text-api-ivory">
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-api-ivory/10 rounded-full hover:bg-api-gold/20 transition-colors text-api-ivory hover:scale-110 transform duration-300">
                   <Linkedin size={18} />
                 </a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-api-ivory/10 rounded-full hover:bg-api-gold/20 transition-colors text-api-ivory">
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-api-ivory/10 rounded-full hover:bg-api-gold/20 transition-colors text-api-ivory hover:scale-110 transform duration-300">
                   <Instagram size={18} />
                 </a>
               </div>
