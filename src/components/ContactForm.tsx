@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -9,44 +8,41 @@ import { useInView } from "react-intersection-observer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
-
 const ContactForm = () => {
-  const { toast } = useToast();
+  const {
+    toast
+  } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.2,
+    threshold: 0.2
   });
-  
   const form = useForm({
     defaultValues: {
       name: "",
       email: "",
-      organization: "",
+      organization: ""
     }
   });
-  
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate API call
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-      
+
       // In a real application, we would submit this to a backend
       toast({
         title: "Thank you for joining us!",
         description: "We'll keep you updated on our events and initiatives.",
-        duration: 5000,
+        duration: 5000
       });
     }, 1000);
   };
-
-  return (
-    <div ref={ref} className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-api-ivory/50">
+  return <div ref={ref} className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-api-ivory/50">
       <div className={`max-w-7xl mx-auto transition-all duration-700 transform ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         <div className="text-center mb-12">
           <div className="w-16 h-1 bg-api-terracotta mx-auto mb-6"></div>
@@ -115,61 +111,13 @@ const ContactForm = () => {
           {/* Center Content - Story */}
           <div className="lg:col-span-4 space-y-6">
             <Card className="bg-api-forest text-white h-full shadow-xl border-none overflow-hidden">
-              <CardContent className="p-6">
-                <div className="mb-6">
-                  <Globe className="h-10 w-10 text-api-gold mb-4" />
-                  <h3 className="text-2xl font-semibold mb-4">
-                    Our Community Impact
-                  </h3>
-                  <p className="opacity-90 mb-6">
-                    Since 2015, our network has grown to over 500 active members working across borders to promote peace through:
-                  </p>
-                </div>
-                
-                <div className="space-y-6">
-                  <div className="flex items-start">
-                    <div className="bg-api-gold/20 p-2 rounded-full mr-3 mt-1">
-                      <MessageCircle className="h-5 w-5 text-api-gold" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-api-gold">Community Dialogue</h4>
-                      <p className="text-sm opacity-90">Facilitated over 200 community dialogues in conflict-affected areas</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <div className="bg-api-gold/20 p-2 rounded-full mr-3 mt-1">
-                      <Users className="h-5 w-5 text-api-gold" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-api-gold">Youth Engagement</h4>
-                      <p className="text-sm opacity-90">Trained 1,500+ young leaders in conflict resolution and mediation</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <div className="bg-api-gold/20 p-2 rounded-full mr-3 mt-1">
-                      <Globe className="h-5 w-5 text-api-gold" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-api-gold">Policy Advocacy</h4>
-                      <p className="text-sm opacity-90">Contributed to 12 regional policies supporting peace and security</p>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="mt-8 pt-6 border-t border-api-gold/20">
-                  <p className="italic text-sm opacity-80">"Joining this community has transformed my understanding of peacebuilding and connected me with allies across borders."</p>
-                  <p className="mt-2 font-semibold text-api-gold">— Sarah M., Community Organizer</p>
-                </div>
-              </CardContent>
+              
             </Card>
           </div>
           
           {/* Right Content - Sign Up Form */}
           <div className="lg:col-span-4">
-            {isSubmitted ? (
-              <Card className="text-center p-8 bg-gradient-to-br from-api-ivory/50 to-white rounded-xl shadow-lg animate-fade-in h-full border-none">
+            {isSubmitted ? <Card className="text-center p-8 bg-gradient-to-br from-api-ivory/50 to-white rounded-xl shadow-lg animate-fade-in h-full border-none">
                 <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-api-forest mb-8">
                   <CheckCircle size={40} className="text-api-gold" />
                 </div>
@@ -179,16 +127,10 @@ const ContactForm = () => {
                 <p className="text-api-midnight mb-8 text-lg">
                   We've received your information and will keep you updated on our events and initiatives. Welcome to our community of peacebuilders!
                 </p>
-                <Button 
-                  onClick={() => setIsSubmitted(false)}
-                  className="bg-api-gold hover:bg-api-terracotta text-api-midnight hover:text-white transition-all duration-300 px-8 py-6 text-base"
-                  size="lg"
-                >
+                <Button onClick={() => setIsSubmitted(false)} className="bg-api-gold hover:bg-api-terracotta text-api-midnight hover:text-white transition-all duration-300 px-8 py-6 text-base" size="lg">
                   Sign Up Another Person
                 </Button>
-              </Card>
-            ) : (
-              <Card className="shadow-lg border-none overflow-hidden bg-white h-full">
+              </Card> : <Card className="shadow-lg border-none overflow-hidden bg-white h-full">
                 <div className="bg-api-gold/10 py-5 px-6 border-b border-api-gold/30">
                   <h3 className="text-xl font-montserrat font-semibold text-api-forest flex items-center">
                     <Mail className="h-5 w-5 text-api-terracotta mr-2" />
@@ -201,61 +143,36 @@ const ContactForm = () => {
                       <User size={16} className="text-api-terracotta" />
                       Name
                     </Label>
-                    <Input 
-                      id="name" 
-                      name="name" 
-                      placeholder="Your Full Name" 
-                      required 
-                      className="border-gray-200 focus:border-api-terracotta focus:ring-api-terracotta/20 rounded-md py-3 text-base shadow-sm"
-                    />
+                    <Input id="name" name="name" placeholder="Your Full Name" required className="border-gray-200 focus:border-api-terracotta focus:ring-api-terracotta/20 rounded-md py-3 text-base shadow-sm" />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="email" className="text-api-midnight font-semibold flex items-center gap-2">
                       <Mail size={16} className="text-api-terracotta" />
                       Email
                     </Label>
-                    <Input 
-                      id="email" 
-                      name="email" 
-                      type="email" 
-                      placeholder="Your Email Address" 
-                      required 
-                      className="border-gray-200 focus:border-api-terracotta focus:ring-api-terracotta/20 rounded-md py-3 text-base shadow-sm"
-                    />
+                    <Input id="email" name="email" type="email" placeholder="Your Email Address" required className="border-gray-200 focus:border-api-terracotta focus:ring-api-terracotta/20 rounded-md py-3 text-base shadow-sm" />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="organization" className="text-api-midnight font-semibold flex items-center gap-2">
                       <Building size={16} className="text-api-terracotta" />
                       Organization <span className="text-sm text-gray-500 font-normal">(Optional)</span>
                     </Label>
-                    <Input 
-                      id="organization" 
-                      name="organization" 
-                      placeholder="Your Organization" 
-                      className="border-gray-200 focus:border-api-terracotta focus:ring-api-terracotta/20 rounded-md py-3 text-base shadow-sm"
-                    />
+                    <Input id="organization" name="organization" placeholder="Your Organization" className="border-gray-200 focus:border-api-terracotta focus:ring-api-terracotta/20 rounded-md py-3 text-base shadow-sm" />
                   </div>
                   
                   <div className="pt-2">
                     <p className="text-xs text-gray-500 mb-4">By joining, you agree to receive updates from us. We respect your privacy and will never share your information.</p>
                     
-                    <Button 
-                      type="submit" 
-                      className="w-full bg-api-gold hover:bg-api-terracotta text-api-midnight hover:text-white font-semibold py-6 text-base rounded-md shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
-                      disabled={isSubmitting}
-                    >
+                    <Button type="submit" className="w-full bg-api-gold hover:bg-api-terracotta text-api-midnight hover:text-white font-semibold py-6 text-base rounded-md shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2" disabled={isSubmitting}>
                       {isSubmitting ? "Submitting..." : "Join Our Community"}
                       {!isSubmitting && <ArrowRight className="h-4 w-4" />}
                     </Button>
                   </div>
                 </form>
-              </Card>
-            )}
+              </Card>}
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default ContactForm;
