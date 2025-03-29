@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -75,13 +76,14 @@ const Navbar = () => {
           >
             Join Us
           </Button>
-          <Button 
-            variant="outline"
-            className="border-api-ivory text-api-ivory hover:bg-api-ivory/10"
-            onClick={() => document.getElementById('donate')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            Donate
-          </Button>
+          <Link to="/donate">
+            <Button 
+              variant="outline"
+              className="border-api-ivory text-api-ivory hover:bg-api-ivory/10"
+            >
+              Donate
+            </Button>
+          </Link>
         </div>
         
         {/* Mobile menu button */}
@@ -151,16 +153,14 @@ const Navbar = () => {
             >
               Join Us
             </Button>
-            <Button 
-              variant="outline"
-              className="border-api-ivory text-api-ivory hover:bg-api-ivory/10 w-full"
-              onClick={() => {
-                document.getElementById('donate')?.scrollIntoView({ behavior: 'smooth' });
-                setIsMenuOpen(false);
-              }}
-            >
-              Donate
-            </Button>
+            <Link to="/donate" onClick={() => setIsMenuOpen(false)}>
+              <Button 
+                variant="outline"
+                className="border-api-ivory text-api-ivory hover:bg-api-ivory/10 w-full"
+              >
+                Donate
+              </Button>
+            </Link>
           </div>
         </div>
       )}

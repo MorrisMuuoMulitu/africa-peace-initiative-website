@@ -12,7 +12,6 @@ import Testimonials from "@/components/Testimonials";
 import ImpactMetrics from "@/components/ImpactMetrics";
 import Timeline from "@/components/Timeline";
 import Gallery from "@/components/Gallery";
-import Donation from "@/components/Donation";
 import News from "@/components/News";
 
 const Index = () => {
@@ -35,7 +34,6 @@ const Index = () => {
       <Partners />
       <Gallery />
       <News />
-      <Donation />
       <div className="grid grid-cols-1 md:grid-cols-2">
         <div id="contact">
           <ContactForm />
