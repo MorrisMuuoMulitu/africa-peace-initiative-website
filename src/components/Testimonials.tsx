@@ -42,7 +42,7 @@ const Testimonials = () => {
   return (
     <div
       ref={ref}
-      className={`py-20 px-4 sm:px-6 bg-api-forest transition-all duration-700 ${
+      className={`py-20 px-4 sm:px-6 bg-api-darkgreen transition-all duration-700 ${
         inView ? "opacity-100" : "opacity-0"
       }`}
     >
@@ -68,7 +68,7 @@ const Testimonials = () => {
             <CarouselContent>
               {testimonials.map((testimonial, index) => (
                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pl-4">
-                  <Card className="bg-api-forest border border-api-sage/20 shadow-lg h-full">
+                  <Card className="bg-api-green border border-api-sage/20 shadow-lg h-full">
                     <CardContent className="p-6">
                       <div className="flex items-center mb-4">
                         <Avatar className="h-12 w-12 border-2 border-api-terracotta/50">

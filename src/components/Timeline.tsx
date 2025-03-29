@@ -30,7 +30,7 @@ const Timeline = () => {
   return (
     <div
       ref={ref}
-      className={`py-24 px-4 sm:px-6 bg-api-forest relative transition-all duration-700 ${
+      className={`py-24 px-4 sm:px-6 bg-api-darkgreen relative transition-all duration-700 ${
         inView ? "opacity-100" : "opacity-0"
       }`}
     >
@@ -77,7 +77,7 @@ const Timeline = () => {
 
                 {/* Content */}
                 <div className={`w-5/12 ${isEven ? "pr-12 text-right" : "pl-12 text-left"}`}>
-                  <div className="bg-api-forest border border-api-sage/20 rounded-lg p-6 shadow-lg transform hover:scale-105 transition-transform duration-300">
+                  <div className="bg-api-green border border-api-sage/20 rounded-lg p-6 shadow-lg transform hover:scale-105 transition-transform duration-300">
                     <h3 className="text-xl text-white font-bold mb-2">{milestone.title}</h3>
                     <Separator className="mb-3 bg-api-terracotta/30" />
                     <p className="text-white">{milestone.description}</p>
