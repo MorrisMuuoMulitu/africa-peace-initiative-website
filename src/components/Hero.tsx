@@ -72,33 +72,36 @@ const Hero = () => {
           {/* Right content - Impact cards */}
           <div className={`lg:col-span-5 transition-all duration-1000 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="relative h-96 md:h-[28rem]">
+              {/* Regional Impact Card */}
               <div className="absolute -top-6 -right-4 rotate-3 animate-slide-right" style={{ animationDelay: '0.7s' }}>
-                <div className="glass-card bg-api-forestgreen/90 backdrop-blur-md p-6 rounded-lg shadow-xl border border-api-cream/20">
+                <div className="glass-card bg-api-forestgreen/80 backdrop-blur-md p-6 rounded-lg shadow-xl border border-white/20">
                   <div className="flex items-center mb-3">
                     <Globe className="text-white mr-3" size={22} />
                     <h3 className="text-white font-semibold text-lg">Regional Impact</h3>
                   </div>
-                  <p className="text-api-ivory/90 text-base">Facilitating cross-border dialogue in 5 East African countries with expanding influence</p>
+                  <p className="text-white font-medium text-base">Facilitating cross-border dialogue in 5 East African countries with expanding influence</p>
                 </div>
               </div>
               
+              {/* Community Focus Card */}
               <div className="absolute top-1/3 left-0 -rotate-2 animate-slide-right z-10" style={{ animationDelay: '0.9s' }}>
-                <div className="glass-card bg-api-green/90 backdrop-blur-md p-6 rounded-lg shadow-xl border border-api-cream/20">
+                <div className="glass-card bg-api-green/80 backdrop-blur-md p-6 rounded-lg shadow-xl border border-white/20">
                   <div className="flex items-center mb-3">
                     <Users className="text-white mr-3" size={22} />
                     <h3 className="text-white font-semibold text-lg">Community Focus</h3>
                   </div>
-                  <p className="text-api-ivory/90 text-base">200+ community leaders trained in conflict resolution and reconciliation strategies</p>
+                  <p className="text-white font-medium text-base">200+ community leaders trained in conflict resolution and reconciliation strategies</p>
                 </div>
               </div>
               
+              {/* Ongoing Programs Card */}
               <div className="absolute bottom-0 right-8 rotate-2 animate-slide-right" style={{ animationDelay: '1.1s' }}>
-                <div className="glass-card bg-api-terracotta/90 backdrop-blur-md p-6 rounded-lg shadow-xl border border-api-cream/20">
+                <div className="glass-card bg-api-terracotta/80 backdrop-blur-md p-6 rounded-lg shadow-xl border border-white/20">
                   <div className="flex items-center mb-3">
                     <Heart className="text-white mr-3" size={22} />
                     <h3 className="text-white font-semibold text-lg">Ongoing Programs</h3>
                   </div>
-                  <p className="text-api-ivory/90 text-base">12+ peace-building initiatives with measurable conflict reduction in fragile regions</p>
+                  <p className="text-white font-medium text-base">12+ peace-building initiatives with measurable conflict reduction in fragile regions</p>
                 </div>
               </div>
             </div>
