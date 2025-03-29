@@ -61,14 +61,14 @@ const Donation = () => {
           </p>
         </div>
 
-        <div className="mt-12 bg-white/5 backdrop-blur-sm p-8 rounded-xl border border-white/10 shadow-xl max-w-3xl mx-auto">
+        <div className="mt-12 bg-white/90 backdrop-blur-sm p-8 rounded-xl border border-api-sage/20 shadow-xl max-w-3xl mx-auto">
           <Tabs defaultValue="emergency" className="w-full">
-            <TabsList className="grid grid-cols-3 mb-8 bg-api-darkgreen/50">
+            <TabsList className="grid grid-cols-3 mb-8 bg-api-darkgreen">
               {donationPrograms.map((program) => (
                 <TabsTrigger
                   key={program.id}
                   value={program.id}
-                  className="py-3 data-[state=active]:bg-api-terracotta data-[state=active]:text-white text-sm"
+                  className="py-3 data-[state=active]:bg-api-terracotta data-[state=active]:text-white text-sm text-white"
                 >
                   {program.title}
                 </TabsTrigger>
@@ -77,18 +77,18 @@ const Donation = () => {
 
             {donationPrograms.map((program) => (
               <TabsContent key={program.id} value={program.id}>
-                <Card className="border-api-sage/20 bg-white/10 backdrop-blur-sm">
+                <Card className="border-api-sage/20 bg-api-cream/90 backdrop-blur-sm">
                   <CardHeader>
-                    <CardTitle className="text-api-cream">{program.title}</CardTitle>
-                    <CardDescription className="text-api-cream/70">
+                    <CardTitle className="text-api-charcoal">{program.title}</CardTitle>
+                    <CardDescription className="text-api-charcoal/80">
                       {program.description}
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-6">
                     <div>
                       <div className="flex justify-between mb-2">
-                        <span className="text-api-cream/70">Amount</span>
-                        <span className="text-api-cream font-bold">${donationAmount}</span>
+                        <span className="text-api-charcoal/90">Amount</span>
+                        <span className="text-api-charcoal font-bold">${donationAmount}</span>
                       </div>
                       <Slider
                         value={[donationAmount]}
@@ -99,8 +99,8 @@ const Donation = () => {
                         className="py-4"
                       />
                       <div className="flex justify-between mt-2">
-                        <span className="text-api-cream/70">$10</span>
-                        <span className="text-api-cream/70">$500</span>
+                        <span className="text-api-charcoal/80">$10</span>
+                        <span className="text-api-charcoal/80">$500</span>
                       </div>
                     </div>
                     
@@ -109,8 +109,8 @@ const Donation = () => {
                         <Button
                           key={amount}
                           variant="outline"
-                          className={`border-api-sage/30 hover:border-api-terracotta hover:bg-api-terracotta hover:text-white ${
-                            donationAmount === amount ? 'bg-api-terracotta text-white' : 'bg-transparent text-api-cream'
+                          className={`border-api-sage/60 hover:border-api-terracotta hover:bg-api-terracotta hover:text-white ${
+                            donationAmount === amount ? 'bg-api-terracotta text-white' : 'bg-transparent text-api-charcoal'
                           }`}
                           onClick={() => setDonationAmount(amount)}
                         >
@@ -119,9 +119,9 @@ const Donation = () => {
                       ))}
                     </div>
                     
-                    <div className="mt-6 p-4 rounded-lg bg-white/5 border border-api-sage/30">
-                      <h4 className="text-api-cream mb-2 font-medium">Your Impact</h4>
-                      <p className="text-api-cream/80 text-sm">{program.impact}</p>
+                    <div className="mt-6 p-4 rounded-lg bg-api-forestgreen/10 border border-api-sage/40">
+                      <h4 className="text-api-charcoal mb-2 font-medium">Your Impact</h4>
+                      <p className="text-api-charcoal/90 text-sm">{program.impact}</p>
                     </div>
                   </CardContent>
                   <CardFooter>

@@ -64,14 +64,14 @@ const DonationPage = () => {
             </p>
           </div>
 
-          <div className="mt-12 bg-white/5 backdrop-blur-sm p-8 rounded-xl border border-white/10 shadow-xl max-w-3xl mx-auto">
+          <div className="mt-12 bg-white/90 backdrop-blur-sm p-8 rounded-xl border border-api-sage/20 shadow-xl max-w-3xl mx-auto">
             <Tabs defaultValue="emergency" className="w-full">
-              <TabsList className="grid grid-cols-3 mb-8 bg-api-darkgreen/50">
+              <TabsList className="grid grid-cols-3 mb-8 bg-api-darkgreen">
                 {donationPrograms.map((program) => (
                   <TabsTrigger
                     key={program.id}
                     value={program.id}
-                    className="py-3 data-[state=active]:bg-api-terracotta data-[state=active]:text-white text-sm"
+                    className="py-3 data-[state=active]:bg-api-terracotta data-[state=active]:text-white text-sm text-white"
                   >
                     {program.title}
                   </TabsTrigger>
@@ -80,18 +80,18 @@ const DonationPage = () => {
 
               {donationPrograms.map((program) => (
                 <TabsContent key={program.id} value={program.id}>
-                  <Card className="border-api-sage/20 bg-white/10 backdrop-blur-sm">
+                  <Card className="border-api-sage/20 bg-api-cream/90 backdrop-blur-sm">
                     <CardHeader>
-                      <CardTitle className="text-api-cream">{program.title}</CardTitle>
-                      <CardDescription className="text-api-cream/70">
+                      <CardTitle className="text-api-charcoal">{program.title}</CardTitle>
+                      <CardDescription className="text-api-charcoal/80">
                         {program.description}
                       </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-6">
                       <div>
                         <div className="flex justify-between mb-2">
-                          <span className="text-api-cream/70">Amount</span>
-                          <span className="text-api-cream font-bold">${donationAmount}</span>
+                          <span className="text-api-charcoal/90">Amount</span>
+                          <span className="text-api-charcoal font-bold">${donationAmount}</span>
                         </div>
                         <Slider
                           value={[donationAmount]}
@@ -102,8 +102,8 @@ const DonationPage = () => {
                           className="py-4"
                         />
                         <div className="flex justify-between mt-2">
-                          <span className="text-api-cream/70">$10</span>
-                          <span className="text-api-cream/70">$500</span>
+                          <span className="text-api-charcoal/80">$10</span>
+                          <span className="text-api-charcoal/80">$500</span>
                         </div>
                       </div>
                       
@@ -112,8 +112,8 @@ const DonationPage = () => {
                           <Button
                             key={amount}
                             variant="outline"
-                            className={`border-api-sage/30 hover:border-api-terracotta hover:bg-api-terracotta hover:text-white ${
-                              donationAmount === amount ? 'bg-api-terracotta text-white' : 'bg-transparent text-api-cream'
+                            className={`border-api-sage/60 hover:border-api-terracotta hover:bg-api-terracotta hover:text-white ${
+                              donationAmount === amount ? 'bg-api-terracotta text-white' : 'bg-transparent text-api-charcoal'
                             }`}
                             onClick={() => setDonationAmount(amount)}
                           >
@@ -122,9 +122,9 @@ const DonationPage = () => {
                         ))}
                       </div>
                       
-                      <div className="mt-6 p-4 rounded-lg bg-white/5 border border-api-sage/30">
-                        <h4 className="text-api-cream mb-2 font-medium">Your Impact</h4>
-                        <p className="text-api-cream/80 text-sm">{program.impact}</p>
+                      <div className="mt-6 p-4 rounded-lg bg-api-forestgreen/10 border border-api-sage/40">
+                        <h4 className="text-api-charcoal mb-2 font-medium">Your Impact</h4>
+                        <p className="text-api-charcoal/90 text-sm">{program.impact}</p>
                       </div>
                     </CardContent>
                     <CardFooter>
@@ -141,21 +141,21 @@ const DonationPage = () => {
           <div className="mt-16 text-center">
             <h3 className="text-2xl font-bold text-api-cream mb-4">Other Ways to Support</h3>
             <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mt-8">
-              <div className="bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10">
-                <h4 className="text-xl font-semibold text-api-cream mb-3">Corporate Partnerships</h4>
-                <p className="text-api-cream/80 mb-4">
+              <div className="bg-white/90 backdrop-blur-sm p-6 rounded-xl border border-api-sage/20">
+                <h4 className="text-xl font-semibold text-api-charcoal mb-3">Corporate Partnerships</h4>
+                <p className="text-api-charcoal/80 mb-4">
                   Partner with us to create sustainable impact through corporate social responsibility initiatives.
                 </p>
-                <Button variant="outline" className="border-api-cream/30 text-api-cream hover:bg-api-cream/10">
+                <Button variant="outline" className="border-api-charcoal/30 text-api-charcoal hover:bg-api-cream/50">
                   Learn More
                 </Button>
               </div>
-              <div className="bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10">
-                <h4 className="text-xl font-semibold text-api-cream mb-3">Legacy Giving</h4>
-                <p className="text-api-cream/80 mb-4">
+              <div className="bg-white/90 backdrop-blur-sm p-6 rounded-xl border border-api-sage/20">
+                <h4 className="text-xl font-semibold text-api-charcoal mb-3">Legacy Giving</h4>
+                <p className="text-api-charcoal/80 mb-4">
                   Make a lasting impact by including Africa Peace Initiative in your estate planning.
                 </p>
-                <Button variant="outline" className="border-api-cream/30 text-api-cream hover:bg-api-cream/10">
+                <Button variant="outline" className="border-api-charcoal/30 text-api-charcoal hover:bg-api-cream/50">
                   Learn More
                 </Button>
               </div>
