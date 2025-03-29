@@ -41,12 +41,12 @@ const FocusAreas = () => {
   });
 
   return (
-    <div ref={ref} className="py-20 px-4 sm:px-6 bg-gradient-to-b from-white to-gray-50">
+    <div ref={ref} className="py-20 px-4 sm:px-6 bg-api-midnight">
       <div className="max-w-7xl mx-auto">
         <div className={`text-center mb-16 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="w-16 h-1 bg-api-terracotta mx-auto mb-8"></div>
-          <h2 className="text-3xl md:text-4xl font-montserrat font-bold text-api-terracotta mb-4">Our Focus Areas</h2>
-          <p className="text-lg text-api-midnight max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-montserrat font-bold text-white mb-4">Our Focus Areas</h2>
+          <p className="text-lg text-white opacity-90 max-w-2xl mx-auto">
             Strategic initiatives that guide our approach to building lasting peace
           </p>
         </div>
