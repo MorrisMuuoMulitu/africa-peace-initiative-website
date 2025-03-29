@@ -71,9 +71,9 @@ const DonationPage = () => {
                   <TabsTrigger
                     key={program.id}
                     value={program.id}
-                    className="py-3 px-2 text-xs sm:text-sm text-white data-[state=active]:bg-api-terracotta data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200"
+                    className="py-3 px-1 md:px-3 text-[11px] xs:text-xs sm:text-sm text-white text-center font-medium data-[state=active]:bg-api-terracotta data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 flex flex-col sm:flex-row sm:items-center sm:justify-center whitespace-normal h-auto min-h-[3rem]"
                   >
-                    {program.title}
+                    <span className="line-clamp-2">{program.title}</span>
                   </TabsTrigger>
                 ))}
               </TabsList>
