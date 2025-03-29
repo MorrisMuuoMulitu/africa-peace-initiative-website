@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -22,7 +23,7 @@ const Navbar = () => {
     };
   }, []);
   return <nav className={`py-3 px-4 sm:px-6 sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-api-forest shadow-md' : 'bg-api-forest bg-opacity-90 backdrop-blur-sm'}`}>
-      <div className="max-w-7xl mx-auto flex justify-between items-center bg-slate-50">
+      <div className="max-w-7xl mx-auto flex justify-between items-center bg-api-forestgreen">
         <div className="flex items-center">
           <a href="/" className="flex items-center">
             <img src="https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/API%20logo-12.png?updatedAt=1741074058148" alt="Africa Peace Initiative Logo" className="h-14 w-auto transition-all duration-300" />
@@ -33,7 +34,7 @@ const Navbar = () => {
         <div className="hidden md:flex items-center mr-4">
           <a href="tel:+254706767226" className="flex items-center text-api-ivory hover:text-api-gold transition-colors duration-300">
             <Phone size={18} className="mr-2" />
-            <span className="text-gray-900">+254 706 767226</span>
+            <span className="text-api-ivory">+254 706 767226</span>
           </a>
         </div>
         
