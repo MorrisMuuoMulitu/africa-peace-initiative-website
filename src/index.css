@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Lora:wght@400;500;600;700&display=swap');
 
 @tailwind base;
@@ -107,9 +108,10 @@
   }
 }
 
+/* Updated pattern background with refined colors */
 .bg-sankofa {
-  background-color: #3D5A40;
-  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 50C64 50 64 36 78 36C92 36 92 50 92 50C92 50 92 64 78 64C64 64 64 50 50 50C36 50 36 64 22 64C8 64 8 50 8 50C8 50 8 36 22 36C36 36 36 50 50 50Z' fill='%23E07A5F' fill-opacity='0.1' /%3E%3C/svg%3E");
+  background-color: #294D35;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 50C64 50 64 36 78 36C92 36 92 50 92 50C92 50 92 64 78 64C64 64 64 50 50 50C36 50 36 64 22 64C8 64 8 50 8 50C8 50 8 36 22 36C36 36 36 50 50 50Z' fill='%23E07A5F' fill-opacity='0.15' /%3E%3C/svg%3E");
 }
 
 /* Enhanced animations */
@@ -175,6 +177,16 @@
   }
 }
 
+@keyframes shimmer {
+  0% {
+    background-position: -500px 0;
+  }
+  100% {
+    background-position: 500px 0;
+  }
+}
+
+/* Animation classes */
 .animate-fade-in {
   animation: fadeIn 0.8s ease-out forwards;
 }
@@ -199,6 +211,12 @@
   animation: bounce 3s ease-in-out infinite;
 }
 
+.animate-shimmer {
+  background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
+  background-size: 500px 100%;
+  animation: shimmer 2s linear infinite;
+}
+
 /* Improved section styles */
 .section-wrapper {
   @apply py-16 md:py-24 px-4 sm:px-6 overflow-hidden relative;
@@ -212,11 +230,11 @@
   @apply text-lg md:text-xl font-lora max-w-2xl mx-auto mb-12;
 }
 
+/* Card animations and styles */
 .card-hover {
   @apply transition-all duration-300 hover:shadow-lg hover:translate-y-[-5px];
 }
 
-/* Enhanced card styles */
 .card-gradient-green {
   @apply bg-gradient-to-br from-white to-api-sage/20;
 }
@@ -225,20 +243,38 @@
   @apply bg-gradient-to-br from-white to-api-cream/30;
 }
 
-/* Glass morphism effect */
-.glass-card {
-  @apply backdrop-blur-sm bg-white/80 border border-white/20 shadow-md;
+.card-gradient-earth {
+  @apply bg-gradient-to-br from-white to-api-earthbrown/20;
 }
 
-/* Enhanced glass card styles for better text visibility */
+/* Glass morphism effects */
 .glass-card {
-  @apply backdrop-blur-sm border shadow-md;
-  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+  @apply backdrop-blur-md border shadow-md transition-all duration-300;
 }
 
-.glass-card p {
-  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
-  font-weight: 500;
+.glass-green {
+  @apply backdrop-blur-md bg-api-forestgreen/80 border border-api-sage/20 hover:border-api-sage/40 transition-all duration-300;
+}
+
+.glass-earth {
+  @apply backdrop-blur-md bg-api-earthbrown/80 border border-api-clay/20 hover:border-api-clay/40 transition-all duration-300;
+}
+
+.glass-accent {
+  @apply backdrop-blur-md bg-api-terracotta/80 border border-api-gold/20 hover:border-api-gold/40 transition-all duration-300;
+}
+
+/* Text enhancements */
+.text-shadow-sm {
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.text-shadow-md {
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.text-shadow-lg {
+  text-shadow: 0 3px 6px rgba(0,0,0,0.4);
 }
 
 @layer components {
@@ -250,13 +286,27 @@
   button:focus-visible, a:focus-visible {
     @apply outline-none ring-2 ring-api-terracotta ring-offset-2;
   }
+  
+  /* Link hover effects */
+  .link-underline {
+    @apply relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-api-terracotta after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
+  }
+  
+  /* Button styles */
+  .btn-primary {
+    @apply bg-api-terracotta hover:bg-api-clay text-white font-semibold px-6 py-3 rounded-md shadow-md hover:shadow-lg transition-all duration-300;
+  }
+  
+  .btn-outline {
+    @apply bg-transparent hover:bg-white/15 border-2 border-api-cream text-api-cream font-semibold px-6 py-3 rounded-md shadow-md hover:shadow-lg transition-all duration-300;
+  }
+  
+  .btn-secondary {
+    @apply bg-api-forestgreen hover:bg-api-green text-white font-semibold px-6 py-3 rounded-md shadow-md hover:shadow-lg transition-all duration-300;
+  }
 }
 
 /* Improved responsive spacing */
 .content-spacing {
   @apply space-y-8 md:space-y-10 lg:space-y-12;
-}
-
-.animate-fade-in-up {
-  animation: fadeInUp 0.7s ease-out;
 }

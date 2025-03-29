@@ -63,22 +63,31 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Updated Africa Peace Initiative Custom Colors
+				// Refined Africa Peace Initiative Color Palette
 				api: {
-					cream: '#EAE6D7',        // Light cream/beige color
-					darkgreen: '#0A2C17',    // Dark forest green
-					green: '#1A6340',        // Primary green
-					brightgreen: '#218757',  // Brighter green
-					gray: '#515747',         // Grayish green
-					sage: '#A4B494',         // Sage green
-					charcoal: '#37423D',     // Dark charcoal
-					sand: '#C2B280',         // Sand/gold color
-					silver: '#AFBFC0',       // Silver gray
-					forestgreen: '#344E41',  // Forest green
-					terracotta: '#E07A5F',   // Terracotta/rust color (added)
-					ivory: '#F8F4E3',        // Ivory color
-					gold: '#D1A24A',         // Gold color
-					midnight: '#1D3030'      // Midnight color
+					// Primary Colors
+					darkgreen: '#0A2C17',      // Rich dark green for primary dark elements
+					forestgreen: '#294D35',    // Adjusted forest green for headers and backgrounds
+					green: '#1A6340',          // Primary green - kept the same
+					brightgreen: '#2E8B57',    // Slightly adjusted for better contrast
+					
+					// Neutrals & Background Colors
+					cream: '#F8F5E6',          // Lighter cream for backgrounds
+					ivory: '#FFFCF2',          // Brighter ivory for content areas
+					charcoal: '#2F3B36',       // Adjusted charcoal for better readability
+					gray: '#59635A',           // Soft grayish green for subtle elements
+					
+					// Accent Colors
+					terracotta: '#E07A5F',     // Vibrant terracotta accent - kept the same
+					gold: '#D4A64A',           // Slightly richer gold accent
+					sand: '#DDBEA9',           // Warmer sand tone
+					sage: '#B7C4A7',           // Softer sage green
+					
+					// Supporting Colors
+					silver: '#C4C9CA',         // Light silver gray for UI elements
+					midnight: '#1A2A2A',       // Dark blue-green for deep shadows
+					earthbrown: '#6B4D3A',     // New earthy brown for additional contrast
+					clay: '#CB997E'            // New clay color for warm accent
 				}
 			},
 			fontFamily: {
@@ -126,6 +135,10 @@ export default {
 				slideInUp: {
 					'0%': { transform: 'translateY(100%)', opacity: '0' },
 					'100%': { transform: 'translateY(0)', opacity: '1' }
+				},
+				shimmer: {
+					'0%': { backgroundPosition: '-500px 0' },
+					'100%': { backgroundPosition: '500px 0' }
 				}
 			},
 			animation: {
@@ -135,12 +148,15 @@ export default {
 				'pulse-slow': 'pulse 5s ease-in-out infinite',
 				'slide-left': 'slideInLeft 0.8s ease-out',
 				'slide-right': 'slideInRight 0.8s ease-out',
-				'slide-up': 'slideInUp 0.8s ease-out'
+				'slide-up': 'slideInUp 0.8s ease-out',
+				'shimmer': 'shimmer 2s linear infinite'
 			},
 			backgroundImage: {
 				'sankofa-pattern': "url('/sankofa-pattern.svg')",
-				'africa-map': "url('/public/lovable-uploads/fee3e489-56f6-4d73-a922-afb94b013df0.png')",
-				'gradient-green': "linear-gradient(120deg, #1A6340 0%, #344E41 100%)",
+				'africa-map': "url('/africa-outline.svg')",
+				'gradient-green': "linear-gradient(120deg, #1A6340 0%, #294D35 100%)",
+				'gradient-gold': "linear-gradient(120deg, #D4A64A 0%, #DDBEA9 100%)",
+				'gradient-earth': "linear-gradient(120deg, #6B4D3A 0%, #CB997E 100%)"
 			}
 		}
 	},

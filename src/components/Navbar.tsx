@@ -26,8 +26,8 @@ const Navbar = () => {
     };
   }, []);
 
-  return <nav className={`py-3 px-4 sm:px-6 sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md' : 'bg-white bg-opacity-90 backdrop-blur-sm'}`}>
-      <div className="max-w-7xl mx-auto flex justify-between items-center bg-white">
+  return <nav className={`py-3 px-4 sm:px-6 sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-api-ivory shadow-md' : 'bg-api-ivory/95 backdrop-blur-sm'}`}>
+      <div className="max-w-7xl mx-auto flex justify-between items-center">
         <div className="flex items-center">
           <a href="/" className="flex items-center">
             <img src="https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/API%20logo-12.png?updatedAt=1741074058148" alt="Africa Peace Initiative Logo" className="h-14 w-auto transition-all duration-300" />
@@ -44,33 +44,28 @@ const Navbar = () => {
         
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-6">
-          <a href="#mission" className="text-api-charcoal hover:text-api-terracotta transition-colors duration-300 relative group">
+          <a href="#mission" className="text-api-charcoal hover:text-api-terracotta transition-colors duration-300 relative link-underline">
             Our Mission
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-api-terracotta transition-all duration-300 group-hover:w-full"></span>
           </a>
-          <a href="#focus" className="text-api-charcoal hover:text-api-terracotta transition-colors duration-300 relative group">
+          <a href="#focus" className="text-api-charcoal hover:text-api-terracotta transition-colors duration-300 relative link-underline">
             Focus Areas
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-api-terracotta transition-all duration-300 group-hover:w-full"></span>
           </a>
-          <a href="#gallery" className="text-api-charcoal hover:text-api-terracotta transition-colors duration-300 relative group">
+          <a href="#gallery" className="text-api-charcoal hover:text-api-terracotta transition-colors duration-300 relative link-underline">
             Gallery
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-api-terracotta transition-all duration-300 group-hover:w-full"></span>
           </a>
-          <a href="#news" className="text-api-charcoal hover:text-api-terracotta transition-colors duration-300 relative group">
+          <a href="#news" className="text-api-charcoal hover:text-api-terracotta transition-colors duration-300 relative link-underline">
             News
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-api-terracotta transition-all duration-300 group-hover:w-full"></span>
           </a>
-          <a href="#events" className="text-api-charcoal hover:text-api-terracotta transition-colors duration-300 relative group">
+          <a href="#events" className="text-api-charcoal hover:text-api-terracotta transition-colors duration-300 relative link-underline">
             Events
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-api-terracotta transition-all duration-300 group-hover:w-full"></span>
           </a>
-          <Button className="bg-api-terracotta hover:bg-api-gold text-white font-semibold transition-colors duration-300" onClick={() => document.getElementById('contact')?.scrollIntoView({
-          behavior: 'smooth'
-        })}>
+          <Button className="bg-api-terracotta hover:bg-api-clay text-white font-semibold transition-colors duration-300" onClick={() => document.getElementById('contact')?.scrollIntoView({
+            behavior: 'smooth'
+          })}>
             Join Us
           </Button>
           <Link to="/donate">
-            <Button variant="outline" className="border-api-charcoal text-api-charcoal hover:bg-api-charcoal/10">
+            <Button variant="outline" className="border-api-forestgreen text-api-forestgreen hover:bg-api-forestgreen/10 hover:border-api-green transition-all duration-300">
               Donate
             </Button>
           </Link>
@@ -85,7 +80,7 @@ const Navbar = () => {
       </div>
       
       {/* Mobile Navigation */}
-      {isMenuOpen && <div className="md:hidden mt-4 bg-white bg-opacity-95 backdrop-blur-md absolute left-0 right-0 p-6 shadow-lg border-t border-api-charcoal/20 animate-fade-in">
+      {isMenuOpen && <div className="md:hidden mt-4 bg-api-ivory/95 backdrop-blur-md absolute left-0 right-0 p-6 shadow-lg border-t border-api-sage/20 animate-fade-in">
           <div className="flex flex-col space-y-5">
             <a href="tel:+254706767226" className="flex items-center text-api-charcoal hover:text-api-terracotta transition-colors duration-300 py-2">
               <Phone size={18} className="mr-2" />
@@ -106,16 +101,16 @@ const Navbar = () => {
             <a href="#events" className="text-api-charcoal hover:text-api-terracotta transition-colors duration-300 py-2 text-lg font-medium" onClick={() => setIsMenuOpen(false)}>
               Events
             </a>
-            <Button className="bg-api-terracotta hover:bg-api-gold text-white font-semibold transition-colors duration-300 w-full mt-2" onClick={() => {
-          document.getElementById('contact')?.scrollIntoView({
-            behavior: 'smooth'
-          });
-          setIsMenuOpen(false);
-        }}>
+            <Button className="bg-api-terracotta hover:bg-api-clay text-white font-semibold transition-colors duration-300 w-full mt-2" onClick={() => {
+              document.getElementById('contact')?.scrollIntoView({
+                behavior: 'smooth'
+              });
+              setIsMenuOpen(false);
+            }}>
               Join Us
             </Button>
             <Link to="/donate" onClick={() => setIsMenuOpen(false)}>
-              <Button variant="outline" className="border-api-charcoal text-api-charcoal hover:bg-api-charcoal/10 w-full">
+              <Button variant="outline" className="border-api-forestgreen text-api-forestgreen hover:bg-api-forestgreen/10 hover:border-api-green transition-all duration-300 w-full">
                 Donate
               </Button>
             </Link>
