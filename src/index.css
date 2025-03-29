@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Lora:wght@400;500;600;700&display=swap');
 
 @tailwind base;
@@ -230,13 +231,15 @@
   @apply backdrop-blur-sm bg-white/80 border border-white/20 shadow-md;
 }
 
-.highlight-bar {
-  @apply w-16 h-1 bg-api-terracotta mb-6;
-}
-
-/* Focus states */
-button:focus-visible, a:focus-visible {
-  @apply outline-none ring-2 ring-api-terracotta ring-offset-2;
+@layer components {
+  .highlight-bar {
+    @apply w-16 h-1 bg-api-terracotta mb-6;
+  }
+  
+  /* Focus states */
+  button:focus-visible, a:focus-visible {
+    @apply outline-none ring-2 ring-api-terracotta ring-offset-2;
+  }
 }
 
 /* Improved responsive spacing */

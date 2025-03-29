@@ -39,13 +39,16 @@ const Index = () => {
       { threshold: 0.1, rootMargin: "0px 0px -10% 0px" }
     );
     
-    sections.forEach((section, index) => {
+    sections.forEach((section) => {
       // Set different animation types for alternating sections
+      const index = Array.from(sections).indexOf(section);
       const animationTypes = ["fade-up", "fade-right", "fade-up", "fade-left"];
       section.setAttribute("data-animation", animationTypes[index % animationTypes.length]);
       
       // Set different animation delays for staggered effect
-      section.style.animationDelay = `${index * 0.1}s`;
+      if (section instanceof HTMLElement) {
+        section.style.animationDelay = `${index * 0.1}s`;
+      }
       
       section.classList.add("opacity-0");
       observer.observe(section);

@@ -75,6 +75,10 @@ export default {
 					sand: '#C2B280',         // Sand/gold color
 					silver: '#AFBFC0',       // Silver gray
 					forestgreen: '#344E41',  // Forest green
+					terracotta: '#E07A5F',   // Terracotta/rust color (added)
+					ivory: '#F8F4E3',        // Ivory color
+					gold: '#D1A24A',         // Gold color
+					midnight: '#1D3030'      // Midnight color
 				}
 			},
 			fontFamily: {
