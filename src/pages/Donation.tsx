@@ -8,6 +8,7 @@ import { Slider } from "@/components/ui/slider";
 import { ArrowRight, Heart } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const DonationPage = () => {
   const [ref, inView] = useInView({
@@ -16,6 +17,7 @@ const DonationPage = () => {
   });
 
   const [donationAmount, setDonationAmount] = React.useState(50);
+  const isMobile = useIsMobile();
 
   const donationPrograms = [
     {
@@ -46,27 +48,27 @@ const DonationPage = () => {
       <Navbar />
       <div
         ref={ref}
-        className={`py-24 px-4 sm:px-6 bg-gradient-to-b from-api-darkgreen to-api-forestgreen transition-all duration-700 ${
+        className={`py-16 sm:py-24 px-4 sm:px-6 bg-gradient-to-b from-api-darkgreen to-api-forestgreen transition-all duration-700 ${
           inView ? "opacity-100" : "opacity-0"
-        }`}
+        } flex-grow`}
       >
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <div className="inline-block p-3 bg-api-terracotta/20 rounded-full mb-6">
-              <Heart className="h-8 w-8 text-api-terracotta" />
+          <div className="text-center mb-8 sm:mb-12">
+            <div className="inline-block p-3 bg-api-terracotta/20 rounded-full mb-4 sm:mb-6">
+              <Heart className="h-6 w-6 sm:h-8 sm:w-8 text-api-terracotta" />
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold font-montserrat text-api-cream mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-montserrat text-api-cream mb-3 sm:mb-4">
               Support Our Mission
             </h2>
-            <p className="text-lg text-api-cream/80 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg text-api-cream/80 max-w-2xl mx-auto">
               Your contribution directly enables our peace initiatives across East Africa, 
               helping communities build lasting stability and resilience.
             </p>
           </div>
 
-          <div className="mt-12 bg-white/95 backdrop-blur-sm p-6 sm:p-8 rounded-xl border border-api-sage/30 shadow-xl max-w-3xl mx-auto">
+          <div className="mt-8 sm:mt-12 bg-white/95 backdrop-blur-sm p-4 sm:p-6 md:p-8 rounded-xl border border-api-sage/30 shadow-xl max-w-3xl mx-auto">
             <Tabs defaultValue="emergency" className="w-full">
-              <TabsList className="grid grid-cols-3 mb-8 bg-api-darkgreen overflow-hidden rounded-md">
+              <TabsList className="grid grid-cols-3 mb-6 sm:mb-8 bg-api-darkgreen overflow-hidden rounded-md">
                 {donationPrograms.map((program) => (
                   <TabsTrigger
                     key={program.id}
@@ -81,13 +83,13 @@ const DonationPage = () => {
               {donationPrograms.map((program) => (
                 <TabsContent key={program.id} value={program.id} className="focus-visible:outline-none">
                   <Card className="border-api-sage/20 bg-api-cream/90 backdrop-blur-sm shadow-md">
-                    <CardHeader className="pb-2">
-                      <CardTitle className="text-xl sm:text-2xl text-api-charcoal">{program.title}</CardTitle>
+                    <CardHeader className="pb-2 sm:pb-4">
+                      <CardTitle className="text-lg sm:text-xl md:text-2xl text-api-charcoal">{program.title}</CardTitle>
                       <CardDescription className="text-api-charcoal/80 text-sm sm:text-base">
                         {program.description}
                       </CardDescription>
                     </CardHeader>
-                    <CardContent className="space-y-6 py-4">
+                    <CardContent className="space-y-4 sm:space-y-6 py-2 sm:py-4">
                       <div>
                         <div className="flex justify-between mb-2">
                           <span className="text-api-charcoal/90 text-sm font-medium">Amount</span>
@@ -107,12 +109,12 @@ const DonationPage = () => {
                         </div>
                       </div>
                       
-                      <div className="flex flex-wrap gap-2 sm:gap-3">
+                      <div className="flex flex-wrap gap-2">
                         {program.amounts.map((amount) => (
                           <Button
                             key={amount}
                             variant="outline"
-                            className={`min-w-[70px] border-api-sage/60 hover:border-api-terracotta hover:bg-api-terracotta hover:text-white transition-colors duration-200 ${
+                            className={`min-w-[65px] sm:min-w-[70px] border-api-sage/60 hover:border-api-terracotta hover:bg-api-terracotta hover:text-white transition-colors duration-200 ${
                               donationAmount === amount ? 'bg-api-terracotta text-white' : 'bg-transparent text-api-charcoal'
                             }`}
                             onClick={() => setDonationAmount(amount)}
@@ -122,14 +124,14 @@ const DonationPage = () => {
                         ))}
                       </div>
                       
-                      <div className="mt-6 p-4 rounded-lg bg-api-forestgreen/10 border border-api-sage/40">
+                      <div className="mt-4 sm:mt-6 p-3 sm:p-4 rounded-lg bg-api-forestgreen/10 border border-api-sage/40">
                         <h4 className="text-api-charcoal mb-1 font-medium text-sm sm:text-base">Your Impact</h4>
                         <p className="text-api-charcoal/90 text-xs sm:text-sm">{program.impact}</p>
                       </div>
                     </CardContent>
                     <CardFooter className="pt-2">
-                      <Button className="w-full bg-api-terracotta hover:bg-api-clay text-white font-medium py-5 transition-all duration-300 shadow-sm hover:shadow">
-                        Donate Now <ArrowRight className="ml-2 h-4 w-4" />
+                      <Button className="w-full bg-api-terracotta hover:bg-api-clay text-white font-medium py-4 sm:py-5 transition-all duration-300 text-sm sm:text-base shadow-sm hover:shadow">
+                        Donate Now <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
                       </Button>
                     </CardFooter>
                   </Card>
@@ -138,24 +140,24 @@ const DonationPage = () => {
             </Tabs>
           </div>
           
-          <div className="mt-16 text-center">
-            <h3 className="text-2xl font-bold text-api-cream mb-4">Other Ways to Support</h3>
-            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mt-8">
-              <div className="bg-white/95 backdrop-blur-sm p-6 rounded-xl border border-api-sage/30 shadow-lg">
-                <h4 className="text-xl font-semibold text-api-charcoal mb-3">Corporate Partnerships</h4>
-                <p className="text-api-charcoal/80 mb-4">
+          <div className="mt-10 sm:mt-16 text-center">
+            <h3 className="text-xl sm:text-2xl font-bold text-api-cream mb-4">Other Ways to Support</h3>
+            <div className="grid md:grid-cols-2 gap-4 sm:gap-8 max-w-4xl mx-auto mt-6 sm:mt-8">
+              <div className="bg-white/95 backdrop-blur-sm p-4 sm:p-6 rounded-xl border border-api-sage/30 shadow-lg">
+                <h4 className="text-lg sm:text-xl font-semibold text-api-charcoal mb-2 sm:mb-3">Corporate Partnerships</h4>
+                <p className="text-api-charcoal/80 text-sm sm:text-base mb-3 sm:mb-4">
                   Partner with us to create sustainable impact through corporate social responsibility initiatives.
                 </p>
-                <Button variant="outline" className="border-api-charcoal/30 text-api-charcoal hover:bg-api-cream/50">
+                <Button variant="outline" className="border-api-charcoal/30 text-api-charcoal hover:bg-api-cream/50 text-sm sm:text-base">
                   Learn More
                 </Button>
               </div>
-              <div className="bg-white/95 backdrop-blur-sm p-6 rounded-xl border border-api-sage/30 shadow-lg">
-                <h4 className="text-xl font-semibold text-api-charcoal mb-3">Legacy Giving</h4>
-                <p className="text-api-charcoal/80 mb-4">
+              <div className="bg-white/95 backdrop-blur-sm p-4 sm:p-6 rounded-xl border border-api-sage/30 shadow-lg">
+                <h4 className="text-lg sm:text-xl font-semibold text-api-charcoal mb-2 sm:mb-3">Legacy Giving</h4>
+                <p className="text-api-charcoal/80 text-sm sm:text-base mb-3 sm:mb-4">
                   Make a lasting impact by including Africa Peace Initiative in your estate planning.
                 </p>
-                <Button variant="outline" className="border-api-charcoal/30 text-api-charcoal hover:bg-api-cream/50">
+                <Button variant="outline" className="border-api-charcoal/30 text-api-charcoal hover:bg-api-cream/50 text-sm sm:text-base">
                   Learn More
                 </Button>
               </div>
