@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Camera, Leaf, Users, X } from "lucide-react";
+import { Camera, Leaf, Users, X, Calendar } from "lucide-react";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const Gallery = () => {
   const [ref, inView] = useInView({
@@ -15,52 +16,55 @@ const Gallery = () => {
 
   const categories = [
     { id: "all", label: "All Photos", icon: <Camera size={18} /> },
-    { id: "events", label: "Events", icon: <Leaf size={18} /> },
+    { id: "events", label: "Events", icon: <Calendar size={18} /> },
     { id: "communities", label: "Communities", icon: <Users size={18} /> },
   ];
 
-  // Placeholder images - replace with your actual image paths
+  // Updated gallery images with optimized paths and proper categories
   const images = [
     {
       id: 1,
-      src: "https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1769&q=80",
-      alt: "Peace conference in Nairobi",
+      src: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/RegionalDialogue/API-02902.jpg?updatedAt=1743316868447&tr=w-800,h-600,fo-auto",
+      alt: "Regional Peace Dialogue - Panel Discussion",
       category: "events",
+      thumbSrc: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/RegionalDialogue/API-02902.jpg?updatedAt=1743316868447&tr=w-400,h-300,fo-auto",
     },
     {
       id: 2,
-      src: "https://images.unsplash.com/photo-1529070538774-1843cb3265df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-      alt: "Community training session",
-      category: "trainings",
+      src: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/RegionalDialogue/API-03031.jpg?updatedAt=1743316868270&tr=w-800,h-600,fo-auto",
+      alt: "Regional Peace Dialogue - Leaders Session",
+      category: "events",
+      thumbSrc: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/RegionalDialogue/API-03031.jpg?updatedAt=1743316868270&tr=w-400,h-300,fo-auto",
     },
     {
       id: 3,
-      src: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1769&q=80",
-      alt: "Village elder meeting",
-      category: "communities",
+      src: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/RegionalDialogue/API-03023.jpg?updatedAt=1743316868160&tr=w-800,h-600,fo-auto",
+      alt: "Regional Peace Dialogue - Group Discussion",
+      category: "events",
+      thumbSrc: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/RegionalDialogue/API-03023.jpg?updatedAt=1743316868160&tr=w-400,h-300,fo-auto",
     },
     {
       id: 4,
-      src: "https://images.unsplash.com/photo-1526976668912-1a811878dd37?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-      alt: "Youth peace forum",
-      category: "events",
+      src: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/RegionalDialogue/API-02746.jpg?updatedAt=1743317508937&tr=w-800,h-600,fo-auto",
+      alt: "Regional Peace Dialogue - Community Representatives",
+      category: "communities",
+      thumbSrc: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/RegionalDialogue/API-02746.jpg?updatedAt=1743317508937&tr=w-400,h-300,fo-auto",
     },
     {
       id: 5,
-      src: "https://images.unsplash.com/photo-1579389083078-4e7018379f7e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-      alt: "Women's leadership training",
-      category: "trainings",
+      src: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/RegionalDialogue/API-02926.jpg?updatedAt=1743317508934&tr=w-800,h-600,fo-auto",
+      alt: "Regional Peace Dialogue - Conference Session",
+      category: "events",
+      thumbSrc: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/RegionalDialogue/API-02926.jpg?updatedAt=1743317508934&tr=w-400,h-300,fo-auto",
     },
     {
       id: 6,
-      src: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-      alt: "Rural community gathering",
+      src: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/RegionalDialogue/API-02403.jpg?updatedAt=1743317508583&tr=w-800,h-600,fo-auto",
+      alt: "Regional Peace Dialogue - Workshop Activities",
       category: "communities",
+      thumbSrc: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/RegionalDialogue/API-02403.jpg?updatedAt=1743317508583&tr=w-400,h-300,fo-auto",
     },
   ];
-
-  // Use placeholder images if needed
-  const galleryImages = images;
 
   return (
     <div
@@ -109,7 +113,7 @@ const Gallery = () => {
             >
               {/* Improved grid for tablet responsiveness */}
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-                {galleryImages
+                {images
                   .filter(
                     (img) => category.id === "all" || img.category === category.id
                   )
@@ -124,12 +128,16 @@ const Gallery = () => {
                           }}
                           onClick={() => setSelectedImage(image.src)}
                         >
-                          <img
-                            src={image.src}
-                            alt={image.alt}
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                            loading="lazy"
-                          />
+                          <AspectRatio ratio={4/3} className="w-full h-full">
+                            <img
+                              src={image.thumbSrc || image.src}
+                              alt={image.alt}
+                              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                              loading="lazy"
+                              width="400"
+                              height="300"
+                            />
+                          </AspectRatio>
                           <div className="absolute inset-0 bg-gradient-to-t from-api-midnight/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 sm:group-active:opacity-100 transition-opacity duration-300 flex items-end p-5">
                             <p className="text-api-cream font-medium text-lg">{image.alt}</p>
                           </div>
@@ -149,6 +157,8 @@ const Gallery = () => {
                           alt={image.alt}
                           className="w-full h-auto rounded-lg shadow-2xl"
                           loading="lazy"
+                          width="800"
+                          height="600"
                         />
                       </DialogContent>
                     </Dialog>
@@ -156,7 +166,7 @@ const Gallery = () => {
               </div>
 
               {/* Tablet-friendly empty state */}
-              {galleryImages.filter(img => category.id === "all" || img.category === category.id).length === 0 && (
+              {images.filter(img => category.id === "all" || img.category === category.id).length === 0 && (
                 <div className="text-center py-12 md:py-16 bg-white/30 backdrop-blur-sm rounded-lg border border-api-sage/20 shadow-md mx-auto max-w-md">
                   <Camera className="mx-auto text-api-terracotta/50 mb-4" size={48} />
                   <p className="text-api-midnight/70 font-medium">No images available in this category yet.</p>

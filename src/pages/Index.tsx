@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -12,53 +13,86 @@ import ImpactMetrics from "@/components/ImpactMetrics";
 import Timeline from "@/components/Timeline";
 import Gallery from "@/components/Gallery";
 import News from "@/components/News";
+import { useBreakpoint } from "@/hooks/use-mobile";
 
 const Index = () => {
+  const isMobile = useBreakpoint("md");
+
   useEffect(() => {
-    // Enhanced scroll-based animations with varying effects
-    const sections = document.querySelectorAll(".section-animate");
-    
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Add specific animation classes based on section type
-            const section = entry.target;
-            section.classList.add("animate-fade-in");
-            section.classList.remove("opacity-0");
-            
-            // Add additional animation classes based on data attribute
-            const animationType = section.getAttribute("data-animation");
-            if (animationType) {
-              section.classList.add(`animate-${animationType}`);
+    // Only use advanced animations on non-mobile devices for better performance
+    if (isMobile) {
+      // Simplified animations for mobile
+      const sections = document.querySelectorAll(".section-animate");
+      
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const section = entry.target;
+              section.classList.add("animate-fade-in");
+              section.classList.remove("opacity-0");
             }
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -10% 0px" }
-    );
-    
-    sections.forEach((section) => {
-      // Set different animation types for alternating sections
-      const index = Array.from(sections).indexOf(section);
-      const animationTypes = ["fade-up", "fade-right", "fade-up", "fade-left"];
-      section.setAttribute("data-animation", animationTypes[index % animationTypes.length]);
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -5% 0px" }
+      );
       
-      // Set different animation delays for staggered effect
-      if (section instanceof HTMLElement) {
-        section.style.animationDelay = `${index * 0.1}s`;
-      }
-      
-      section.classList.add("opacity-0");
-      observer.observe(section);
-    });
-    
-    return () => {
       sections.forEach((section) => {
-        observer.unobserve(section);
+        section.classList.add("opacity-0");
+        observer.observe(section);
       });
-    };
-  }, []);
+      
+      return () => {
+        sections.forEach((section) => {
+          observer.unobserve(section);
+        });
+      };
+    } else {
+      // Enhanced animations for desktop
+      const sections = document.querySelectorAll(".section-animate");
+      
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              // Add specific animation classes based on section type
+              const section = entry.target;
+              section.classList.add("animate-fade-in");
+              section.classList.remove("opacity-0");
+              
+              // Add additional animation classes based on data attribute
+              const animationType = section.getAttribute("data-animation");
+              if (animationType) {
+                section.classList.add(`animate-${animationType}`);
+              }
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -10% 0px" }
+      );
+      
+      sections.forEach((section) => {
+        // Set different animation types for alternating sections
+        const index = Array.from(sections).indexOf(section);
+        const animationTypes = ["fade-up", "fade-right", "fade-up", "fade-left"];
+        section.setAttribute("data-animation", animationTypes[index % animationTypes.length]);
+        
+        // Set different animation delays for staggered effect
+        if (section instanceof HTMLElement) {
+          section.style.animationDelay = `${index * 0.1}s`;
+        }
+        
+        section.classList.add("opacity-0");
+        observer.observe(section);
+      });
+      
+      return () => {
+        sections.forEach((section) => {
+          observer.unobserve(section);
+        });
+      };
+    }
+  }, [isMobile]);
 
   return (
     <div className="min-h-screen flex flex-col">

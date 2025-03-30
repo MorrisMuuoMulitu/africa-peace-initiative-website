@@ -30,7 +30,13 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <div className="flex items-center">
           <a href="/" className="flex items-center">
-            <img src="https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/API%20logo-12.png?updatedAt=1741074058148" alt="Africa Peace Initiative Logo" className="h-14 w-auto transition-all duration-300" />
+            <img 
+              src="https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/API%20logo-12.png?updatedAt=1741074058148&tr=w-200,h-56,fo-auto" 
+              alt="Africa Peace Initiative Logo" 
+              className="h-14 w-auto transition-all duration-300" 
+              width="200"
+              height="56"
+            />
           </a>
         </div>
 
