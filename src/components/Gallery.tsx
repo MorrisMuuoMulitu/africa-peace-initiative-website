@@ -20,47 +20,47 @@ const Gallery = () => {
     { id: "communities", label: "Communities", icon: <Users size={18} /> },
   ];
 
-  // Updated gallery images with optimized paths and proper categories
+  // Updated gallery images with simplified alt text
   const images = [
     {
       id: 1,
       src: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/RegionalDialogue/API-02902.jpg?updatedAt=1743316868447&tr=w-800,h-600,fo-auto",
-      alt: "Regional Peace Dialogue - Panel Discussion",
+      alt: "Regional Peace Dialogue",
       category: "events",
       thumbSrc: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/RegionalDialogue/API-02902.jpg?updatedAt=1743316868447&tr=w-400,h-300,fo-auto",
     },
     {
       id: 2,
       src: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/RegionalDialogue/API-03031.jpg?updatedAt=1743316868270&tr=w-800,h-600,fo-auto",
-      alt: "Regional Peace Dialogue - Leaders Session",
+      alt: "Regional Peace Dialogue",
       category: "events",
       thumbSrc: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/RegionalDialogue/API-03031.jpg?updatedAt=1743316868270&tr=w-400,h-300,fo-auto",
     },
     {
       id: 3,
       src: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/RegionalDialogue/API-03023.jpg?updatedAt=1743316868160&tr=w-800,h-600,fo-auto",
-      alt: "Regional Peace Dialogue - Group Discussion",
+      alt: "Regional Peace Dialogue",
       category: "events",
       thumbSrc: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/RegionalDialogue/API-03023.jpg?updatedAt=1743316868160&tr=w-400,h-300,fo-auto",
     },
     {
       id: 4,
       src: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/RegionalDialogue/API-02746.jpg?updatedAt=1743317508937&tr=w-800,h-600,fo-auto",
-      alt: "Regional Peace Dialogue - Community Representatives",
+      alt: "Regional Peace Dialogue",
       category: "communities",
       thumbSrc: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/RegionalDialogue/API-02746.jpg?updatedAt=1743317508937&tr=w-400,h-300,fo-auto",
     },
     {
       id: 5,
       src: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/RegionalDialogue/API-02926.jpg?updatedAt=1743317508934&tr=w-800,h-600,fo-auto",
-      alt: "Regional Peace Dialogue - Conference Session",
+      alt: "Regional Peace Dialogue",
       category: "events",
       thumbSrc: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/RegionalDialogue/API-02926.jpg?updatedAt=1743317508934&tr=w-400,h-300,fo-auto",
     },
     {
       id: 6,
       src: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/RegionalDialogue/API-02403.jpg?updatedAt=1743317508583&tr=w-800,h-600,fo-auto",
-      alt: "Regional Peace Dialogue - Workshop Activities",
+      alt: "Regional Peace Dialogue",
       category: "communities",
       thumbSrc: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/RegionalDialogue/API-02403.jpg?updatedAt=1743317508583&tr=w-400,h-300,fo-auto",
     },
