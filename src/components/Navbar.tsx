@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -31,9 +30,9 @@ const Navbar = () => {
         <div className="flex items-center">
           <a href="/" className="flex items-center">
             <img 
-              src="https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/API%20logo-12.png?updatedAt=1741074058148&tr=w-200,h-56,fo-auto" 
+              src="https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/API%20logo-12.png?updatedAt=1741074058148" 
               alt="Africa Peace Initiative Logo" 
-              className="h-14 w-auto object-contain" 
+              className="w-auto max-h-16 object-contain" 
               width="200"
               height="56"
             />
