@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useInView } from "react-intersection-observer";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -52,15 +51,20 @@ const News = () => {
 
         <Card className={`border-none rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           <div className="grid grid-cols-1 lg:grid-cols-2">
-            <div className="h-full overflow-hidden bg-api-green/10 min-h-[300px]">
-              <AspectRatio ratio={4/3} className="h-full">
+            <div className="overflow-hidden bg-api-green/10">
+              <AspectRatio ratio={16/9} className="md:h-full w-full">
                 <img 
-                  src={eventItem.thumbImage || eventItem.image} 
+                  src={eventItem.image || eventItem.thumbImage} 
                   alt={eventItem.title} 
                   className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
                   loading="lazy"
-                  width="400"
-                  height="300"
+                  width="800"
+                  height="600"
+                  srcSet={`
+                    ${eventItem.thumbImage || eventItem.image} 400w,
+                    ${eventItem.image} 800w
+                  `}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </AspectRatio>
             </div>
