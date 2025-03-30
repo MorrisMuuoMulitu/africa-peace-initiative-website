@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Camera, Leaf, Users } from "lucide-react";
 
 const Gallery = () => {
   const [ref, inView] = useInView({
@@ -13,9 +14,9 @@ const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const categories = [
-    { id: "all", label: "All Photos" },
-    { id: "events", label: "Events" },
-    { id: "communities", label: "Communities" },
+    { id: "all", label: "All Photos", icon: <Camera size={18} /> },
+    { id: "events", label: "Events", icon: <Leaf size={18} /> },
+    { id: "communities", label: "Communities", icon: <Users size={18} /> },
   ];
 
   // Placeholder images - replace with your actual image paths
@@ -64,15 +65,15 @@ const Gallery = () => {
   return (
     <div
       ref={ref}
-      className={`py-24 px-4 sm:px-6 bg-gradient-to-t from-api-cream/30 to-white transition-all duration-700 ${
+      className={`py-24 px-4 sm:px-6 bg-gradient-to-b from-api-clay/10 to-api-cream/30 transition-all duration-700 ${
         inView ? "opacity-100" : "opacity-0"
       }`}
       id="gallery"
     >
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
+        <div className="text-center mb-16">
           <div className="w-16 h-1 bg-api-terracotta mx-auto mb-6"></div>
-          <h2 className="text-3xl md:text-4xl font-bold font-montserrat text-api-midnight mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold font-montserrat text-api-midnight mb-6">
             Peace in Action
           </h2>
           <p className="text-lg text-api-midnight/80 max-w-2xl mx-auto">
@@ -81,14 +82,15 @@ const Gallery = () => {
         </div>
 
         <Tabs defaultValue="all" className="w-full mt-12">
-          <div className="flex justify-center mb-8 overflow-x-auto pb-2">
-            <TabsList className="bg-api-cream/20">
+          <div className="flex justify-center mb-10 overflow-x-auto pb-2">
+            <TabsList className="bg-api-cream/30 backdrop-blur-sm border border-api-sage/20 p-1 shadow-md">
               {categories.map((category) => (
                 <TabsTrigger
                   key={category.id}
                   value={category.id}
-                  className="px-6 py-2 data-[state=active]:bg-api-terracotta data-[state=active]:text-white"
+                  className="px-6 py-2.5 data-[state=active]:bg-api-terracotta data-[state=active]:text-white flex items-center gap-2"
                 >
+                  {category.icon}
                   {category.label}
                 </TabsTrigger>
               ))}
@@ -103,7 +105,7 @@ const Gallery = () => {
                 inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               }`}
             >
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 {galleryImages
                   .filter(
                     (img) => category.id === "all" || img.category === category.id
@@ -112,7 +114,7 @@ const Gallery = () => {
                     <Dialog key={image.id}>
                       <DialogTrigger asChild>
                         <div
-                          className="relative rounded-lg overflow-hidden cursor-pointer group shadow-lg h-64 transform transition-transform duration-300 hover:scale-[1.02]"
+                          className="relative rounded-xl overflow-hidden cursor-pointer group shadow-lg h-72 transform transition-transform duration-300 hover:scale-[1.02] border border-api-sage/20"
                           style={{ 
                             transitionDelay: `${index * 100}ms`,
                             animationDelay: `${index * 100}ms`
@@ -124,16 +126,16 @@ const Gallery = () => {
                             alt={image.alt}
                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-api-midnight/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                            <p className="text-api-cream font-medium">{image.alt}</p>
+                          <div className="absolute inset-0 bg-gradient-to-t from-api-midnight/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+                            <p className="text-api-cream font-medium text-lg">{image.alt}</p>
                           </div>
                         </div>
                       </DialogTrigger>
-                      <DialogContent className="max-w-4xl p-2 bg-transparent border-none">
+                      <DialogContent className="max-w-5xl p-2 bg-transparent border-none">
                         <img
                           src={image.src}
                           alt={image.alt}
-                          className="w-full h-auto rounded-lg"
+                          className="w-full h-auto rounded-lg shadow-2xl"
                         />
                       </DialogContent>
                     </Dialog>
@@ -142,8 +144,9 @@ const Gallery = () => {
 
               {/* Empty state if no images in category */}
               {galleryImages.filter(img => category.id === "all" || img.category === category.id).length === 0 && (
-                <div className="text-center py-16">
-                  <p className="text-api-midnight/70">No images available in this category yet.</p>
+                <div className="text-center py-16 bg-white/30 backdrop-blur-sm rounded-lg border border-api-sage/20 shadow-md">
+                  <Camera className="mx-auto text-api-terracotta/50 mb-4" size={48} />
+                  <p className="text-api-midnight/70 font-medium">No images available in this category yet.</p>
                 </div>
               )}
             </TabsContent>
