@@ -6,14 +6,11 @@ import { Button } from "@/components/ui/button";
 import { Calendar, ArrowRight, Clock, MapPin, FileText } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
-
 const News = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.2
   });
-  
   const eventItem = {
     title: "Regional Dialogue: The Conflict in Eastern Congo",
     excerpt: "Our inaugural event brought together participants from 5 African nations to analyze the complexities of the conflict in Eastern Congo and identify solutions for sustainable peace.",
@@ -21,23 +18,19 @@ const News = () => {
     time: "9:00 AM",
     location: "Trademark Hotel, Gigiri, Nairobi",
     category: "Recent Event",
-    image: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/RegionalDialogue/API-02634.jpg?updatedAt=1743317508870&tr=w-800,h-600,fo-auto",
-    thumbImage: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/RegionalDialogue/API-02634.jpg?updatedAt=1743317508870&tr=w-400,h-300,fo-auto",
+    image: "/placeholder.svg",
     report: {
       summary: "The regional dialogue on the conflict in Eastern Congo was a resounding success, bringing together 57 participants from Kenya, DRC, Rwanda, Uganda, and Ghana. The day-long event featured presentations from conflict resolution experts, testimonials from affected communities, and interactive workshops aimed at developing actionable peace initiatives.",
       outcomes: ["Creation of a cross-border community engagement framework", "Establishment of a regional early warning system for conflict prevention", "Development of policy recommendations for the East African Community", "Formation of a youth ambassador program for peace advocacy"],
       nextSteps: "Following this successful dialogue, we are planning follow-up sessions in Rwanda and Uganda to continue building momentum for our peace initiatives in the region."
     }
   };
-  
   return <div ref={ref} className={`py-24 px-4 sm:px-6 bg-gradient-to-b from-white to-api-cream/20 transition-all duration-700 ${inView ? "opacity-100" : "opacity-0"}`} id="news">
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
           <div>
             <div className="w-16 h-1 bg-api-terracotta mb-6"></div>
-            <h2 className="text-3xl md:text-4xl font-bold font-montserrat text-api-midnight mb-4 tracking-tight">
-              Latest Event
-            </h2>
+            
             <p className="text-lg text-api-midnight/80 max-w-xl">
               Our most recent event and initiative.
             </p>
@@ -51,22 +44,8 @@ const News = () => {
 
         <Card className={`border-none rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           <div className="grid grid-cols-1 lg:grid-cols-2">
-            <div className="overflow-hidden bg-api-green/10">
-              <AspectRatio ratio={16/9} className="md:h-full w-full">
-                <img 
-                  src={eventItem.image || eventItem.thumbImage} 
-                  alt={eventItem.title} 
-                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
-                  loading="lazy"
-                  width="800"
-                  height="600"
-                  srcSet={`
-                    ${eventItem.thumbImage || eventItem.image} 400w,
-                    ${eventItem.image} 800w
-                  `}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </AspectRatio>
+            <div className="h-full overflow-hidden bg-api-green/10 min-h-[300px]">
+              <img src={eventItem.image} alt={eventItem.title} className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
             </div>
             <div className="p-8 lg:p-10">
               <div className="flex items-center justify-between mb-6">
@@ -97,6 +76,8 @@ const News = () => {
               </div>
               
               <div className="flex flex-col sm:flex-row gap-4">
+                
+                
                 <Dialog>
                   <DialogTrigger asChild>
                     <Button variant="outline" className="border-api-green text-api-green hover:bg-api-green/10 rounded-full px-6">
@@ -147,5 +128,4 @@ const News = () => {
       </div>
     </div>;
 };
-
 export default News;
