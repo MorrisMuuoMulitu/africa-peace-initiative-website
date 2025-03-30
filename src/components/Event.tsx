@@ -24,7 +24,7 @@ const Event = () => {
           <div>
             <div className="w-16 h-1 bg-api-terracotta mb-6"></div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-montserrat font-bold text-api-midnight mb-4 tracking-tight">
-              Upcoming Event
+              Our Latest Event
             </h2>
             <p className="text-lg text-api-midnight/80 max-w-xl">
               Join us for our next regional peace dialogue event.
