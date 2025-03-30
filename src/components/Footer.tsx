@@ -1,8 +1,8 @@
-
 import React from "react";
-import { Twitter, Mail, ArrowUp, MapPin, Phone, Facebook, Linkedin, Instagram } from "lucide-react";
+import { Mail, ArrowUp, MapPin, Phone } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
+import SocialLinks from "@/components/SocialLinks";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -17,8 +17,7 @@ const Footer = () => {
   return (
     <footer className="pt-20 pb-8 px-4 sm:px-6 bg-api-darkgreen relative">
       {/* Decorative elements */}
-      <div className="absolute top-0 right-0 left-0 h-24 bg-gradient-to-b from-white to-transparent opacity-10"></div>
-      <div className="absolute top-0 left-0 w-64 h-64 bg-api-gold opacity-5 rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
+      <div className="absolute top-0 right-0 left-0 h-24 bg-gradient-to-b from-white to-transparent opacity-10" aria-hidden="true"></div>
       
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
@@ -34,15 +33,17 @@ const Footer = () => {
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="text-white/90 hover:text-api-gold transition-colors duration-300 flex items-center gap-2"
+                aria-label="Our location"
               >
-                <MapPin size={18} />
+                <MapPin size={18} aria-hidden="true" />
                 <span>Nairobi, Kenya</span>
               </a>
               <a 
                 href="tel:+254706767226" 
                 className="text-white/90 hover:text-api-gold transition-colors duration-300 flex items-center gap-2"
+                aria-label="Call us"
               >
-                <Phone size={18} />
+                <Phone size={18} aria-hidden="true" />
                 <span>+254 706 767226</span>
               </a>
             </div>
@@ -59,23 +60,13 @@ const Footer = () => {
             
             <div className="mt-8">
               <h4 className="text-md font-montserrat text-white mb-4 font-medium">Follow Us</h4>
-              <div className="flex justify-center space-x-4">
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/20 rounded-full hover:bg-api-gold/20 transition-colors text-white hover:scale-110 transform duration-300">
-                  <Twitter size={18} />
-                </a>
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/20 rounded-full hover:bg-api-gold/20 transition-colors text-white hover:scale-110 transform duration-300">
-                  <Facebook size={18} />
-                </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/20 rounded-full hover:bg-api-gold/20 transition-colors text-white hover:scale-110 transform duration-300">
-                  <Linkedin size={18} />
-                </a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/20 rounded-full hover:bg-api-gold/20 transition-colors text-white hover:scale-110 transform duration-300">
-                  <Instagram size={18} />
-                </a>
+              <div className="flex justify-center">
+                <SocialLinks />
               </div>
             </div>
           </div>
           
+          {/* Keep the newsletter section */}
           <div className="text-center md:text-right">
             <h3 className="text-xl font-montserrat text-white mb-6 font-semibold">Stay Connected</h3>
             <p className="text-white/90 text-sm mb-4">
@@ -113,6 +104,7 @@ const Footer = () => {
         
         <Separator className="bg-white/20 my-8" />
         
+        {/* Keep the footer bottom section */}
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
             <p className="text-white/90 text-sm">&copy; {currentYear} Africa Peace Initiative. All rights reserved.</p>
