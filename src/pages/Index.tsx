@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -12,7 +11,6 @@ import Testimonials from "@/components/Testimonials";
 import ImpactMetrics from "@/components/ImpactMetrics";
 import Timeline from "@/components/Timeline";
 import Gallery from "@/components/Gallery";
-import News from "@/components/News";
 import { useBreakpoint } from "@/hooks/use-mobile";
 
 const Index = () => {
@@ -121,9 +119,6 @@ const Index = () => {
       </div>
       <div className="section-animate" data-animation="fade-left">
         <Gallery />
-      </div>
-      <div className="section-animate" data-animation="fade-up">
-        <News />
       </div>
       <div id="contact" className="section-animate" data-animation="fade-right">
         <ContactForm />
