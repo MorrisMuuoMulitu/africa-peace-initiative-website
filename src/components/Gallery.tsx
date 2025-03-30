@@ -111,7 +111,7 @@ const Gallery = () => {
                 inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               }`}
             >
-              {/* Improved grid for tablet responsiveness */}
+              {/* Improved responsive grid with consistent aspect ratio */}
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
                 {images
                   .filter(
@@ -121,14 +121,14 @@ const Gallery = () => {
                     <Dialog key={image.id}>
                       <DialogTrigger asChild>
                         <div
-                          className="relative rounded-xl overflow-hidden cursor-pointer group shadow-lg h-64 sm:h-72 transform transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98] border border-api-sage/20 touch-manipulation"
+                          className="relative rounded-xl overflow-hidden cursor-pointer group shadow-lg transform transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98] border border-api-sage/20 touch-manipulation"
                           style={{ 
                             transitionDelay: `${index * 100}ms`,
                             animationDelay: `${index * 100}ms`
                           }}
                           onClick={() => setSelectedImage(image.src)}
                         >
-                          <AspectRatio ratio={4/3} className="w-full h-full">
+                          <AspectRatio ratio={4/3} className="w-full">
                             <img
                               src={image.thumbSrc || image.src}
                               alt={image.alt}
@@ -136,6 +136,8 @@ const Gallery = () => {
                               loading="lazy"
                               width="400"
                               height="300"
+                              srcSet={`${image.thumbSrc} 400w, ${image.src} 800w`}
+                              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                             />
                           </AspectRatio>
                           <div className="absolute inset-0 bg-gradient-to-t from-api-midnight/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 sm:group-active:opacity-100 transition-opacity duration-300 flex items-end p-5">
@@ -152,14 +154,21 @@ const Gallery = () => {
                         >
                           <X size={20} />
                         </button>
-                        <img
-                          src={image.src}
-                          alt={image.alt}
-                          className="w-full h-auto rounded-lg shadow-2xl"
-                          loading="lazy"
-                          width="800"
-                          height="600"
-                        />
+                        <div className="relative w-full">
+                          <AspectRatio ratio={4/3} className="w-full">
+                            <img
+                              src={image.src}
+                              alt={image.alt}
+                              className="w-full h-full rounded-lg shadow-2xl object-contain bg-api-midnight/80"
+                              loading="lazy"
+                              width="800"
+                              height="600"
+                            />
+                          </AspectRatio>
+                          <div className="absolute bottom-0 left-0 right-0 p-3 bg-api-midnight/70 text-white rounded-b-lg">
+                            <p className="text-sm sm:text-base">{image.alt}</p>
+                          </div>
+                        </div>
                       </DialogContent>
                     </Dialog>
                   ))}
