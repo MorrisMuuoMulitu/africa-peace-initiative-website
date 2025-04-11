@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
-import { Flag, Quote } from "lucide-react";
+import { ChevronDown, ChevronUp, Flag, Quote } from "lucide-react";
 import { useBreakpoint } from "@/hooks/use-mobile";
+import { Button } from "@/components/ui/button";
 
 const Testimonials = () => {
   const [ref, inView] = useInView({
@@ -14,6 +15,7 @@ const Testimonials = () => {
   
   const isMobile = useBreakpoint("md");
   const [activeIndex, setActiveIndex] = useState(0);
+  const [expandedQuotes, setExpandedQuotes] = useState<Record<number, boolean>>({});
 
   const testimonials = [
     {
@@ -32,6 +34,24 @@ const Testimonials = () => {
 
   const handleDotClick = (index: number) => {
     setActiveIndex(index);
+  };
+
+  const toggleQuoteExpansion = (index: number) => {
+    setExpandedQuotes(prev => ({
+      ...prev,
+      [index]: !prev[index]
+    }));
+  };
+
+  // Function to determine if a quote should be truncated
+  const shouldTruncate = (quote: string) => {
+    return quote.length > 180;
+  };
+
+  // Function to get truncated quote
+  const getTruncatedQuote = (quote: string) => {
+    if (quote.length <= 180) return quote;
+    return quote.substring(0, 180) + "...";
   };
 
   return (
@@ -64,7 +84,13 @@ const Testimonials = () => {
                 <div className="flex">
                   {testimonials.map((testimonial, index) => (
                     <div key={index} className="w-full flex-shrink-0 px-4">
-                      <TestimonialCard testimonial={testimonial} />
+                      <TestimonialCard 
+                        testimonial={testimonial} 
+                        isExpanded={!!expandedQuotes[index]}
+                        onToggleExpansion={() => toggleQuoteExpansion(index)}
+                        shouldTruncate={shouldTruncate}
+                        getTruncatedQuote={getTruncatedQuote}
+                      />
                     </div>
                   ))}
                 </div>
@@ -99,7 +125,13 @@ const Testimonials = () => {
                 }`}
                 style={{ transitionDelay: `${index * 300}ms` }}
               >
-                <TestimonialCard testimonial={testimonial} />
+                <TestimonialCard 
+                  testimonial={testimonial} 
+                  isExpanded={!!expandedQuotes[index]}
+                  onToggleExpansion={() => toggleQuoteExpansion(index)}
+                  shouldTruncate={shouldTruncate}
+                  getTruncatedQuote={getTruncatedQuote}
+                />
               </div>
             ))}
           </div>
@@ -109,14 +141,53 @@ const Testimonials = () => {
   );
 };
 
-const TestimonialCard = ({ testimonial }: { testimonial: { quote: string; name: string; role: string; image: string } }) => {
+interface TestimonialCardProps {
+  testimonial: { 
+    quote: string; 
+    name: string; 
+    role: string; 
+    image: string 
+  };
+  isExpanded: boolean;
+  onToggleExpansion: () => void;
+  shouldTruncate: (quote: string) => boolean;
+  getTruncatedQuote: (quote: string) => string;
+}
+
+const TestimonialCard = ({ 
+  testimonial, 
+  isExpanded, 
+  onToggleExpansion, 
+  shouldTruncate, 
+  getTruncatedQuote
+}: TestimonialCardProps) => {
+  const needsTruncation = shouldTruncate(testimonial.quote);
+  
   return (
     <Card className="bg-white backdrop-blur-sm bg-opacity-70 rounded-2xl overflow-hidden shadow-lg border-0 ring-1 ring-black/5 hover:shadow-xl transition-all duration-500">
       <CardContent className="p-8 sm:p-10">
         <div className="relative mb-6">
           <Quote className="absolute top-0 left-0 text-api-terracotta/10 h-16 w-16 -translate-x-6 -translate-y-6" />
           <div className="text-api-midnight/90 font-lora text-lg leading-relaxed relative z-10 pl-4 border-l-2 border-api-terracotta">
-            "{testimonial.quote}"
+            "{isExpanded || !needsTruncation ? testimonial.quote : getTruncatedQuote(testimonial.quote)}"
+            
+            {needsTruncation && (
+              <Button 
+                variant="link" 
+                onClick={onToggleExpansion}
+                className="ml-2 text-api-terracotta hover:text-api-gold font-medium flex items-center mt-2 p-0 h-auto"
+              >
+                {isExpanded ? (
+                  <>
+                    Read less <ChevronUp className="ml-1 h-4 w-4" />
+                  </>
+                ) : (
+                  <>
+                    Read more <ChevronDown className="ml-1 h-4 w-4" />
+                  </>
+                )}
+              </Button>
+            )}
           </div>
         </div>
         
