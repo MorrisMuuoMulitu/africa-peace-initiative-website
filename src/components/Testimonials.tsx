@@ -1,15 +1,19 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
-import { Flag } from "lucide-react";
+import { Flag, Quote } from "lucide-react";
+import { useBreakpoint } from "@/hooks/use-mobile";
 
 const Testimonials = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
+  
+  const isMobile = useBreakpoint("md");
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const testimonials = [
     {
@@ -23,81 +27,115 @@ const Testimonials = () => {
       name: "Eric Mikalano",
       role: "Executive Secretary, Initiative for Good Governance of Natural Resources in Kivu (IBGRN/K)",
       image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
-    },
-    {
-      quote: "The thoughtful approach to bringing diverse stakeholders together created space for honest dialogue about difficult issues affecting our region.",
-      name: "Sophia Mwangi",
-      role: "Policy Advisor, Ministry of Foreign Affairs",
-      image: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
     }
   ];
+
+  const handleDotClick = (index: number) => {
+    setActiveIndex(index);
+  };
 
   return (
     <div
       ref={ref}
-      className={`py-24 px-4 sm:px-6 bg-gradient-to-b from-white to-api-cream/20 transition-all duration-700 ${
+      className={`py-20 md:py-28 px-4 sm:px-6 bg-gradient-to-br from-white via-api-cream/10 to-api-sage/10 transition-all duration-700 overflow-hidden ${
         inView ? "opacity-100" : "opacity-0"
       }`}
       id="testimonials"
     >
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <div className="w-16 h-1 bg-api-terracotta mx-auto mb-6"></div>
-          <h2 className="text-3xl md:text-4xl font-bold font-montserrat text-api-midnight mb-4">
-            Voices of Impact
+        <div className="text-center mb-12 md:mb-16">
+          <div className="w-20 h-1.5 bg-gradient-to-r from-api-terracotta to-api-gold mx-auto mb-6"></div>
+          <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold font-montserrat text-api-midnight mb-4">
+            What Our Participants Say
           </h2>
           <p className="text-lg text-api-midnight/80 max-w-2xl mx-auto">
-            Hear from those who have experienced our work firsthand
+            Reflections from those who experienced our work firsthand
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {testimonials.map((testimonial, index) => {
-            // Make the first testimonial full-width
-            const isFullWidth = index === 0;
+        {isMobile ? (
+          // Mobile Version - Card Slider
+          <div className="relative">
+            <div className="overflow-hidden">
+              <div 
+                className="transition-all duration-500 ease-in-out"
+                style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+              >
+                <div className="flex">
+                  {testimonials.map((testimonial, index) => (
+                    <div key={index} className="w-full flex-shrink-0 px-4">
+                      <TestimonialCard testimonial={testimonial} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
             
-            return (
-              <Card
-                key={index}
-                className={`bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-500 hover:shadow-xl ${
+            <div className="flex justify-center mt-8 space-x-2">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleDotClick(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === activeIndex 
+                      ? "bg-api-terracotta w-8" 
+                      : "bg-api-cream"
+                  }`}
+                  aria-label={`View testimonial ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+        ) : (
+          // Desktop Version - Staggered Grid
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 xl:gap-12">
+            {testimonials.map((testimonial, index) => (
+              <div 
+                key={index} 
+                className={`transform transition-all duration-700 ${
                   inView
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-12"
-                } ${isFullWidth ? "lg:col-span-2" : ""}`}
-                style={{ transitionDelay: `${index * 200}ms` }}
+                }`}
+                style={{ transitionDelay: `${index * 300}ms` }}
               >
-                {/* Decorative elements */}
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-api-terracotta to-api-sage"></div>
-                
-                <CardContent className="p-8">
-                  <div className="mb-6 relative">
-                    <div className="absolute top-0 right-0 text-api-terracotta/10 text-6xl font-serif">"</div>
-                    <p className="text-api-midnight/90 font-lora text-lg leading-relaxed relative z-10">
-                      "{testimonial.quote}"
-                    </p>
-                  </div>
-                  
-                  <div className="flex items-center mt-8 border-t pt-6 border-api-cream">
-                    <div className="flex-shrink-0 mr-5">
-                      <Avatar className="h-16 w-16 border-2 border-api-terracotta">
-                        <AvatarImage src={testimonial.image} alt={testimonial.name} />
-                        <AvatarFallback className="bg-api-sage/20">
-                          {testimonial.name.split(' ').map(name => name[0]).join('')}
-                        </AvatarFallback>
-                      </Avatar>
-                    </div>
-                    <div>
-                      <h4 className="text-api-midnight font-bold text-lg">{testimonial.name}</h4>
-                      <p className="text-api-midnight/70 text-sm">{testimonial.role}</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
+                <TestimonialCard testimonial={testimonial} />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
+  );
+};
+
+const TestimonialCard = ({ testimonial }: { testimonial: { quote: string; name: string; role: string; image: string } }) => {
+  return (
+    <Card className="bg-white backdrop-blur-sm bg-opacity-70 rounded-2xl overflow-hidden shadow-lg border-0 ring-1 ring-black/5 hover:shadow-xl transition-all duration-500">
+      <CardContent className="p-8 sm:p-10">
+        <div className="relative mb-6">
+          <Quote className="absolute top-0 left-0 text-api-terracotta/10 h-16 w-16 -translate-x-6 -translate-y-6" />
+          <div className="text-api-midnight/90 font-lora text-lg leading-relaxed relative z-10 pl-4 border-l-2 border-api-terracotta">
+            "{testimonial.quote}"
+          </div>
+        </div>
+        
+        <div className="flex items-center mt-8 pt-6 border-t border-api-cream/60">
+          <div className="flex-shrink-0 mr-5">
+            <Avatar className="h-16 w-16 ring-2 ring-api-terracotta ring-offset-2">
+              <AvatarImage src={testimonial.image} alt={testimonial.name} className="object-cover" />
+              <AvatarFallback className="bg-api-sage/20 text-api-forestgreen font-semibold">
+                {testimonial.name.split(' ').map(name => name[0]).join('')}
+              </AvatarFallback>
+            </Avatar>
+          </div>
+          <div>
+            <h4 className="text-api-forestgreen font-bold text-lg">{testimonial.name}</h4>
+            <p className="text-api-midnight/70 text-sm">{testimonial.role}</p>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
   );
 };
 
