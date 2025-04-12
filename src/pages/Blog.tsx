@@ -57,6 +57,7 @@ const Blog = () => {
       >
         <div className="max-w-6xl mx-auto">
           <div className="mb-12">
+            {/* Fix: Using Link as a wrapper */}
             <Link 
               to="/" 
               className="inline-flex items-center text-api-terracotta hover:text-api-terracotta/80 transition-colors mb-6"
