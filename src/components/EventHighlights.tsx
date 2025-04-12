@@ -1,10 +1,11 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { Badge } from "@/components/ui/badge";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Card, CardContent } from "@/components/ui/card";
 import { useBreakpoint } from "@/hooks/use-mobile";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import {
   Carousel,
   CarouselContent,
@@ -20,6 +21,7 @@ const EventHighlights = () => {
   });
 
   const isMobile = useBreakpoint("md");
+  const [activeImage, setActiveImage] = useState<string | null>(null);
 
   const highlights = [
     {
@@ -79,8 +81,8 @@ const EventHighlights = () => {
         </div>
 
         {isMobile ? (
-          // Mobile version - Full-width carousel
-          <div className="relative mt-8">
+          // Mobile version - Full-width carousel with better image presentation
+          <div className="mt-8">
             <Carousel
               opts={{
                 align: "start",
@@ -91,7 +93,59 @@ const EventHighlights = () => {
               <CarouselContent>
                 {highlights.map((highlight, index) => (
                   <CarouselItem key={index} className="pl-4 sm:pl-6 md:basis-4/5 lg:basis-1/2">
-                    <HighlightCard highlight={highlight} index={index} inView={inView} isMobile={true} />
+                    <Card className={`overflow-hidden border-none rounded-xl shadow-lg transition-all duration-500 ${
+                      inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+                    }`}
+                    style={{ transitionDelay: `${index * 100}ms` }}>
+                      <CardContent className="p-0">
+                        <Dialog>
+                          <DialogTrigger className="w-full text-left block">
+                            <div className="relative">
+                              <AspectRatio ratio={16/9}>
+                                <img
+                                  src={highlight.image}
+                                  alt={highlight.title}
+                                  className="w-full h-full object-cover"
+                                  loading="lazy"
+                                  width="600"
+                                  height="450"
+                                />
+                              </AspectRatio>
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex flex-col justify-end p-6">
+                                <Badge 
+                                  className="self-start mb-3 bg-api-terracotta border-none text-white font-medium"
+                                >
+                                  Topic {index + 1}
+                                </Badge>
+                                <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
+                                  {highlight.title}
+                                </h3>
+                                <p className="text-white/90 text-sm">
+                                  {highlight.description}
+                                </p>
+                              </div>
+                            </div>
+                          </DialogTrigger>
+                          <DialogContent className="sm:max-w-4xl max-h-[90vh] p-2 overflow-hidden">
+                            <div className="relative w-full h-full">
+                              <img
+                                src={highlight.image}
+                                alt={highlight.title}
+                                className="w-full h-auto object-contain rounded-lg max-h-[80vh]"
+                              />
+                              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-4">
+                                <h3 className="text-xl font-bold text-white">
+                                  {highlight.title}
+                                </h3>
+                                <p className="text-white/90">
+                                  {highlight.description}
+                                </p>
+                              </div>
+                            </div>
+                          </DialogContent>
+                        </Dialog>
+                      </CardContent>
+                    </Card>
                   </CarouselItem>
                 ))}
               </CarouselContent>
@@ -102,75 +156,71 @@ const EventHighlights = () => {
             </Carousel>
           </div>
         ) : (
-          // Desktop version - Masonry-like grid
+          // Desktop version - Image grid with better presentation
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {highlights.map((highlight, index) => (
-              <HighlightCard 
-                key={index}
-                highlight={highlight}
-                index={index}
-                inView={inView}
-                isMobile={false}
-              />
+              <Dialog key={index}>
+                <DialogTrigger className="w-full text-left">
+                  <Card
+                    className={`overflow-hidden border-none rounded-xl shadow-lg hover:shadow-xl transition-all duration-500 cursor-pointer ${
+                      inView
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 translate-y-12"
+                    }`}
+                    style={{ transitionDelay: `${index * 100}ms` }}
+                  >
+                    <CardContent className="p-0">
+                      <div className="relative">
+                        <AspectRatio ratio={16/9}>
+                          <img
+                            src={highlight.image}
+                            alt={highlight.title}
+                            className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                            loading="lazy"
+                            width="600"
+                            height="338"
+                          />
+                        </AspectRatio>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex flex-col justify-end p-6">
+                          <Badge 
+                            className="self-start mb-3 bg-api-terracotta border-none text-white font-medium"
+                          >
+                            Topic {index + 1}
+                          </Badge>
+                          <h3 className="text-xl font-bold text-white mb-2">
+                            {highlight.title}
+                          </h3>
+                          <p className="text-white/90 text-sm">
+                            {highlight.description}
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-4xl max-h-[90vh] p-2 overflow-hidden">
+                  <div className="relative w-full h-full">
+                    <img
+                      src={highlight.image}
+                      alt={highlight.title}
+                      className="w-full h-auto object-contain rounded-lg max-h-[80vh]"
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-4">
+                      <h3 className="text-xl font-bold text-white">
+                        {highlight.title}
+                      </h3>
+                      <p className="text-white/90">
+                        {highlight.description}
+                      </p>
+                    </div>
+                  </div>
+                </DialogContent>
+              </Dialog>
             ))}
           </div>
         )}
       </div>
     </div>
-  );
-};
-
-interface HighlightCardProps {
-  highlight: {
-    image: string;
-    title: string;
-    description: string;
-  };
-  index: number;
-  inView: boolean;
-  isMobile: boolean;
-}
-
-const HighlightCard = ({ highlight, index, inView, isMobile }: HighlightCardProps) => {
-  return (
-    <Card
-      className={`overflow-hidden border-none rounded-xl shadow-lg hover:shadow-xl transition-all duration-500 ${
-        inView
-          ? "opacity-100 translate-y-0"
-          : "opacity-0 translate-y-12"
-      }`}
-      style={{ transitionDelay: `${index * 100}ms` }}
-    >
-      <CardContent className="p-0">
-        <div className="relative">
-          <AspectRatio ratio={4 / 3}>
-            <img
-              src={highlight.image}
-              alt={highlight.title}
-              className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-              loading="lazy"
-              width="600"
-              height="450"
-              srcSet={`${highlight.image}?tr=w-400,h-300,fo-auto 400w, ${highlight.image}?tr=w-600,h-450,fo-auto 600w`}
-              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            />
-          </AspectRatio>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
-            <Badge 
-              className="self-start mb-3 bg-api-terracotta border-none text-white font-medium"
-            >
-              Topic {index + 1}
-            </Badge>
-            <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
-              {highlight.title}
-            </h3>
-            <p className="text-white/90 text-sm md:text-base">
-              {highlight.description}
-            </p>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
   );
 };
 
