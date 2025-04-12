@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -5,6 +6,7 @@ import Mission from "@/components/Mission";
 import FocusAreas from "@/components/FocusAreas";
 import Partners from "@/components/Partners";
 import Event from "@/components/Event";
+import EventHighlights from "@/components/EventHighlights";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import Testimonials from "@/components/Testimonials";
@@ -107,6 +109,9 @@ const Index = () => {
       </div>
       <div id="events" className="section-animate" data-animation="fade-left">
         <Event />
+      </div>
+      <div className="section-animate" data-animation="fade-up">
+        <EventHighlights />
       </div>
       <div className="section-animate" data-animation="fade-up">
         <Timeline />
