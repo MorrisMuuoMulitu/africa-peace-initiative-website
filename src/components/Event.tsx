@@ -30,7 +30,6 @@ const Event = () => {
               Join us for our next regional peace dialogue event.
             </p>
           </div>
-          {/* Fix: Using Button without asChild when wrapping with Link */}
           <Link to="/events">
             <Button variant="outline" className="mt-6 md:mt-0 border-api-terracotta text-api-terracotta hover:bg-api-terracotta/10">
               View All Events <ArrowRight className="ml-1 h-4 w-4" />

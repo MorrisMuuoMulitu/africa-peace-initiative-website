@@ -70,7 +70,6 @@ const Navbar = () => {
           })}>
             Join Us
           </Button>
-          {/* Fix: Removing asChild prop from Button and using Link as a wrapper */}
           <Link to="/donate">
             <Button variant="outline" className="border-api-forestgreen text-api-forestgreen hover:bg-api-forestgreen/10 hover:border-api-green transition-all duration-300">
               Donate
@@ -116,7 +115,6 @@ const Navbar = () => {
             }}>
               Join Us
             </Button>
-            {/* Fix: Using Link as a wrapper instead of asChild */}
             <Link to="/donate" onClick={() => setIsMenuOpen(false)}>
               <Button variant="outline" className="border-api-forestgreen text-api-forestgreen hover:bg-api-forestgreen/10 hover:border-api-green transition-all duration-300 w-full">
                 Donate
