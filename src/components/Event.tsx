@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { CalendarDays, Clock, MapPin, FileText, ArrowRight } from "lucide-react";
+import { CalendarDays, Clock, MapPin, FileText, ArrowRight, History } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -24,10 +24,10 @@ const Event = () => {
           <div>
             <div className="w-16 h-1 bg-api-terracotta mb-6"></div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-montserrat font-bold text-api-midnight mb-4 tracking-tight">
-              Our Latest Event
+              Our Past Event
             </h2>
             <p className="text-lg text-api-midnight/80 max-w-xl">
-              Join us for our next regional peace dialogue event.
+              Learn about our most recent regional peace dialogue event.
             </p>
           </div>
           <Button 
@@ -50,7 +50,7 @@ const Event = () => {
                 <img 
                   src="https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/RegionalDialogue/API-02634.jpg?updatedAt=1743317508870&tr=w-800,h-600,fo-auto"
                   alt="Regional Peace Dialogue participants"
-                  className={`w-full h-full object-cover transition-transform duration-700 ${isHovered ? 'scale-105' : 'scale-100'}`}
+                  className={`w-full h-full object-cover transition-transform duration-700 ${isHovered ? 'scale-105' : 'scale-100'} grayscale-[30%]`}
                   loading="lazy"
                   width="800"
                   height="600"
@@ -63,9 +63,9 @@ const Event = () => {
               </AspectRatio>
               <Badge 
                 variant="outline" 
-                className="absolute top-4 left-4 bg-api-terracotta text-white border-none font-medium px-4 py-1.5 rounded-full shadow-md"
+                className="absolute top-4 left-4 bg-gray-600 text-white border-none font-medium px-4 py-1.5 rounded-full shadow-md"
               >
-                Regional Dialogue
+                Past Event
               </Badge>
             </div>
             
@@ -76,34 +76,34 @@ const Event = () => {
                 </h2>
                 
                 <p className="text-api-midnight/80 text-base sm:text-lg mb-8 leading-relaxed">
-                  Our inaugural event brings together participants from 5 African nations to analyze the complexities of the conflict in Eastern Congo and identify solutions for sustainable peace.
+                  Our inaugural event brought together participants from 5 African nations to analyze the complexities of the conflict in Eastern Congo and identify solutions for sustainable peace.
                 </p>
                 
-                <div className="space-y-5 mb-8 bg-api-cream/30 p-6 rounded-xl shadow-inner">
+                <div className="space-y-5 mb-8 bg-gray-100/80 p-6 rounded-xl shadow-inner">
                   <div className="flex items-center text-api-midnight/80">
-                    <CalendarDays className="h-5 w-5 mr-4 text-api-terracotta" />
+                    <CalendarDays className="h-5 w-5 mr-4 text-gray-600" />
                     <span className="font-medium">March 27, 2025</span>
                   </div>
                   <div className="flex items-center text-api-midnight/80">
-                    <Clock className="h-5 w-5 mr-4 text-api-terracotta" />
+                    <Clock className="h-5 w-5 mr-4 text-gray-600" />
                     <span className="font-medium">9:00 AM - 4:00 PM</span>
                   </div>
                   <div className="flex items-center text-api-midnight/80">
-                    <MapPin className="h-5 w-5 mr-4 text-api-terracotta" />
+                    <MapPin className="h-5 w-5 mr-4 text-gray-600" />
                     <span className="font-medium">Trademark Hotel, Gigiri, Nairobi</span>
                   </div>
                 </div>
               </div>
               
               <div className="flex flex-col sm:flex-row gap-4 mt-auto">
-                <Button className="bg-api-green hover:bg-api-darkgreen text-white rounded-full shadow-md px-6">
-                  Register Now
+                <Button className="bg-gray-600 hover:bg-gray-700 text-white rounded-full shadow-md px-6">
+                  <History className="mr-2 h-4 w-4" /> Event Concluded
                 </Button>
                 
                 <Dialog>
                   <DialogTrigger asChild>
-                    <Button variant="outline" className="border-api-green text-api-green hover:bg-api-green/10 rounded-full px-6">
-                      <FileText className="mr-2 h-4 w-4" /> Event Details
+                    <Button variant="outline" className="border-gray-500 text-gray-700 hover:bg-gray-100 rounded-full px-6">
+                      <FileText className="mr-2 h-4 w-4" /> Event Summary
                     </Button>
                   </DialogTrigger>
                   <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
@@ -117,12 +117,12 @@ const Event = () => {
                     </DialogHeader>
                     <div className="py-4 space-y-6">
                       <div>
-                        <h3 className="text-lg font-semibold text-api-darkgreen mb-2">Event Summary</h3>
-                        <p className="text-api-charcoal">The regional dialogue on the conflict in Eastern Congo will bring together 50+ participants from Kenya, DRC, Rwanda, Uganda, and Ghana. The day-long event will feature presentations from conflict resolution experts, testimonials from affected communities, and interactive workshops aimed at developing actionable peace initiatives.</p>
+                        <h3 className="text-lg font-semibold text-gray-700 mb-2">Event Summary</h3>
+                        <p className="text-api-charcoal">The regional dialogue on the conflict in Eastern Congo brought together 50+ participants from Kenya, DRC, Rwanda, Uganda, and Ghana. The day-long event featured presentations from conflict resolution experts, testimonials from affected communities, and interactive workshops aimed at developing actionable peace initiatives.</p>
                       </div>
                       
                       <div>
-                        <h3 className="text-lg font-semibold text-api-darkgreen mb-2">Expected Outcomes</h3>
+                        <h3 className="text-lg font-semibold text-gray-700 mb-2">Key Outcomes</h3>
                         <ul className="list-disc pl-5 space-y-2 text-api-charcoal">
                           <li>Creation of a cross-border community engagement framework</li>
                           <li>Establishment of a regional early warning system for conflict prevention</li>
@@ -132,13 +132,13 @@ const Event = () => {
                       </div>
                       
                       <div>
-                        <h3 className="text-lg font-semibold text-api-darkgreen mb-2">Registration Information</h3>
-                        <p className="text-api-charcoal">Registration is free but spaces are limited. Please register by March 15, 2025 to secure your place. Remote participation options are available for those unable to attend in person.</p>
+                        <h3 className="text-lg font-semibold text-gray-700 mb-2">Next Steps</h3>
+                        <p className="text-api-charcoal">Following this successful dialogue, we are planning follow-up sessions in Rwanda and Uganda to continue building momentum for our peace initiatives in the region.</p>
                       </div>
                       
                       <div className="pt-4">
-                        <Button className="w-full bg-api-green hover:bg-api-darkgreen text-white">
-                          Register for This Event
+                        <Button className="w-full bg-gray-600 hover:bg-gray-700 text-white">
+                          Download Event Report
                         </Button>
                       </div>
                     </div>
