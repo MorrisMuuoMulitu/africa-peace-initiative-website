@@ -10,6 +10,7 @@ import Blog from "./pages/Blog";
 import BlogArchive from "./pages/BlogArchive";
 import NotFound from "./pages/NotFound";
 import DonationPage from "./pages/Donation";
+import EventGallery from "./pages/EventGallery";
 
 // Create a client outside of the component to avoid recreation on each render
 const queryClient = new QueryClient();
@@ -27,6 +28,7 @@ const App = () => {
               <Route path="/donate" element={<DonationPage />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/archive" element={<BlogArchive />} />
+              <Route path="/event-gallery" element={<EventGallery />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

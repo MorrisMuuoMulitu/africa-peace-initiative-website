@@ -22,13 +22,19 @@ const Testimonials = () => {
       quote: "The recent event stood out as an inclusive platform, thematically rich in its integration of multisectoral aspects of peacebuilding, including the role of gender in the pursuit of peace. This inclusivity was also reflected in the geographical diversity of the participants and panelists, who came from the DRC 🇨🇩, Rwanda 🇷🇼, Burundi 🇧🇮, Kenya 🇰🇪, Tanzania 🇹🇿, South Sudan 🇸🇸, and included development partners. The high quality of the panelists' contributions, the depth of the discussions, and the concrete outcomes from the breakout sessions gave this event a distinct mark of excellence.",
       name: "Mick Mutiki Kilumba",
       role: "Security Governance Expert, President of the Civil Society Consultation Framework in South Kivu",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+      image: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/Testimonials/Mick2.png?updatedAt=1746720544130"
     },
     {
       quote: "This event couldn't have come at a better time. It provided a critical platform to reflect deeply on the ongoing conflicts in Eastern DRC. By bringing together political leaders and civil society actors from the region, it addressed the pressing challenges posed by armed conflicts and opened space for exploring alternative pathways to peace and security. What stood out for me was the event's ability to unpack both the internal and external drivers of conflict, allowing participants to formulate concrete, relevant recommendations for sustainable peace. The organization was top-notch—the themes were timely and contextual, the panelists were expertly chosen, and the quality of the discussions was remarkably high. The thoughtful selection of participants elevated the entire experience, making the debates rich, insightful, and impactful.",
       name: "Eric Mikalano",
       role: "Executive Secretary, Initiative for Good Governance of Natural Resources in Kivu (IBGRN/K)",
-      image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+      image: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/Testimonials/Erick.png?updatedAt=1746719834684"
+    },
+    {
+      quote: "L'Accord-cadre d'Addis-Abeba constitue un cadre de référence stratégique et complet pour aborder les causes profondes et régionales des conflits en RDC. En engageant la RDC, les pays voisins et les partenaires internationaux à des réformes et à une coopération renforcée, il ouvre la voie à une paix durable dans la région des Grands Lacs.",
+      name: "Nickson Kasola",
+      role: "Regional Peace Advocate",
+      image: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/Testimonials/Nickson.png?updatedAt=1746720412743"
     }
   ];
 
@@ -114,7 +120,7 @@ const Testimonials = () => {
           </div>
         ) : (
           // Desktop Version - Staggered Grid
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 xl:gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 xl:gap-12">
             {testimonials.map((testimonial, index) => (
               <div 
                 key={index} 

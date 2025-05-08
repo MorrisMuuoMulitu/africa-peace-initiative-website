@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { CalendarDays, Clock, MapPin, FileText, ArrowRight, History } from "lucide-react";
+import { CalendarDays, Clock, MapPin, FileText, ArrowRight, History, Images } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -33,9 +33,10 @@ const Event = () => {
           <Button 
             variant="outline" 
             className="mt-6 md:mt-0 border-api-terracotta text-api-terracotta hover:bg-api-terracotta/10"
-            onClick={() => window.location.href = '/events'}
           >
-            View All Events <ArrowRight className="ml-1 h-4 w-4" />
+            <Link to="/events" className="flex items-center">
+              View All Events <ArrowRight className="ml-1 h-4 w-4" />
+            </Link>
           </Button>
         </div>
 
@@ -144,6 +145,12 @@ const Event = () => {
                     </div>
                   </DialogContent>
                 </Dialog>
+                
+                <Link to="/event-gallery">
+                  <Button variant="outline" className="border-gray-500 text-gray-700 hover:bg-gray-100 rounded-full px-6 w-full">
+                    <Images className="mr-2 h-4 w-4" /> View Photo Gallery
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
