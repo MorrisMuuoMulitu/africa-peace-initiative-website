@@ -125,7 +125,7 @@ const EventHighlights = () => {
         </div>
 
         {isMobile ? (
-          // Enhanced Mobile version - Full-width carousel with better image presentation
+          // Enhanced Mobile version with improved image display
           <div className="mt-8">
             <Carousel
               opts={{
@@ -145,26 +145,27 @@ const EventHighlights = () => {
                         style={{ transitionDelay: `${index * 100}ms` }}>
                           <CardContent className="p-0">
                             <div className="relative">
-                              <AspectRatio ratio={16/9}>
+                              {/* Better mobile aspect ratio that preserves image integrity */}
+                              <AspectRatio ratio={4/3} className="bg-black/5">
                                 <img
                                   src={highlight.image}
                                   alt={highlight.title}
-                                  className="w-full h-full object-cover"
+                                  className="w-full h-full object-contain bg-black/5"
                                   loading="lazy"
                                   width="600"
                                   height="450"
                                 />
                               </AspectRatio>
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex flex-col justify-end p-4 sm:p-6">
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex flex-col justify-end p-4 sm:p-6">
                                 <Badge 
-                                  className="self-start mb-3 bg-api-terracotta border-none text-white font-medium"
+                                  className="self-start mb-3 bg-api-terracotta border-none text-white font-medium backdrop-blur-sm"
                                 >
                                   Topic {index + 1}
                                 </Badge>
-                                <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
+                                <h3 className="text-xl md:text-2xl font-bold text-white mb-2 drop-shadow-md">
                                   {highlight.title}
                                 </h3>
-                                <p className="text-white/90 text-sm">
+                                <p className="text-white/90 text-sm backdrop-blur-[2px] bg-black/10 p-2 rounded-lg shadow-inner">
                                   {highlight.description}
                                 </p>
                                 <div className="flex items-center mt-3">
@@ -208,14 +209,16 @@ const EventHighlights = () => {
                             <X size={20} />
                           </button>
                           
-                          <img
-                            src={highlight.image}
-                            alt={highlight.title}
-                            className="w-full h-auto object-contain rounded max-h-[75vh] mx-auto"
-                            loading="lazy"
-                          />
+                          <div className="flex items-center justify-center h-[75vh] bg-black/40 backdrop-blur-md">
+                            <img
+                              src={highlight.image}
+                              alt={highlight.title}
+                              className="max-w-full max-h-[70vh] object-contain rounded shadow-2xl"
+                              loading="lazy"
+                            />
+                          </div>
                           
-                          <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 to-transparent">
+                          <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 to-transparent backdrop-blur-sm">
                             <div className="flex justify-between items-center mb-2">
                               <h3 className="text-xl font-bold text-white">
                                 {highlight.title}
@@ -264,57 +267,53 @@ const EventHighlights = () => {
             </Carousel>
           </div>
         ) : (
-          // Enhanced Desktop version - Image grid with improved presentation
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          // Enhanced Desktop version - Creative masonry-style grid
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[200px]">
             {highlights.map((highlight, index) => (
               <Dialog key={index}>
-                <DialogTrigger className="w-full text-left">
-                  <Card
+                <DialogTrigger className="w-full h-full text-left">
+                  <div 
                     className={`overflow-hidden border-none rounded-xl shadow-lg hover:shadow-xl transition-all duration-500 cursor-pointer ${
-                      inView
-                        ? "opacity-100 translate-y-0"
-                        : "opacity-0 translate-y-12"
+                      inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+                    } ${
+                      // Create masonry layout by spanning some items across 2 rows or columns
+                      index % 3 === 0 ? 'md:col-span-2 md:row-span-2' : 
+                      index % 5 === 0 ? 'md:col-span-1 md:row-span-2' : 'md:col-span-1 md:row-span-1'
                     }`}
                     style={{ transitionDelay: `${index * 100}ms` }}
                   >
-                    <CardContent className="p-0">
-                      <div className="relative">
-                        <AspectRatio ratio={16/9}>
-                          <img
-                            src={highlight.image}
-                            alt={highlight.title}
-                            className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                            loading="lazy"
-                            width="600"
-                            height="338"
-                          />
-                        </AspectRatio>
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-6">
-                          <Badge 
-                            className="self-start mb-3 bg-api-terracotta border-none text-white font-medium"
-                          >
-                            Topic {index + 1}
-                          </Badge>
-                          <h3 className="text-xl font-bold text-white mb-2">
-                            {highlight.title}
-                          </h3>
-                          <p className="text-white/90 text-sm">
-                            {highlight.description}
-                          </p>
-                          <div className="flex items-center mt-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                            <ZoomIn size={18} className="text-white mr-2" />
-                            <span className="text-white/90 text-xs">Click to view full image</span>
-                          </div>
+                    <div className="relative w-full h-full group">
+                      <img
+                        src={highlight.image}
+                        alt={highlight.title}
+                        className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-4 sm:p-6 opacity-90 group-hover:opacity-100 transition-all duration-300">
+                        <Badge 
+                          className="self-start mb-2 bg-api-terracotta border-none text-white font-medium backdrop-blur-sm transform group-hover:-translate-y-1 transition-transform duration-300"
+                        >
+                          Topic {index + 1}
+                        </Badge>
+                        <h3 className="text-lg sm:text-xl font-bold text-white mb-1 group-hover:text-api-cream transition-colors duration-300">
+                          {highlight.title}
+                        </h3>
+                        <p className="text-white/90 text-xs sm:text-sm line-clamp-2 group-hover:line-clamp-none transition-all duration-300">
+                          {highlight.description}
+                        </p>
+                        <div className="flex items-center mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <ZoomIn size={16} className="text-white mr-2" />
+                          <span className="text-white/90 text-xs">View details</span>
                         </div>
                       </div>
-                    </CardContent>
-                  </Card>
+                    </div>
+                  </div>
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-5xl max-h-[90vh] overflow-hidden p-0 bg-api-midnight/95 border-none">
-                  <div className="relative w-full h-full p-1">
-                    {/* Image navigation controls */}
+                <DialogContent className="sm:max-w-5xl max-h-[95vh] overflow-hidden p-0 bg-api-midnight/95 border-none rounded-xl">
+                  <div className="relative w-full h-full">
+                    {/* Improved controls with better positioning and styling */}
                     <button 
-                      className="absolute left-4 top-1/2 z-10 bg-black/40 hover:bg-black/60 text-white p-3 rounded-full transform -translate-y-1/2 transition-all"
+                      className="absolute left-4 top-1/2 z-10 bg-black/30 hover:bg-black/60 text-white p-3 rounded-full transform -translate-y-1/2 transition-all hover:scale-110"
                       onClick={(e) => {
                         e.stopPropagation();
                         navigateImage('prev');
@@ -324,7 +323,7 @@ const EventHighlights = () => {
                     </button>
                     
                     <button 
-                      className="absolute right-4 top-1/2 z-10 bg-black/40 hover:bg-black/60 text-white p-3 rounded-full transform -translate-y-1/2 transition-all"
+                      className="absolute right-4 top-1/2 z-10 bg-black/30 hover:bg-black/60 text-white p-3 rounded-full transform -translate-y-1/2 transition-all hover:scale-110"
                       onClick={(e) => {
                         e.stopPropagation();
                         navigateImage('next');
@@ -334,7 +333,7 @@ const EventHighlights = () => {
                     </button>
                     
                     <button 
-                      className="absolute right-4 top-4 z-10 bg-black/40 hover:bg-black/60 text-white p-2 rounded-full"
+                      className="absolute right-4 top-4 z-10 bg-black/30 hover:bg-black/60 text-white p-2 rounded-full transition-all hover:rotate-90"
                       onClick={() => document.querySelector('[data-state="open"] [data-radix-collection-item]')?.dispatchEvent(
                         new MouseEvent('click', { bubbles: true })
                       )}
@@ -342,21 +341,30 @@ const EventHighlights = () => {
                       <X size={24} />
                     </button>
                     
-                    <img
-                      src={highlight.image}
-                      alt={highlight.title}
-                      className="w-auto h-auto max-w-full max-h-[75vh] mx-auto object-contain rounded"
-                      loading="lazy"
-                    />
+                    {/* Improved image display area with dark backdrop */}
+                    <div className="flex items-center justify-center h-[75vh] bg-black/60 backdrop-blur-md p-4">
+                      <img
+                        src={highlight.image}
+                        alt={highlight.title}
+                        className="max-w-full max-h-[75vh] object-contain rounded-md shadow-2xl"
+                        loading="eager" // Load immediately when dialog opens
+                      />
+                    </div>
                     
-                    <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 to-transparent">
-                      <div className="flex justify-between items-center mb-3">
-                        <h3 className="text-2xl font-bold text-white">
-                          {highlight.title}
-                        </h3>
+                    {/* Enhanced info panel with better visual hierarchy */}
+                    <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/95 to-black/60 backdrop-blur-sm">
+                      <div className="flex justify-between items-start mb-3">
+                        <div>
+                          <Badge className="mb-2 bg-api-terracotta/90 border-none text-white">
+                            Topic {index + 1} of {highlights.length}
+                          </Badge>
+                          <h3 className="text-2xl font-bold text-white">
+                            {highlight.title}
+                          </h3>
+                        </div>
                         <div className="flex gap-3">
                           <button 
-                            className="bg-api-terracotta/80 hover:bg-api-terracotta text-white p-2 rounded-full transition-colors flex items-center gap-2"
+                            className="bg-api-terracotta/80 hover:bg-api-terracotta text-white p-2 rounded-full transition-colors flex items-center gap-2 hover:shadow-lg"
                             onClick={(e) => {
                               e.stopPropagation();
                               handleDownload(highlight.image, highlight.title);
@@ -366,7 +374,7 @@ const EventHighlights = () => {
                             <span className="hidden sm:inline">Download</span>
                           </button>
                           <button 
-                            className="bg-api-terracotta/80 hover:bg-api-terracotta text-white p-2 rounded-full transition-colors flex items-center gap-2"
+                            className="bg-api-terracotta/80 hover:bg-api-terracotta text-white p-2 rounded-full transition-colors flex items-center gap-2 hover:shadow-lg"
                             onClick={(e) => {
                               e.stopPropagation();
                               handleShare(highlight.image, highlight.title);
@@ -377,19 +385,21 @@ const EventHighlights = () => {
                           </button>
                         </div>
                       </div>
-                      <p className="text-white/90 text-base">
+                      <p className="text-white/90 text-base leading-relaxed max-w-3xl">
                         {highlight.description}
                       </p>
                       <div className="text-white/70 text-sm mt-3">
-                        March 27, 2023 • Regional Dialogue on Eastern Congo • Topic {index + 1} of {highlights.length}
+                        March 27, 2023 • Regional Dialogue on Eastern Congo
                       </div>
                       
-                      {/* Thumbnail navigation */}
-                      <div className="hidden md:flex overflow-x-auto gap-2 mt-4 pb-2">
+                      {/* Thumbnail navigation - improved style */}
+                      <div className="hidden md:flex overflow-x-auto gap-3 mt-5 pb-2 px-1">
                         {highlights.map((thumb, idx) => (
                           <div 
                             key={idx}
-                            className={`relative cursor-pointer flex-shrink-0 w-16 h-12 rounded overflow-hidden ${idx === index ? 'ring-2 ring-api-terracotta' : 'opacity-70 hover:opacity-100'}`}
+                            className={`relative cursor-pointer flex-shrink-0 w-20 h-14 rounded-md overflow-hidden 
+                              ${idx === index ? 'ring-2 ring-api-terracotta scale-110 z-10' : 
+                              'opacity-60 hover:opacity-100 hover:scale-105'} transition-all duration-300`}
                             onClick={(e) => {
                               e.stopPropagation(); 
                               setActiveImage(thumb.image);
@@ -402,6 +412,9 @@ const EventHighlights = () => {
                               className="w-full h-full object-cover"
                               loading="lazy"
                             />
+                            {idx === index && (
+                              <div className="absolute inset-0 bg-api-terracotta/20 backdrop-blur-[1px]"></div>
+                            )}
                           </div>
                         ))}
                       </div>
