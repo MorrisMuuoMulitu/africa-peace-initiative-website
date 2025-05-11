@@ -1,11 +1,10 @@
 
 import React, { useState } from "react";
 import { useInView } from "react-intersection-observer";
-import HighlightGalleryDialog from "@/components/highlights/HighlightGalleryDialog";
 import HighlightPreview from "@/components/highlights/HighlightPreview";
 import TopicIndicators from "@/components/highlights/TopicIndicators";
 import { highlightsData } from "@/data/eventHighlightsData";
-import { downloadImage, shareImage } from "@/utils/imageUtils";
+import { Link } from "react-router-dom";
 
 const EventHighlights: React.FC = () => {
   const [ref, inView] = useInView({
@@ -13,22 +12,11 @@ const EventHighlights: React.FC = () => {
     threshold: 0.1,
   });
 
-  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
-
-  // Navigate slides in gallery view
-  const navigateSlide = (direction: 'next' | 'prev') => {
-    if (direction === 'next') {
-      setCurrentSlide((prev) => (prev + 1) % highlightsData.length);
-    } else {
-      setCurrentSlide((prev) => (prev - 1 + highlightsData.length) % highlightsData.length);
-    }
-  };
 
   // Jump to a specific slide
   const jumpToSlide = (index: number) => {
     setCurrentSlide(index);
-    setIsGalleryOpen(true);
   };
 
   return (
@@ -54,7 +42,7 @@ const EventHighlights: React.FC = () => {
         <div className="max-w-2xl mx-auto">
           <HighlightPreview 
             highlight={highlightsData[currentSlide]}
-            onClick={() => setIsGalleryOpen(true)}
+            onClick={() => {}}
             totalCount={highlightsData.length}
           />
 
@@ -65,18 +53,6 @@ const EventHighlights: React.FC = () => {
             onSelect={jumpToSlide}
           />
         </div>
-
-        {/* Fullscreen Gallery Dialog */}
-        <HighlightGalleryDialog 
-          isOpen={isGalleryOpen}
-          onOpenChange={setIsGalleryOpen}
-          highlights={highlightsData}
-          currentSlide={currentSlide}
-          setCurrentSlide={setCurrentSlide}
-          handleDownload={downloadImage}
-          handleShare={shareImage}
-          navigateSlide={navigateSlide}
-        />
       </div>
     </div>
   );

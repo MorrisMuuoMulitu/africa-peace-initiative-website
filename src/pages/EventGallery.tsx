@@ -10,6 +10,7 @@ import { ArrowLeft, Download, ExternalLink, Images, Share2, X } from "lucide-rea
 import { Link } from "react-router-dom";
 import { downloadImage, shareImage } from "@/utils/imageUtils";
 import { cn } from "@/lib/utils";
+
 const EventGallery = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -137,8 +138,11 @@ const EventGallery = () => {
     alt: "Woman delegate with API sash at the conference",
     thumbSrc: "/lovable-uploads/474b7f79-77fb-4145-8aac-fb43f3c0bdcc.png"
   }];
+  
   const googlePhotosUrl = "https://photos.app.goo.gl/GjGzUHHmWyhWSar66";
-  return <div className="min-h-screen flex flex-col">
+  
+  return (
+    <div className="min-h-screen flex flex-col">
       <Navbar />
       
       <main className="flex-grow">
@@ -232,15 +236,13 @@ const EventGallery = () => {
         <section ref={ref} className={`py-12 px-4 sm:px-6 bg-white transition-all duration-700 ${inView ? "opacity-100" : "opacity-0"}`}>
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-              {galleryImages.map(image => <Dialog key={image.id}>
+              {galleryImages.map(image => (
+                <Dialog key={image.id}>
                   <DialogTrigger asChild>
                     <Card className="overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer group border-0 ring-1 ring-gray-200">
                       <AspectRatio ratio={4 / 3} className="bg-gray-100">
                         <img src={image.thumbSrc} alt={image.alt} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
                       </AspectRatio>
-                      <div className="p-3 bg-white">
-                        
-                      </div>
                     </Card>
                   </DialogTrigger>
                   <DialogContent className="max-w-[95vw] sm:max-w-3xl md:max-w-4xl lg:max-w-5xl p-1 sm:p-2 bg-black border-none">
@@ -264,13 +266,16 @@ const EventGallery = () => {
                       </div>
                     </div>
                   </DialogContent>
-                </Dialog>)}
+                </Dialog>
+              ))}
             </div>
           </div>
         </section>
       </main>
 
       <Footer />
-    </div>;
+    </div>
+  );
 };
+
 export default EventGallery;
