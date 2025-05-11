@@ -20,7 +20,7 @@ const EventGallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [googlePhotosHovered, setGooglePhotosHovered] = useState(false);
 
-  // Gallery images for the March 27th event
+  // Updated gallery images - removed the last 5 images and added the new uploaded photos
   const galleryImages = [
     {
       id: 1,
@@ -64,35 +64,102 @@ const EventGallery = () => {
       alt: "Group discussion on conflict resolution strategies",
       thumbSrc: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/RegionalDialogue/API-02634.jpg?updatedAt=1743317508870&tr=w-400,h-300,fo-auto",
     },
+    // New uploaded images
     {
-      id: 8,
-      src: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/EventDiscussed/1.jpeg?updatedAt=1744466094011&tr=w-1200,h-900,fo-auto",
-      alt: "Regional security cooperation discussion",
-      thumbSrc: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/EventDiscussed/1.jpeg?updatedAt=1744466094011&tr=w-400,h-300,fo-auto",
+      id: 13,
+      src: "/lovable-uploads/f35ed5ea-da1f-465c-a9f2-485fb5dd07c0.png",
+      alt: "Delegates in discussion at the Regional Dialogue",
+      thumbSrc: "/lovable-uploads/f35ed5ea-da1f-465c-a9f2-485fb5dd07c0.png",
     },
     {
-      id: 9,
-      src: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/EventDiscussed/2.jpeg?updatedAt=1744466096764&tr=w-1200,h-900,fo-auto",
-      alt: "Peace process mediation workshop",
-      thumbSrc: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/EventDiscussed/2.jpeg?updatedAt=1744466096764&tr=w-400,h-300,fo-auto",
+      id: 14,
+      src: "/lovable-uploads/55c5d508-2db4-4beb-aca1-440e70ea6a10.png",
+      alt: "Africa Peace Initiative representatives at the event",
+      thumbSrc: "/lovable-uploads/55c5d508-2db4-4beb-aca1-440e70ea6a10.png",
     },
     {
-      id: 10,
-      src: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/EventDiscussed/3.jpeg?updatedAt=1744466097353&tr=w-1200,h-900,fo-auto",
-      alt: "Community-based solutions presentation",
-      thumbSrc: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/EventDiscussed/3.jpeg?updatedAt=1744466097353&tr=w-400,h-300,fo-auto",
+      id: 15,
+      src: "/lovable-uploads/a70f4303-1fde-4409-abc3-6a4926f5aaa1.png",
+      alt: "Speaker addressing participants at the Regional Dialogue",
+      thumbSrc: "/lovable-uploads/a70f4303-1fde-4409-abc3-6a4926f5aaa1.png",
     },
     {
-      id: 11,
-      src: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/EventDiscussed/6.jpeg?updatedAt=1744466097577&tr=w-1200,h-900,fo-auto",
-      alt: "Governance and accountability forum",
-      thumbSrc: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/EventDiscussed/6.jpeg?updatedAt=1744466097577&tr=w-400,h-300,fo-auto",
+      id: 16,
+      src: "/lovable-uploads/9533dbfb-235d-4130-8ff2-1c7b925c0d8b.png",
+      alt: "Delegate sharing insights during the discussion session",
+      thumbSrc: "/lovable-uploads/9533dbfb-235d-4130-8ff2-1c7b925c0d8b.png",
     },
     {
-      id: 12,
-      src: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/EventDiscussed/5.jpeg?updatedAt=1744466097581&tr=w-1200,h-900,fo-auto",
-      alt: "Resource management discussion panel",
-      thumbSrc: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/EventDiscussed/5.jpeg?updatedAt=1744466097581&tr=w-400,h-300,fo-auto",
+      id: 17,
+      src: "/lovable-uploads/0b5b8b62-905b-4993-8336-b78bdeec3129.png",
+      alt: "Speaker in yellow suit addressing the Regional Dialogue",
+      thumbSrc: "/lovable-uploads/0b5b8b62-905b-4993-8336-b78bdeec3129.png",
+    },
+    {
+      id: 18,
+      src: "/lovable-uploads/7f85cab1-22d9-4382-b44b-17cb430eef56.png",
+      alt: "Woman speaker in colorful attire at the Regional Dialogue",
+      thumbSrc: "/lovable-uploads/7f85cab1-22d9-4382-b44b-17cb430eef56.png",
+    },
+    {
+      id: 19,
+      src: "/lovable-uploads/9ebed94d-d6e0-48cd-a519-5867d69d386a.png",
+      alt: "Woman in denim jacket speaking at the Regional Dialogue",
+      thumbSrc: "/lovable-uploads/9ebed94d-d6e0-48cd-a519-5867d69d386a.png",
+    },
+    {
+      id: 20,
+      src: "/lovable-uploads/2101fe52-d0b5-4b7b-a356-79ef2f5a0c6a.png",
+      alt: "Delegate with API sash addressing participants",
+      thumbSrc: "/lovable-uploads/2101fe52-d0b5-4b7b-a356-79ef2f5a0c6a.png",
+    },
+    {
+      id: 21,
+      src: "/lovable-uploads/d59261a6-dc39-4b39-85f2-6486cf0dbe30.png",
+      alt: "Delegate addressing the forum on regional solutions",
+      thumbSrc: "/lovable-uploads/d59261a6-dc39-4b39-85f2-6486cf0dbe30.png",
+    },
+    {
+      id: 22,
+      src: "/lovable-uploads/0454baac-59fc-4ee7-b30d-7e18843a33e3.png",
+      alt: "Delegate speaking while others listen at conference table",
+      thumbSrc: "/lovable-uploads/0454baac-59fc-4ee7-b30d-7e18843a33e3.png",
+    },
+    {
+      id: 23,
+      src: "/lovable-uploads/ef8132fe-148a-4c7f-bf5f-5c760f1dc4b4.png",
+      alt: "Senior delegate speaking at the Regional Dialogue",
+      thumbSrc: "/lovable-uploads/ef8132fe-148a-4c7f-bf5f-5c760f1dc4b4.png",
+    },
+    {
+      id: 24,
+      src: "/lovable-uploads/1ca65399-e362-4cd0-83d3-27e1cd415803.png",
+      alt: "Delegates examining documents at the peace conference",
+      thumbSrc: "/lovable-uploads/1ca65399-e362-4cd0-83d3-27e1cd415803.png",
+    },
+    {
+      id: 25,
+      src: "/lovable-uploads/75982bf5-063d-4413-b148-79232e0106e8.png",
+      alt: "Delegate in patterned shirt addressing the audience",
+      thumbSrc: "/lovable-uploads/75982bf5-063d-4413-b148-79232e0106e8.png",
+    },
+    {
+      id: 26,
+      src: "/lovable-uploads/cfb4d379-9e90-41c0-b97b-64749614bcc9.png",
+      alt: "Speaker addressing participants at conference",
+      thumbSrc: "/lovable-uploads/cfb4d379-9e90-41c0-b97b-64749614bcc9.png",
+    },
+    {
+      id: 27,
+      src: "/lovable-uploads/b5d3589f-1545-4f18-b76d-4ea1ab96ccab.png",
+      alt: "Africa Peace Initiative representatives at the dialogue",
+      thumbSrc: "/lovable-uploads/b5d3589f-1545-4f18-b76d-4ea1ab96ccab.png",
+    },
+    {
+      id: 28,
+      src: "/lovable-uploads/474b7f79-77fb-4145-8aac-fb43f3c0bdcc.png",
+      alt: "Woman delegate with API sash at the conference",
+      thumbSrc: "/lovable-uploads/474b7f79-77fb-4145-8aac-fb43f3c0bdcc.png",
     },
   ];
 
@@ -195,7 +262,7 @@ const EventGallery = () => {
                       googlePhotosHovered ? "rotate-[-12deg] translate-x-[-10px]" : ""
                     )}>
                       <img 
-                        src="https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/EventDiscussed/2.jpeg?updatedAt=1744466096764&tr=w-400,h-300,fo-auto" 
+                        src="/lovable-uploads/55c5d508-2db4-4beb-aca1-440e70ea6a10.png" 
                         alt="Event photo" 
                         className="h-full w-full object-cover rounded-lg"
                       />
@@ -205,7 +272,7 @@ const EventGallery = () => {
                       googlePhotosHovered ? "rotate-[8deg] translate-y-[-5px]" : ""
                     )}>
                       <img 
-                        src="https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/RegionalDialogue/API-03031.jpg?updatedAt=1743316868270&tr=w-400,h-300,fo-auto" 
+                        src="/lovable-uploads/a70f4303-1fde-4409-abc3-6a4926f5aaa1.png" 
                         alt="Event photo" 
                         className="h-full w-full object-cover rounded-lg"
                       />
@@ -215,7 +282,7 @@ const EventGallery = () => {
                       googlePhotosHovered ? "rotate-[16deg] translate-x-[10px] translate-y-[-8px]" : ""
                     )}>
                       <img 
-                        src="https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/RegionalDialogue/API-02746.jpg?updatedAt=1743317508937&tr=w-400,h-300,fo-auto" 
+                        src="/lovable-uploads/7f85cab1-22d9-4382-b44b-17cb430eef56.png" 
                         alt="Event photo" 
                         className="h-full w-full object-cover rounded-lg"
                       />
