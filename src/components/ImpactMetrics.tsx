@@ -19,7 +19,7 @@ const ImpactMetrics = () => {
   const targetCounts = {
     countries: 5,
     attendees: 57,
-    months: 2,
+    months: 3,
     events: 1,
   };
 
