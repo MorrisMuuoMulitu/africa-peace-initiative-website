@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { GalleryImage } from "@/lib/gallery-utils";
-import { Camera, X } from "lucide-react";
+import { Camera, X, ExternalLink } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface GalleryMasonryProps {
   images: GalleryImage[];
@@ -16,9 +17,13 @@ const GalleryMasonry: React.FC<GalleryMasonryProps> = ({
   onImageClick,
   selectedCategory,
 }) => {
+  // Filter out any images without valid URLs first
+  const validImages = images.filter(img => img.src && (img.src.startsWith('http') || img.src.startsWith('/')));
+  
+  // Then apply category filter if needed
   const filteredImages = selectedCategory && selectedCategory !== "all"
-    ? images.filter(img => img.category === selectedCategory)
-    : images;
+    ? validImages.filter(img => img.category === selectedCategory)
+    : validImages;
 
   return (
     <div className="w-full">

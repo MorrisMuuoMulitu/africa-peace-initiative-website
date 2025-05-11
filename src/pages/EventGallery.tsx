@@ -13,6 +13,8 @@ import GalleryLightbox from "@/components/gallery/GalleryLightbox";
 import GalleryFilter from "@/components/gallery/GalleryFilter";
 import { eventGalleryImages, GalleryImage, getImageCategories } from "@/lib/gallery-utils";
 
+const GOOGLE_PHOTOS_ALBUM_URL = 'https://photos.app.goo.gl/GjGzUHHmWyhWSar66';
+
 const EventGallery = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -25,6 +27,11 @@ const EventGallery = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
   const categories = getImageCategories();
+
+  // Filter out images without valid URLs
+  const validImages = eventGalleryImages.filter(img => 
+    img.src && (img.src.startsWith('http') || img.src.startsWith('/'))
+  );
 
   const handleImageClick = (image: GalleryImage, index: number) => {
     setSelectedImage(image);
@@ -86,18 +93,9 @@ const EventGallery = () => {
                   Event Gallery
                 </h2>
                 <p className="text-api-midnight/70">
-                  {eventGalleryImages.length} photos from our regional dialogue
+                  {validImages.length} photos from our regional dialogue
                 </p>
               </div>
-              
-              <Button
-                variant="outline"
-                className="border-api-sage text-api-midnight hover:bg-api-sage/10"
-                onClick={() => window.open('https://photos.app.goo.gl/GjGzUHHmWyhWSar66', '_blank')}
-              >
-                <Image className="mr-2 h-4 w-4" />
-                View on Google Photos
-              </Button>
             </div>
             
             {/* Filters */}
@@ -105,11 +103,12 @@ const EventGallery = () => {
               categories={categories}
               selectedCategory={selectedCategory}
               onSelectCategory={setSelectedCategory}
+              googlePhotosUrl={GOOGLE_PHOTOS_ALBUM_URL}
             />
 
             {/* Gallery Grid */}
             <GalleryMasonry 
-              images={eventGalleryImages}
+              images={validImages}
               onImageClick={handleImageClick}
               selectedCategory={selectedCategory}
             />
@@ -118,7 +117,7 @@ const EventGallery = () => {
             <GalleryLightbox
               open={isLightboxOpen}
               onOpenChange={setIsLightboxOpen}
-              images={eventGalleryImages}
+              images={validImages}
               initialIndex={selectedImageIndex}
             />
           </div>

@@ -8,13 +8,16 @@ import {
   Presentation, 
   Network, 
   Image,
-  GalleryHorizontal
+  GalleryHorizontal,
+  ExternalLink
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface GalleryFilterProps {
   categories: string[];
   selectedCategory: string;
   onSelectCategory: (category: string) => void;
+  googlePhotosUrl?: string;
 }
 
 const getCategoryIcon = (category: string) => {
@@ -50,42 +53,67 @@ const GalleryFilter: React.FC<GalleryFilterProps> = ({
   categories,
   selectedCategory,
   onSelectCategory,
+  googlePhotosUrl
 }) => {
   return (
-    <div className="mb-8 overflow-x-auto pb-2">
-      <motion.div 
-        className="flex space-x-2 min-w-max"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3 }}
-      >
-        <button
-          className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-all 
-            ${selectedCategory === 'all' 
-              ? 'bg-api-terracotta text-white shadow-md' 
-              : 'bg-white text-api-midnight border border-gray-200 hover:bg-gray-50'
-            }`}
-          onClick={() => onSelectCategory('all')}
+    <div className="mb-8">
+      <div className="flex flex-wrap justify-between items-center mb-4">
+        <motion.div 
+          className="flex flex-wrap gap-2"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
         >
-          <GalleryHorizontal size={18} />
-          <span>All Photos</span>
-        </button>
-        
-        {categories.map((category) => (
           <button
-            key={category}
-            className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-all
-              ${selectedCategory === category 
+            className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-all 
+              ${selectedCategory === 'all' 
                 ? 'bg-api-terracotta text-white shadow-md' 
                 : 'bg-white text-api-midnight border border-gray-200 hover:bg-gray-50'
               }`}
-            onClick={() => onSelectCategory(category)}
+            onClick={() => onSelectCategory('all')}
           >
-            {getCategoryIcon(category)}
-            <span>{getCategoryLabel(category)}</span>
+            <GalleryHorizontal size={18} />
+            <span>All Photos</span>
           </button>
-        ))}
-      </motion.div>
+          
+          {categories.map((category) => (
+            <button
+              key={category}
+              className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-all
+                ${selectedCategory === category 
+                  ? 'bg-api-terracotta text-white shadow-md' 
+                  : 'bg-white text-api-midnight border border-gray-200 hover:bg-gray-50'
+                }`}
+              onClick={() => onSelectCategory(category)}
+            >
+              {getCategoryIcon(category)}
+              <span>{getCategoryLabel(category)}</span>
+            </button>
+          ))}
+        </motion.div>
+
+        {googlePhotosUrl && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+          >
+            <Button
+              variant="outline"
+              className="border-api-sage text-api-midnight hover:bg-api-sage/10 flex items-center gap-2"
+              onClick={() => window.open(googlePhotosUrl, '_blank')}
+            >
+              <Image className="h-4 w-4" />
+              <span>View All on Google Photos</span>
+              <ExternalLink className="h-3.5 w-3.5 ml-1 text-api-terracotta" />
+            </Button>
+          </motion.div>
+        )}
+      </div>
+      
+      <div className="overflow-x-auto pb-2">
+        <div className="h-px bg-gray-200 w-full mb-4"></div>
+      </div>
     </div>
   );
 };
