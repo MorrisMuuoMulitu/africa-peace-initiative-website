@@ -46,7 +46,7 @@ const HighlightGalleryDialog: React.FC<HighlightGalleryDialogProps> = ({
               <Badge className="bg-api-terracotta/90 border-none">
                 {currentSlide + 1} / {highlights.length}
               </Badge>
-              <h3 className="font-semibold text-white hidden sm:block">
+              <h3 className="font-semibold text-white">
                 {highlights[currentSlide].title}
               </h3>
             </div>
@@ -107,23 +107,17 @@ const HighlightGalleryDialog: React.FC<HighlightGalleryDialogProps> = ({
             </button>
           </div>
           
-          {/* Caption and Info */}
-          <div className="p-4 md:p-6 bg-api-midnight border-t border-white/10">
-            <h3 className="text-xl font-bold text-white sm:hidden mb-2">
-              {highlights[currentSlide].title}
-            </h3>
-            <p className="text-white/90 text-sm md:text-base mb-4">
-              {highlights[currentSlide].description}
-            </p>
-            <div className="flex flex-wrap justify-between items-center">
-              <div className="text-white/70 text-xs md:text-sm mb-3 md:mb-0">
-                March 27, 2023 • Regional Dialogue on Eastern Congo
+          {/* Mobile Controls */}
+          <div className="p-4 bg-api-midnight border-t border-white/10 md:hidden">
+            <div className="flex items-center justify-between">
+              <div className="text-white/70 text-xs">
+                March 27, 2025 • Regional Dialogue
               </div>
-              <div className="flex items-center gap-2 sm:hidden">
+              <div className="flex items-center gap-2">
                 <Button 
                   variant="outline" 
                   size="sm"
-                  className="text-white border-white/20 hover:bg-api-terracotta/20"
+                  className="text-white border-white/20 hover:bg-api-terracotta/20 h-8 w-8 p-0"
                   onClick={() => handleDownload(highlights[currentSlide].image, highlights[currentSlide].title)}
                 >
                   <Download size={16} />
@@ -131,47 +125,47 @@ const HighlightGalleryDialog: React.FC<HighlightGalleryDialogProps> = ({
                 <Button 
                   variant="outline"
                   size="sm"
-                  className="text-white border-white/20 hover:bg-api-terracotta/20"
+                  className="text-white border-white/20 hover:bg-api-terracotta/20 h-8 w-8 p-0"
                   onClick={() => handleShare(highlights[currentSlide].image, highlights[currentSlide].title)}
                 >
                   <Share2 size={16} />
                 </Button>
               </div>
             </div>
+          </div>
 
-            {/* Thumbnails Navigation - Only on larger screens */}
-            <div className="hidden md:flex overflow-x-auto gap-2 mt-4 pb-1 -mx-6 px-6">
-              {highlights.map((highlight, idx) => (
-                <div 
-                  key={idx}
-                  className={`relative cursor-pointer flex-shrink-0 w-16 h-12 md:w-20 md:h-14 rounded-md overflow-hidden 
-                    ${idx === currentSlide ? 'ring-2 ring-api-terracotta scale-105 z-10' : 
-                    'opacity-50 hover:opacity-80'} transition-all duration-300`}
-                  onClick={() => setCurrentSlide(idx)}
-                >
-                  <img 
-                    src={highlight.image} 
-                    alt={`Topic ${idx+1}`} 
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                </div>
-              ))}
-            </div>
-            
-            {/* Mobile Dots Navigation */}
-            <div className="flex md:hidden justify-center mt-4 gap-1.5">
-              {highlights.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setCurrentSlide(idx)}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    idx === currentSlide ? "w-6 bg-api-terracotta" : "bg-white/30"
-                  }`}
-                  aria-label={`Go to slide ${idx + 1}`}
+          {/* Thumbnails Navigation - Only on larger screens */}
+          <div className="hidden md:flex overflow-x-auto gap-2 p-4 bg-api-midnight border-t border-white/10">
+            {highlights.map((highlight, idx) => (
+              <div 
+                key={idx}
+                className={`relative cursor-pointer flex-shrink-0 w-16 h-12 md:w-20 md:h-14 rounded-md overflow-hidden 
+                  ${idx === currentSlide ? 'ring-2 ring-api-terracotta scale-105 z-10' : 
+                  'opacity-50 hover:opacity-80'} transition-all duration-300`}
+                onClick={() => setCurrentSlide(idx)}
+              >
+                <img 
+                  src={highlight.image} 
+                  alt={`Topic ${idx+1}`} 
+                  className="w-full h-full object-cover"
+                  loading="lazy"
                 />
-              ))}
-            </div>
+              </div>
+            ))}
+          </div>
+          
+          {/* Mobile Dots Navigation */}
+          <div className="flex md:hidden justify-center p-2 bg-api-midnight">
+            {highlights.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentSlide(idx)}
+                className={`w-2 h-2 mx-1 rounded-full transition-all ${
+                  idx === currentSlide ? "w-6 bg-api-terracotta" : "bg-white/30"
+                }`}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
           </div>
         </div>
       </DialogContent>

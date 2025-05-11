@@ -20,7 +20,7 @@ const Gallery = () => {
     { id: "communities", label: "Communities", icon: <Users size={18} /> },
   ];
 
-  // Updated gallery images with simplified alt text
+  // Updated gallery images with new uploaded photos
   const images = [
     {
       id: 1,
@@ -63,6 +63,133 @@ const Gallery = () => {
       alt: "Regional Peace Dialogue",
       category: "communities",
       thumbSrc: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/RegionalDialogue/API-02403.jpg?updatedAt=1743317508583&tr=w-400,h-300,fo-auto",
+    },
+    // New photos added from uploads
+    {
+      id: 7,
+      src: "/lovable-uploads/0c9f4719-201d-414a-83ab-4c74ab2f6100.png",
+      alt: "Regional Peace Dialogue",
+      category: "events",
+      thumbSrc: "/lovable-uploads/0c9f4719-201d-414a-83ab-4c74ab2f6100.png",
+    },
+    {
+      id: 8,
+      src: "/lovable-uploads/d38c2d1d-1fe3-4c29-aed3-30c3fa67bc93.png",
+      alt: "Regional Peace Dialogue",
+      category: "events",
+      thumbSrc: "/lovable-uploads/d38c2d1d-1fe3-4c29-aed3-30c3fa67bc93.png",
+    },
+    {
+      id: 9,
+      src: "/lovable-uploads/06f666f4-a2e2-41a8-9df9-6c90063d41ad.png",
+      alt: "Regional Peace Dialogue",
+      category: "events",
+      thumbSrc: "/lovable-uploads/06f666f4-a2e2-41a8-9df9-6c90063d41ad.png",
+    },
+    {
+      id: 10,
+      src: "/lovable-uploads/836e9718-7f45-4608-8bb2-e99a0cf107e0.png",
+      alt: "Regional Peace Dialogue",
+      category: "events",
+      thumbSrc: "/lovable-uploads/836e9718-7f45-4608-8bb2-e99a0cf107e0.png",
+    },
+    {
+      id: 11,
+      src: "/lovable-uploads/6714b51b-8eef-4f22-bfec-2ff9904ba3d1.png",
+      alt: "Regional Peace Dialogue",
+      category: "communities",
+      thumbSrc: "/lovable-uploads/6714b51b-8eef-4f22-bfec-2ff9904ba3d1.png",
+    },
+    {
+      id: 12,
+      src: "/lovable-uploads/d54cd3b5-1e74-4462-8633-0a3c45d9bd42.png",
+      alt: "Regional Peace Dialogue",
+      category: "communities",
+      thumbSrc: "/lovable-uploads/d54cd3b5-1e74-4462-8633-0a3c45d9bd42.png",
+    },
+    {
+      id: 13,
+      src: "/lovable-uploads/8140545d-a465-4538-9d25-01e3e0f2116f.png",
+      alt: "Regional Peace Dialogue",
+      category: "events",
+      thumbSrc: "/lovable-uploads/8140545d-a465-4538-9d25-01e3e0f2116f.png",
+    },
+    {
+      id: 14,
+      src: "/lovable-uploads/926c72e8-6ee7-4b98-b023-e52646328277.png",
+      alt: "Regional Peace Dialogue",
+      category: "events",
+      thumbSrc: "/lovable-uploads/926c72e8-6ee7-4b98-b023-e52646328277.png",
+    },
+    {
+      id: 15,
+      src: "/lovable-uploads/55e9b107-2405-4017-ab7c-17e93467407f.png",
+      alt: "Regional Peace Dialogue",
+      category: "events",
+      thumbSrc: "/lovable-uploads/55e9b107-2405-4017-ab7c-17e93467407f.png",
+    },
+    {
+      id: 16,
+      src: "/lovable-uploads/336e3867-557c-4619-8811-a7dc035f9bc9.png",
+      alt: "Regional Peace Dialogue",
+      category: "events",
+      thumbSrc: "/lovable-uploads/336e3867-557c-4619-8811-a7dc035f9bc9.png",
+    },
+    {
+      id: 17,
+      src: "/lovable-uploads/baf35163-f00d-4a7e-818f-c6138278d77c.png",
+      alt: "Regional Peace Dialogue",
+      category: "events",
+      thumbSrc: "/lovable-uploads/baf35163-f00d-4a7e-818f-c6138278d77c.png",
+    },
+    {
+      id: 18,
+      src: "/lovable-uploads/116135a1-d58e-45a0-aa05-afa236c6fb8d.png",
+      alt: "Regional Peace Dialogue",
+      category: "communities",
+      thumbSrc: "/lovable-uploads/116135a1-d58e-45a0-aa05-afa236c6fb8d.png",
+    },
+    {
+      id: 19,
+      src: "/lovable-uploads/3fae06e1-4d11-4419-9744-1e5aa17085ad.png",
+      alt: "Regional Peace Dialogue",
+      category: "events",
+      thumbSrc: "/lovable-uploads/3fae06e1-4d11-4419-9744-1e5aa17085ad.png",
+    },
+    {
+      id: 20,
+      src: "/lovable-uploads/0e1250e2-a686-4e2e-b06d-f6a0964f4e92.png",
+      alt: "Regional Peace Dialogue",
+      category: "events",
+      thumbSrc: "/lovable-uploads/0e1250e2-a686-4e2e-b06d-f6a0964f4e92.png",
+    },
+    {
+      id: 21,
+      src: "/lovable-uploads/53f242bd-2682-4162-98a3-86e61561ef23.png",
+      alt: "Regional Peace Dialogue",
+      category: "events",
+      thumbSrc: "/lovable-uploads/53f242bd-2682-4162-98a3-86e61561ef23.png",
+    },
+    {
+      id: 22,
+      src: "/lovable-uploads/c093f878-d6f8-4571-8105-aca4c14ed619.png",
+      alt: "Regional Peace Dialogue",
+      category: "events",
+      thumbSrc: "/lovable-uploads/c093f878-d6f8-4571-8105-aca4c14ed619.png",
+    },
+    {
+      id: 23,
+      src: "/lovable-uploads/6633392c-69c3-4d08-98b5-435b2465260d.png",
+      alt: "Regional Peace Dialogue",
+      category: "events",
+      thumbSrc: "/lovable-uploads/6633392c-69c3-4d08-98b5-435b2465260d.png",
+    },
+    {
+      id: 24,
+      src: "/lovable-uploads/a0023ca4-330d-4f5a-a830-0abd1ac7f709.png",
+      alt: "Regional Peace Dialogue",
+      category: "communities",
+      thumbSrc: "/lovable-uploads/a0023ca4-330d-4f5a-a830-0abd1ac7f709.png",
     },
   ];
 
@@ -112,7 +239,7 @@ const Gallery = () => {
               }`}
             >
               {/* Improved responsive grid with consistent aspect ratio */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
                 {images
                   .filter(
                     (img) => category.id === "all" || img.category === category.id
@@ -121,10 +248,10 @@ const Gallery = () => {
                     <Dialog key={image.id}>
                       <DialogTrigger asChild>
                         <div
-                          className="relative rounded-xl overflow-hidden cursor-pointer group shadow-lg transform transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98] border border-api-sage/20 touch-manipulation"
+                          className="relative rounded-xl overflow-hidden cursor-pointer group shadow-lg transform transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98] border border-api-sage/20 touch-manipulation bg-white"
                           style={{ 
-                            transitionDelay: `${index * 100}ms`,
-                            animationDelay: `${index * 100}ms`
+                            transitionDelay: `${index * 50}ms`,
+                            animationDelay: `${index * 50}ms`
                           }}
                           onClick={() => setSelectedImage(image.src)}
                         >
@@ -136,12 +263,14 @@ const Gallery = () => {
                               loading="lazy"
                               width="400"
                               height="300"
-                              srcSet={`${image.thumbSrc} 400w, ${image.src} 800w`}
-                              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                             />
                           </AspectRatio>
-                          <div className="absolute inset-0 bg-gradient-to-t from-api-midnight/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 sm:group-active:opacity-100 transition-opacity duration-300 flex items-end p-5">
-                            <p className="text-api-cream font-medium text-lg">{image.alt}</p>
+                          <div className="absolute inset-0 bg-gradient-to-t from-api-midnight/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 sm:group-active:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div className="p-2 w-full flex justify-center">
+                              <div className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
+                                <Camera size={16} className="text-white" />
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </DialogTrigger>
@@ -161,13 +290,8 @@ const Gallery = () => {
                               alt={image.alt}
                               className="w-full h-full rounded-lg shadow-2xl object-contain bg-api-midnight/80"
                               loading="lazy"
-                              width="800"
-                              height="600"
                             />
                           </AspectRatio>
-                          <div className="absolute bottom-0 left-0 right-0 p-3 bg-api-midnight/70 text-white rounded-b-lg">
-                            <p className="text-sm sm:text-base">{image.alt}</p>
-                          </div>
                         </div>
                       </DialogContent>
                     </Dialog>
