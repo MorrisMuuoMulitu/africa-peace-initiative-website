@@ -4,7 +4,6 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { ChevronLeft, ChevronRight, Download, Share2, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Badge } from "@/components/ui/badge";
 import { Highlight } from "@/data/eventHighlightsData";
 
@@ -81,16 +80,15 @@ const HighlightGalleryDialog: React.FC<HighlightGalleryDialogProps> = ({
             </div>
           </div>
 
-          {/* Main Image Display */}
-          <div className="flex-1 relative overflow-hidden">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <img
-                src={highlights[currentSlide].image}
-                alt={highlights[currentSlide].title}
-                className="max-w-full max-h-[65vh] object-contain rounded transition-opacity duration-300"
-                key={currentSlide}
-              />
-            </div>
+          {/* Main Image Display - Updated to show full image */}
+          <div className="flex-1 relative overflow-auto flex items-center justify-center">
+            <img
+              src={highlights[currentSlide].image}
+              alt={highlights[currentSlide].title}
+              className="max-w-full max-h-full object-contain transition-opacity duration-300"
+              key={currentSlide}
+              style={{ width: "auto", height: "auto" }}
+            />
 
             {/* Navigation buttons */}
             <button 

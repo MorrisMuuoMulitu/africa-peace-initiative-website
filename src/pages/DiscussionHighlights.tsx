@@ -56,6 +56,11 @@ const DiscussionHighlights = () => {
     }
   };
 
+  const openFullImage = (index: number) => {
+    setCurrentSlide(index);
+    setIsGalleryOpen(true);
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -104,10 +109,7 @@ const DiscussionHighlights = () => {
                       inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                     } hover:shadow-xl group cursor-pointer`}
                     style={{ transitionDelay: `${index * 100}ms` }}
-                    onClick={() => {
-                      setCurrentSlide(index);
-                      setIsGalleryOpen(true);
-                    }}
+                    onClick={() => openFullImage(index)}
                   >
                     <div className="relative aspect-[4/3] overflow-hidden">
                       <img 
