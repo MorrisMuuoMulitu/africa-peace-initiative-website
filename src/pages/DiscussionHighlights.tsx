@@ -1,13 +1,61 @@
 
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useInView } from "react-intersection-observer";
 import { highlightsData } from "@/data/eventHighlightsData";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ZoomIn } from "lucide-react";
 import { Link } from "react-router-dom";
+import HighlightGalleryDialog from "@/components/highlights/HighlightGalleryDialog";
+import { toast } from "@/components/ui/use-toast";
 
 const DiscussionHighlights = () => {
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const handleDownload = (imageUrl: string, title: string) => {
+    // Create a temporary link to download the image
+    const link = document.createElement('a');
+    link.href = imageUrl;
+    link.download = `API-${title.replace(/\s+/g, '-').toLowerCase()}.jpg`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    toast({
+      title: "Download started",
+      description: "Your image download has started",
+      duration: 3000,
+    });
+  };
+
+  const handleShare = (imageUrl: string, title: string) => {
+    if (navigator.share) {
+      navigator.share({
+        title: `Africa Peace Initiative: ${title}`,
+        text: "Check out this highlight from the Regional Dialogue on Eastern Congo",
+        url: imageUrl,
+      }).catch((error) => console.log('Error sharing', error));
+    } else {
+      // Fallback - copy to clipboard
+      navigator.clipboard.writeText(imageUrl).then(() => {
+        toast({
+          title: "Link copied!",
+          description: "Image link copied to clipboard",
+          duration: 3000,
+        });
+      });
+    }
+  };
+
+  const navigateSlide = (direction: 'next' | 'prev') => {
+    if (direction === 'next') {
+      setCurrentSlide((prev) => (prev + 1) % highlightsData.length);
+    } else {
+      setCurrentSlide((prev) => (prev - 1 + highlightsData.length) % highlightsData.length);
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -54,20 +102,27 @@ const DiscussionHighlights = () => {
                     key={index}
                     className={`rounded-xl overflow-hidden shadow-lg border border-api-sage/20 bg-white transition-all duration-700 ${
                       inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                    }`}
+                    } hover:shadow-xl group cursor-pointer`}
                     style={{ transitionDelay: `${index * 100}ms` }}
+                    onClick={() => {
+                      setCurrentSlide(index);
+                      setIsGalleryOpen(true);
+                    }}
                   >
-                    <div className="relative h-48 overflow-hidden">
+                    <div className="relative aspect-[4/3] overflow-hidden">
                       <img 
                         src={highlight.image} 
                         alt={highlight.title} 
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-api-midnight/80 to-transparent flex items-end">
-                        <div className="p-4">
-                          <h3 className="text-xl font-bold text-white">{highlight.title}</h3>
+                      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-api-midnight/80 flex items-end justify-between p-4">
+                        <h3 className="text-xl font-bold text-white">{highlight.title}</h3>
+                        <div className="bg-white/20 backdrop-blur-sm p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                          <ZoomIn className="h-5 w-5 text-white" />
                         </div>
                       </div>
+                      
+                      <div className="absolute inset-0 bg-api-midnight/20 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
                     <div className="p-5">
                       <p className="text-api-midnight/80">{highlight.description}</p>
@@ -90,6 +145,18 @@ const DiscussionHighlights = () => {
           </div>
         </section>
       </main>
+
+      {/* Full-size Image Gallery Dialog */}
+      <HighlightGalleryDialog 
+        isOpen={isGalleryOpen}
+        onOpenChange={setIsGalleryOpen}
+        highlights={highlightsData}
+        currentSlide={currentSlide}
+        setCurrentSlide={setCurrentSlide}
+        handleDownload={handleDownload}
+        handleShare={handleShare}
+        navigateSlide={navigateSlide}
+      />
 
       <Footer />
     </div>
