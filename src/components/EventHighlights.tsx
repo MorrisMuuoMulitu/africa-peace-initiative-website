@@ -34,9 +34,9 @@ const EventHighlights: React.FC = () => {
           </p>
         </div>
 
-        {/* Interactive Gallery Link Card */}
+        {/* Interactive Gallery Link Card - Changed to point to discussion-highlights */}
         <Link 
-          to="/event-gallery"
+          to="/discussion-highlights"
           className="block max-w-4xl mx-auto group cursor-pointer"
         >
           <div className="relative overflow-hidden rounded-xl shadow-lg border border-api-sage/30 transition-all duration-500 group-hover:shadow-xl group-hover:shadow-api-terracotta/10 group-hover:border-api-terracotta/40">
@@ -74,15 +74,15 @@ const EventHighlights: React.FC = () => {
                   7 Key Topics Discussed
                 </div>
                 <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 max-w-xl group-hover:text-api-cream transition-colors duration-300">
-                  Explore Our Regional Dialogue Photo Gallery
+                  Explore Our Discussion Highlights
                 </h3>
                 <p className="text-white/80 max-w-xl mb-8 md:mb-10">
-                  Visual documentation of key moments, discussions, and participants from our efforts to address conflict in Eastern Congo.
+                  Visual overview of the key topics addressed during our efforts to resolve conflict in Eastern Congo.
                 </p>
                 
                 {/* Button/CTA */}
                 <div className="transition-all duration-500 bg-api-terracotta/90 text-white px-6 py-3 rounded-full flex items-center gap-2 group-hover:bg-api-terracotta group-hover:shadow-lg group-hover:shadow-api-terracotta/30 group-hover:translate-y-[-2px]">
-                  <span className="font-medium">View Interactive Gallery</span>
+                  <span className="font-medium">View Discussion Topics</span>
                   <ExternalLink size={18} className="transition-transform duration-300 group-hover:translate-x-1 group-hover:translate-y-[-1px]" />
                 </div>
                 
