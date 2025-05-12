@@ -80,14 +80,14 @@ const HighlightGalleryDialog: React.FC<HighlightGalleryDialogProps> = ({
             </div>
           </div>
 
-          {/* Main Image Display - Updated to show full image */}
-          <div className="flex-1 relative overflow-auto flex items-center justify-center">
+          {/* Main Image Display - Improved to ensure full image display */}
+          <div className="flex-1 overflow-auto flex items-center justify-center p-4">
             <img
               src={highlights[currentSlide].image}
               alt={highlights[currentSlide].title}
-              className="max-w-full max-h-full object-contain transition-opacity duration-300"
+              className="object-contain max-w-full max-h-full"
               key={currentSlide}
-              style={{ width: "auto", height: "auto" }}
+              style={{ margin: 'auto' }}
             />
 
             {/* Navigation buttons */}
