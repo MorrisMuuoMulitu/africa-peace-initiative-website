@@ -1,5 +1,4 @@
-
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { ChevronLeft, ChevronRight, Download, Share2, X } from "lucide-react";
@@ -28,6 +27,14 @@ const HighlightGalleryDialog: React.FC<HighlightGalleryDialogProps> = ({
   handleShare,
   navigateSlide
 }) => {
+  // State to ensure image is fully loaded
+  const [imageLoaded, setImageLoaded] = useState(false);
+  
+  // Reset image loaded state when slide changes or dialog opens/closes
+  useEffect(() => {
+    setImageLoaded(false);
+  }, [currentSlide, isOpen]);
+
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-[95vw] sm:max-w-4xl md:max-w-6xl max-h-[95vh] p-0 bg-api-midnight/95 backdrop-blur-md border-none rounded-xl">
@@ -80,15 +87,22 @@ const HighlightGalleryDialog: React.FC<HighlightGalleryDialogProps> = ({
             </div>
           </div>
 
-          {/* Main Image Display - Improved to ensure full image display */}
-          <div className="flex-1 overflow-auto flex items-center justify-center p-4">
-            <img
-              src={highlights[currentSlide].image}
-              alt={highlights[currentSlide].title}
-              className="object-contain max-w-full max-h-full"
-              key={currentSlide}
-              style={{ margin: 'auto' }}
-            />
+          {/* Main Image Display - Fixed to ensure image displays fully */}
+          <div className="flex-1 flex items-center justify-center p-4 overflow-auto">
+            <div className="relative max-w-full max-h-full flex items-center justify-center">
+              <img
+                src={highlights[currentSlide].image}
+                alt={highlights[currentSlide].title}
+                className={`max-h-[calc(95vh-200px)] w-auto object-contain transition-all duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                key={currentSlide}
+                onLoad={() => setImageLoaded(true)}
+              />
+              {!imageLoaded && (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-10 h-10 border-4 border-api-terracotta/30 border-t-api-terracotta rounded-full animate-spin"></div>
+                </div>
+              )}
+            </div>
 
             {/* Navigation buttons */}
             <button 
