@@ -71,31 +71,31 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Refined Africa Peace Initiative Color Palette
+				// Refined Africa Peace Initiative Color Palette with HSL values
 				api: {
 					// Primary Colors
-					darkgreen: '#0A2C17',      // Rich dark green for primary dark elements
-					forestgreen: '#294D35',    // Adjusted forest green for headers and backgrounds
-					green: '#1A6340',          // Primary green - kept the same
-					brightgreen: '#2E8B57',    // Slightly adjusted for better contrast
+					darkgreen: 'hsl(145 60% 10%)',      // Rich dark green for primary dark elements
+					forestgreen: 'hsl(145 30% 25%)',    // Adjusted forest green for headers and backgrounds
+					green: 'hsl(145 60% 25%)',          // Primary green - kept the same
+					brightgreen: 'hsl(145 40% 35%)',    // Slightly adjusted for better contrast
 					
 					// Neutrals & Background Colors
-					cream: '#F8F5E6',          // Lighter cream for backgrounds
-					ivory: '#FFFCF2',          // Brighter ivory for content areas
-					charcoal: '#2F3B36',       // Adjusted charcoal for better readability
-					gray: '#59635A',           // Soft grayish green for subtle elements
+					cream: 'hsl(45 40% 95%)',          // Lighter cream for backgrounds
+					ivory: 'hsl(45 60% 98%)',          // Brighter ivory for content areas
+					charcoal: 'hsl(145 15% 22%)',       // Adjusted charcoal for better readability
+					gray: 'hsl(90 10% 35%)',           // Soft grayish green for subtle elements
 					
 					// Accent Colors
-					terracotta: '#E07A5F',     // Vibrant terracotta accent - kept the same
-					gold: '#D4A64A',           // Slightly richer gold accent
-					sand: '#DDBEA9',           // Warmer sand tone
-					sage: '#B7C4A7',           // Softer sage green
+					terracotta: 'hsl(15 70% 65%)',     // Vibrant terracotta accent - kept the same
+					gold: 'hsl(42 55% 55%)',           // Slightly richer gold accent
+					sand: 'hsl(25 40% 75%)',           // Warmer sand tone
+					sage: 'hsl(90 25% 70%)',           // Softer sage green
 					
 					// Supporting Colors
-					silver: '#C4C9CA',         // Light silver gray for UI elements
-					midnight: '#1A2A2A',       // Dark blue-green for deep shadows
-					earthbrown: '#6B4D3A',     // New earthy brown for additional contrast
-					clay: '#CB997E'            // New clay color for warm accent
+					silver: 'hsl(195 10% 75%)',         // Light silver gray for UI elements
+					midnight: 'hsl(180 20% 15%)',       // Dark blue-green for deep shadows
+					earthbrown: 'hsl(25 30% 35%)',     // New earthy brown for additional contrast
+					clay: 'hsl(25 40% 65%)'            // New clay color for warm accent
 				}
 			},
 			fontFamily: {
