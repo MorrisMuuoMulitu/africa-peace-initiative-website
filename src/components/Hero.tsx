@@ -5,7 +5,7 @@ import { ChevronRight, ArrowDown } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import SocialLinks from "@/components/SocialLinks";
 import FloatingImpactCards from "@/components/hero/FloatingImpactCards";
-import LanguageSelector from "@/components/hero/LanguageSelector";
+
 import heroGroupPhoto from "@/assets/hero-group-photo.jpg";
 
 const Hero = () => {
@@ -51,10 +51,9 @@ const Hero = () => {
         {/* Left Content Area - Diagonal Split */}
         <div className="md:col-span-2 lg:col-span-5 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-16 md:py-0">
           <div className={`w-full max-w-lg transition-all duration-1000 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            {/* Language Selector - Top Right */}
-            <div className="flex justify-end mb-6 md:mb-8">
-              <LanguageSelector />
-            </div>
+            {/* Sleek background panel for text */}
+            <div className="absolute inset-0 bg-api-darkgreen/20 backdrop-blur-md rounded-2xl border border-white/10 hero-glass-panel" aria-hidden="true"></div>
+            <div className="relative z-10 p-6 md:p-8">
             
             {/* Brand Mark */}
             <div className="flex items-center mb-6 adinkra-border">
@@ -111,6 +110,7 @@ const Hero = () => {
             <div className="mt-16 hidden lg:flex items-center text-white/80" aria-hidden="true">
               <ArrowDown className="mr-3 animate-bounce" />
               <span className="text-sm font-medium hero-text-shadow">Scroll to explore our work</span>
+            </div>
             </div>
           </div>
         </div>
