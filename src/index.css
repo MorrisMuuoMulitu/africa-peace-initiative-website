@@ -310,3 +310,132 @@
 .content-spacing {
   @apply space-y-8 md:space-y-10 lg:space-y-12;
 }
+
+/* Hero Section Enhancements */
+.hero-diagonal-overlay {
+  background: linear-gradient(135deg, 
+    hsl(145 60% 10% / 0.95) 0%, 
+    hsl(145 60% 10% / 0.8) 25%, 
+    hsl(15 70% 65% / 0.6) 45%, 
+    transparent 65%
+  );
+}
+
+.hero-glass-panel {
+  backdrop-filter: blur(12px);
+  background: linear-gradient(135deg, 
+    hsl(145 60% 10% / 0.3) 0%, 
+    hsl(145 60% 10% / 0.1) 100%
+  );
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.hero-text-shadow {
+  text-shadow: 
+    2px 2px 12px rgba(0, 0, 0, 0.9), 
+    0 0 25px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(41, 77, 53, 0.3);
+}
+
+.hero-fluid-text {
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  line-height: 1.1;
+}
+
+.hero-subtitle-fluid {
+  font-size: clamp(1.1rem, 4vw, 1.5rem);
+}
+
+/* African Textile Pattern Mask */
+.textile-mask {
+  mask-image: 
+    radial-gradient(circle at 25% 25%, transparent 20%, black 21%, black 30%, transparent 31%),
+    radial-gradient(circle at 75% 75%, transparent 20%, black 21%, black 30%, transparent 31%),
+    linear-gradient(45deg, transparent 48%, black 49%, black 51%, transparent 52%);
+  mask-size: 40px 40px, 40px 40px, 20px 20px;
+  mask-composite: intersect;
+}
+
+/* Geometric Pattern Borders */
+.adinkra-border {
+  position: relative;
+}
+
+.adinkra-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(45deg, 
+    hsl(var(--api-gold)) 0%, 
+    hsl(var(--api-terracotta)) 50%, 
+    hsl(var(--api-gold)) 100%
+  );
+  clip-path: polygon(0 0, 20% 100%, 40% 0, 60% 100%, 80% 0, 100% 100%, 100% 0);
+}
+
+/* Scroll-driven animations */
+@supports (animation-timeline: scroll()) {
+  .parallax-element {
+    animation: parallax-scroll linear;
+    animation-timeline: scroll(root);
+    animation-range: 0vh 100vh;
+  }
+}
+
+@keyframes parallax-scroll {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-20px); }
+}
+
+/* Hide scrollbar for mobile slider */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* 3D perspective for floating cards */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+/* Cursor following particles (disabled on mobile) */
+@media (hover: hover) {
+  .cursor-particles {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    width: 6px;
+    height: 6px;
+    background: hsl(var(--api-gold));
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: particle-float 2s ease-in-out infinite;
+  }
+}
+
+@keyframes particle-float {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.7; }
+  50% { transform: scale(1.5) rotate(180deg); opacity: 0.3; }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .parallax-element,
+  .cursor-particles,
+  .animate-bounce-slow {
+    animation: none !important;
+  }
+  
+  .perspective-1000 {
+    perspective: none;
+  }
+}
