@@ -88,23 +88,18 @@ const Hero: React.FC = () => {
         {/* Main Content Container */}
         <div className="relative z-10 min-h-screen flex items-center">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="flex flex-col items-center text-center">
               
-              {/* Left Content - Enhanced Typography */}
-              <div className={`lg:col-span-7 transition-all duration-1200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+              {/* Main Content - Enhanced Typography */}
+              <div className={`max-w-4xl mx-auto transition-all duration-1200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
                 <EnhancedTypography onScrollToSection={scrollToSection} />
                 
                 {/* Social Links */}
-                <div className="mt-8 flex justify-center lg:justify-start">
+                <div className="mt-8 flex justify-center">
                   <div className="glass-morphism-ultra p-4 rounded-2xl border border-white/10 hover-lift">
                     <SocialLinks />
                   </div>
                 </div>
-              </div>
-
-              {/* Right Content - Enhanced Impact Display */}
-              <div className={`lg:col-span-5 transition-all duration-1200 delay-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}>
-                <FloatingImpactCards />
               </div>
             </div>
           </div>
