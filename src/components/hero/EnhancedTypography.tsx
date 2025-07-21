@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from "react";
-import { ChevronRight, Sparkles, Play } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface EnhancedTypographyProps {
@@ -9,106 +9,78 @@ interface EnhancedTypographyProps {
 
 const EnhancedTypography = ({ onScrollToSection }: EnhancedTypographyProps) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [currentPhrase, setCurrentPhrase] = useState(0);
-
-  const phrases = [
-    "Building Peace Across Africa",
-    "Uniting Communities",
-    "Creating Lasting Change",
-    "Fostering Dialogue"
-  ];
 
   useEffect(() => {
     setIsVisible(true);
-    const interval = setInterval(() => {
-      setCurrentPhrase((prev) => (prev + 1) % phrases.length);
-    }, 4000);
-    return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="relative z-20 space-y-8">
-      {/* Enhanced Glassmorphism Container */}
-      <div className="glass-morphism-content p-8 md:p-12 rounded-3xl border border-white/15 shadow-2xl adinkra-pattern">
+    <div className="relative z-20 w-full">
+      {/* Main Hero Content - Left Aligned */}
+      <div className="max-w-7xl mx-auto text-left">
         
-        {/* Animated Brand Mark */}
-        <div className="flex items-center mb-8 group">
-          <div className="h-1 bg-gradient-to-r from-api-terracotta to-api-gold rounded-full transition-all duration-500 group-hover:w-24 w-16 mr-4 particle-glow" />
-          <span className="text-white/95 font-semibold tracking-widest uppercase text-sm flex items-center">
-            <Sparkles className="w-5 h-5 mr-2 text-api-gold animate-pulse" />
-            Africa Peace Initiative
-          </span>
+        {/* Small Brand Identifier */}
+        <div className={`mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+          <div className="inline-flex items-center space-x-3">
+            <div className="h-0.5 w-12 bg-api-gold rounded-full" />
+            <span className="text-white/80 font-medium tracking-wider uppercase text-sm">
+              Africa Peace Initiative
+            </span>
+          </div>
         </div>
 
-        {/* Revolutionary Main Heading */}
-        <div className="mb-8">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight">
-            <span className="block text-hero-primary mb-2">
+        {/* Massive Main Headline */}
+        <div className={`mb-8 transition-all duration-1200 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <h1 className="text-5xl md:text-6xl lg:text-8xl xl:text-9xl font-black leading-[0.9] tracking-tight">
+            <span className="block text-white mb-2">
               Building
             </span>
-            <span className="block text-hero-accent mb-2">
+            <span className="block text-white mb-2">
               Peace
             </span>
-            <span className="block text-hero-primary">
-              Across 
-              <span className="ml-4 text-hero-accent">
-                Africa
-              </span>
+            <span className="block">
+              <span className="text-white">Across </span>
+              <span className="text-api-gold">Africa</span>
             </span>
           </h1>
         </div>
 
-        {/* Morphing Subtitle */}
-        <div className="mb-8 h-16 flex items-center">
-          <p 
-            className={`text-lg md:text-xl text-hero-subtitle font-light leading-relaxed transition-all duration-1000 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}
-            key={currentPhrase}
-          >
-            {phrases[currentPhrase]} through dialogue, action, and diplomacy
-          </p>
+        {/* Clean Subtitle */}
+        <div className={`mb-12 transition-all duration-1200 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="max-w-2xl">
+            <p className="text-xl md:text-2xl text-white/90 font-light leading-relaxed">
+              Uniting communities through dialogue, action, and diplomacy to create lasting peace across 15+ African nations.
+            </p>
+          </div>
         </div>
 
-        {/* Enhanced CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 mb-8">
+        {/* Single Primary CTA */}
+        <div className={`mb-16 transition-all duration-1200 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <Button
             onClick={() => onScrollToSection("mission")}
-            className="btn-hero-primary group relative overflow-hidden text-white font-semibold px-8 py-6 rounded-2xl text-lg shadow-2xl transition-all duration-500 hover:scale-105"
+            className="bg-api-gold hover:bg-api-gold/90 text-black font-bold px-8 py-4 text-lg rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 group"
           >
-            <span className="relative z-10 flex items-center">
-              Our Mission
-              <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
-            </span>
-          </Button>
-
-          <Button
-            onClick={() => onScrollToSection("contact")}
-            className="group relative overflow-hidden glass-morphism-ultra border-2 border-white/30 hover:border-white/50 text-white font-semibold px-8 py-6 rounded-2xl text-lg shadow-xl transition-all duration-500 hover:scale-105"
-          >
-            <span className="relative z-10 flex items-center">
-              <Play className="w-5 h-5 mr-2" />
-              Join Our Impact
+            <span className="flex items-center">
+              Discover Our Impact
+              <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
             </span>
           </Button>
         </div>
 
-        {/* Enhanced Stats Preview */}
-        <div className="grid grid-cols-3 gap-4 text-center">
-          {[
-            { number: "500+", label: "Peace Builders" },
-            { number: "15+", label: "Countries" },
-            { number: "1000+", label: "Lives Changed" }
-          ].map((stat, index) => (
-            <div key={index} className="group floating-card-3d">
-              <div className="text-2xl md:text-3xl font-bold text-hero-accent group-hover:scale-110 transition-transform duration-300 particle-glow">
-                {stat.number}
+        {/* Minimal Stats Row */}
+        <div className={`transition-all duration-1200 delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="flex flex-wrap gap-8 text-white/70">
+            {[
+              { number: "500+", label: "Peace Builders" },
+              { number: "15+", label: "Countries" },
+              { number: "1000+", label: "Lives Changed" }
+            ].map((stat, index) => (
+              <div key={index} className="flex items-center space-x-2">
+                <span className="text-2xl font-bold text-white">{stat.number}</span>
+                <span className="text-sm font-medium uppercase tracking-wide">{stat.label}</span>
               </div>
-              <div className="text-hero-subtitle text-sm font-medium">
-                {stat.label}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>

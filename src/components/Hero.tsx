@@ -7,7 +7,6 @@ import EnhancedTypography from "@/components/hero/EnhancedTypography";
 import InteractiveHotspots from "@/components/hero/InteractiveHotspots";
 import FloatingParticles from "@/components/hero/FloatingParticles";
 import ScrollIndicator from "@/components/hero/ScrollIndicator";
-import FloatingImpactCards from "@/components/hero/FloatingImpactCards";
 
 const Hero: React.FC = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -61,46 +60,38 @@ const Hero: React.FC = () => {
         {/* Floating Particles (Desktop Only) */}
         <FloatingParticles />
 
+        {/* Clean Dark Overlay for Text Readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30 z-5" />
+
         {/* Dynamic Mouse Following Light */}
         {!isMobile && (
           <div
-            className="absolute pointer-events-none opacity-30 transition-opacity duration-500 z-5"
+            className="absolute pointer-events-none opacity-20 transition-opacity duration-500 z-5"
             style={{
-              width: '300px',
-              height: '300px',
-              background: 'radial-gradient(circle, rgba(249,115,22,0.4) 0%, rgba(251,191,36,0.2) 40%, transparent 70%)',
-              transform: `translate(${mousePosition.x - 150}px, ${mousePosition.y - 150}px)`,
-              filter: 'blur(40px)',
+              width: '400px',
+              height: '400px',
+              background: 'radial-gradient(circle, rgba(249,115,22,0.3) 0%, rgba(251,191,36,0.1) 40%, transparent 70%)',
+              transform: `translate(${mousePosition.x - 200}px, ${mousePosition.y - 200}px)`,
+              filter: 'blur(60px)',
             }}
           />
         )}
 
-        {/* Animated African Pattern Overlay */}
-        <div className="absolute inset-0 opacity-10 pointer-events-none z-5">
-          <div className="absolute inset-0 animate-float"
-               style={{
-                 backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 15L65 35L85 35L70 50L75 70L50 60L25 70L30 50L15 35L35 35Z' fill='%23f97316' fill-opacity='0.3'/%3E%3C/svg%3E")`,
-                 backgroundSize: '80px 80px',
-               }}
-          />
-        </div>
-
         {/* Main Content Container */}
         <div className="relative z-10 min-h-screen flex items-center">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col items-center text-center">
-              
-              {/* Main Content - Enhanced Typography */}
-              <div className={`max-w-4xl mx-auto transition-all duration-1200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-                <EnhancedTypography onScrollToSection={scrollToSection} />
-                
-                {/* Social Links */}
-                <div className="mt-8 flex justify-center">
-                  <div className="glass-morphism-ultra p-4 rounded-2xl border border-white/10 hover-lift">
-                    <SocialLinks />
-                  </div>
-                </div>
-              </div>
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+            {/* Left-aligned layout matching reference design */}
+            <div className="w-full">
+              <EnhancedTypography onScrollToSection={scrollToSection} />
+            </div>
+          </div>
+        </div>
+
+        {/* Social Links - Positioned at bottom left */}
+        <div className="absolute bottom-8 left-4 sm:left-6 lg:left-8 xl:left-12 z-20">
+          <div className={`transition-all duration-1200 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="backdrop-blur-sm bg-white/5 p-3 rounded-xl border border-white/10">
+              <SocialLinks />
             </div>
           </div>
         </div>
@@ -108,8 +99,8 @@ const Hero: React.FC = () => {
         {/* Enhanced Scroll Indicator */}
         <ScrollIndicator onScrollToSection={scrollToSection} />
 
-        {/* Refined Bottom Gradient Fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-900/80 via-slate-900/40 to-transparent pointer-events-none" />
+        {/* Subtle Bottom Gradient */}
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/30 to-transparent pointer-events-none z-5" />
       </section>
     </>
   );
