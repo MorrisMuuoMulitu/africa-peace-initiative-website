@@ -147,6 +147,12 @@ export default {
 				shimmer: {
 					'0%': { backgroundPosition: '-500px 0' },
 					'100%': { backgroundPosition: '500px 0' }
+				},
+				float: {
+					'0%, 100%': { transform: 'translateY(0px) translateX(0px)' },
+					'25%': { transform: 'translateY(-10px) translateX(5px)' },
+					'50%': { transform: 'translateY(-5px) translateX(-5px)' },
+					'75%': { transform: 'translateY(-15px) translateX(3px)' }
 				}
 			},
 			animation: {
@@ -157,9 +163,12 @@ export default {
 				'slide-left': 'slideInLeft 0.8s ease-out',
 				'slide-right': 'slideInRight 0.8s ease-out',
 				'slide-up': 'slideInUp 0.8s ease-out',
-				'shimmer': 'shimmer 2s linear infinite'
+				'shimmer': 'shimmer 2s linear infinite',
+				float: 'float 6s ease-in-out infinite',
+				'spin-slow': 'spin 20s linear infinite'
 			},
 			backgroundImage: {
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'sankofa-pattern': "url('/sankofa-pattern.svg')",
 				'africa-map': "url('/africa-outline.svg')",
 				'gradient-green': "linear-gradient(120deg, #1A6340 0%, #294D35 100%)",

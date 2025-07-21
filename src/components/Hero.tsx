@@ -6,6 +6,7 @@ import ParallaxBackground from "@/components/hero/ParallaxBackground";
 import EnhancedTypography from "@/components/hero/EnhancedTypography";
 import InteractiveHotspots from "@/components/hero/InteractiveHotspots";
 import FloatingParticles from "@/components/hero/FloatingParticles";
+import FloatingElements from "@/components/hero/FloatingElements";
 import ScrollIndicator from "@/components/hero/ScrollIndicator";
 import HeroImageSlider from "@/components/hero/HeroImageSlider";
 
@@ -46,7 +47,8 @@ const Hero: React.FC = () => {
         {/* Subtle Pattern Overlays */}
         <ParallaxBackground />
         
-        {/* Interactive Elements (Desktop Only) */}
+        {/* Enhanced Interactive Elements */}
+        <FloatingElements />
         {!isMobile && <InteractiveHotspots />}
         {!isMobile && <FloatingParticles />}
 

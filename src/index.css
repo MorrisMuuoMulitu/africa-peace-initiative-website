@@ -236,6 +236,11 @@
   }
 }
 
+/* Background utilities */
+.bg-gradient-radial {
+  background: radial-gradient(var(--tw-gradient-stops));
+}
+
 /* Animation classes */
 .animate-fade-in {
   animation: fadeIn 0.8s ease-out forwards;

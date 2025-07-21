@@ -8,23 +8,43 @@ import Autoplay from 'embla-carousel-autoplay';
 const heroImages = [
   {
     url: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/Hero/API-02901.jpg?updatedAt=1751614266486",
-    alt: "Africa Peace Initiative team collaboration"
+    alt: "Africa Peace Initiative team collaboration",
+    focus: "center center"
   },
   {
     url: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/Hero/API-03023.jpg?updatedAt=1751614266384",
-    alt: "Community dialogue and peacebuilding session"
+    alt: "Community dialogue and peacebuilding session",
+    focus: "center top"
   },
   {
     url: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/Hero/API-02388.jpg?updatedAt=1753126544654",
-    alt: "Peace initiative workshop participants"
+    alt: "Peace initiative workshop participants",
+    focus: "center center"
   },
   {
     url: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/Hero/API-02706.jpg?updatedAt=1753126586183",
-    alt: "Great Lakes region community gathering"
+    alt: "Great Lakes region community gathering",
+    focus: "center bottom"
   },
   {
     url: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/Hero/API-02914.jpg?updatedAt=1751614266284",
-    alt: "Peacebuilding training and capacity development"
+    alt: "Peacebuilding training and capacity development",
+    focus: "center center"
+  },
+  {
+    url: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/Hero/API-02984.jpg?updatedAt=1753127515108",
+    alt: "Community empowerment and leadership development",
+    focus: "center center"
+  },
+  {
+    url: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/Hero/API-03009.jpg?updatedAt=1753127520218",
+    alt: "Regional peace building collaborative efforts",
+    focus: "center top"
+  },
+  {
+    url: "https://ik.imagekit.io/5zp8ovb7c/Africa%20Peace%20Initiative/Hero/API-02966.jpg?updatedAt=1753127521563",
+    alt: "Youth engagement in peace processes",
+    focus: "center center"
   }
 ];
 
@@ -32,11 +52,11 @@ const HeroImageSlider = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { 
       loop: true,
-      duration: 30,
+      duration: 40,
       skipSnaps: false,
       dragFree: false
     },
-    [Autoplay({ delay: 6000, stopOnInteraction: false })]
+    [Autoplay({ delay: 4500, stopOnInteraction: false })]
   );
   
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -98,24 +118,46 @@ const HeroImageSlider = () => {
                 <img
                   src={image.url}
                   alt={image.alt}
-                  className="w-full h-full object-cover transition-all duration-1000 ease-out"
+                  className="w-full h-full object-cover transition-all duration-2000 ease-out"
                   style={{
-                    transform: selectedIndex === index ? 'scale(1.05)' : 'scale(1)',
-                    filter: selectedIndex === index ? 'brightness(1.1) contrast(1.1)' : 'brightness(0.9) contrast(1.05)'
+                    transform: selectedIndex === index 
+                      ? 'scale(1.08) rotate(0.5deg)' 
+                      : 'scale(1.02) rotate(-0.2deg)',
+                    filter: selectedIndex === index 
+                      ? 'brightness(1.15) contrast(1.2) saturate(1.1)' 
+                      : 'brightness(0.85) contrast(1.05) saturate(0.9)',
+                    objectPosition: image.focus
                   }}
-                  loading={index <= 1 ? 'eager' : 'lazy'}
+                  loading={index <= 2 ? 'eager' : 'lazy'}
                 />
                 
-                {/* Ken Burns Effect Overlay */}
+                {/* Dynamic Light Overlay */}
                 <div 
-                  className="absolute inset-0 opacity-20 pointer-events-none"
+                  className="absolute inset-0 pointer-events-none"
                   style={{
                     background: selectedIndex === index 
-                      ? 'radial-gradient(circle at 30% 70%, rgba(249,115,22,0.3) 0%, transparent 50%)'
-                      : 'transparent',
-                    transition: 'all 1s ease-in-out'
+                      ? `
+                        radial-gradient(circle at 20% 80%, rgba(249,115,22,0.4) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 20%, rgba(59,130,246,0.3) 0%, transparent 50%),
+                        linear-gradient(45deg, rgba(249,115,22,0.1) 0%, transparent 30%, rgba(59,130,246,0.1) 70%, transparent 100%)
+                      `
+                      : 'linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.4) 100%)',
+                    opacity: selectedIndex === index ? 0.8 : 0.6,
+                    transition: 'all 2s cubic-bezier(0.4, 0, 0.2, 1)'
                   }}
                 />
+                
+                {/* Animated Particles */}
+                {selectedIndex === index && (
+                  <>
+                    <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-api-gold/60 rounded-full animate-pulse" 
+                         style={{ animationDelay: '0s', animationDuration: '3s' }} />
+                    <div className="absolute top-3/4 right-1/3 w-1 h-1 bg-white/40 rounded-full animate-pulse" 
+                         style={{ animationDelay: '1s', animationDuration: '4s' }} />
+                    <div className="absolute top-1/2 right-1/4 w-1.5 h-1.5 bg-api-gold/40 rounded-full animate-pulse" 
+                         style={{ animationDelay: '2s', animationDuration: '3.5s' }} />
+                  </>
+                )}
               </div>
             </div>
           ))}
@@ -177,8 +219,27 @@ const HeroImageSlider = () => {
         </Button>
       </div>
 
-      {/* Progressive Loading Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/60 z-5 pointer-events-none" />
+      {/* Dynamic Progressive Overlay */}
+      <div 
+        className="absolute inset-0 z-5 pointer-events-none transition-all duration-2000"
+        style={{
+          background: `
+            linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 30%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.3) 80%, rgba(0,0,0,0.8) 100%),
+            radial-gradient(ellipse at center top, rgba(249,115,22,0.1) 0%, transparent 50%),
+            radial-gradient(ellipse at center bottom, rgba(59,130,246,0.1) 0%, transparent 50%)
+          `
+        }}
+      />
+      
+      {/* Floating Geometric Elements */}
+      <div className="absolute inset-0 z-6 pointer-events-none overflow-hidden">
+        <div className="absolute top-1/4 left-1/6 w-32 h-32 border border-api-gold/20 rotate-45 animate-pulse" 
+             style={{ animationDuration: '4s' }} />
+        <div className="absolute bottom-1/3 right-1/5 w-24 h-24 border border-white/10 rotate-12 animate-pulse" 
+             style={{ animationDuration: '6s', animationDelay: '2s' }} />
+        <div className="absolute top-1/2 right-1/3 w-16 h-16 border border-api-gold/15 -rotate-12 animate-pulse" 
+             style={{ animationDuration: '5s', animationDelay: '1s' }} />
+      </div>
     </div>
   );
 };
