@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -71,36 +70,57 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Refined Africa Peace Initiative Color Palette with HSL values
+				// Africa Peace Initiative Color Palette with Modern Teal-Gold Theme
 				api: {
-					// Primary Colors
-					darkgreen: 'hsl(145 60% 10%)',      // Rich dark green for primary dark elements
-					forestgreen: 'hsl(145 30% 25%)',    // Adjusted forest green for headers and backgrounds
-					green: 'hsl(145 60% 25%)',          // Primary green - kept the same
-					brightgreen: 'hsl(145 40% 35%)',    // Slightly adjusted for better contrast
+					// Primary Colors with Teal-Gold Theme
+					darkgreen: 'hsl(145 60% 10%)',
+					forestgreen: 'hsl(145 30% 25%)',
+					green: 'hsl(145 60% 25%)',
+					brightgreen: 'hsl(145 40% 35%)',
+					
+					// Modern Teal-Gold Palette
+					teal: 'hsl(178 60% 45%)',        // Primary teal
+					'teal-light': 'hsl(178 70% 60%)', // Light teal for gradients
+					'teal-dark': 'hsl(178 50% 30%)',  // Dark teal for depth
 					
 					// Neutrals & Background Colors
-					cream: 'hsl(45 40% 95%)',          // Lighter cream for backgrounds
-					ivory: 'hsl(45 60% 98%)',          // Brighter ivory for content areas
-					charcoal: 'hsl(145 15% 22%)',       // Adjusted charcoal for better readability
-					gray: 'hsl(90 10% 35%)',           // Soft grayish green for subtle elements
+					cream: 'hsl(45 40% 95%)',
+					ivory: 'hsl(45 60% 98%)',
+					charcoal: 'hsl(145 15% 22%)',
+					gray: 'hsl(90 10% 35%)',
 					
 					// Accent Colors
-					terracotta: 'hsl(15 70% 65%)',     // Vibrant terracotta accent - kept the same
-					gold: 'hsl(42 55% 55%)',           // Slightly richer gold accent
-					sand: 'hsl(25 40% 75%)',           // Warmer sand tone
-					sage: 'hsl(90 25% 70%)',           // Softer sage green
+					terracotta: 'hsl(15 70% 65%)',
+					gold: 'hsl(42 75% 55%)',          // Enhanced gold for better gradient
+					'gold-light': 'hsl(42 85% 65%)', // Light gold for gradients
+					sand: 'hsl(25 40% 75%)',
+					sage: 'hsl(90 25% 70%)',
 					
 					// Supporting Colors
-					silver: 'hsl(195 10% 75%)',         // Light silver gray for UI elements
-					midnight: 'hsl(180 20% 15%)',       // Dark blue-green for deep shadows
-					earthbrown: 'hsl(25 30% 35%)',     // New earthy brown for additional contrast
-					clay: 'hsl(25 40% 65%)'            // New clay color for warm accent
+					silver: 'hsl(195 10% 75%)',
+					midnight: 'hsl(180 20% 15%)',
+					earthbrown: 'hsl(25 30% 35%)',
+					clay: 'hsl(25 40% 65%)'
 				}
 			},
 			fontFamily: {
+				// Modern Clean Font System
 				montserrat: ['Montserrat', 'sans-serif'],
+				'open-sans': ['Open Sans', 'sans-serif'],
+				inter: ['Inter', 'sans-serif'],
 				lora: ['Lora', 'serif'],
+				playfair: ['Playfair Display', 'serif'],
+				oswald: ['Oswald', 'sans-serif'],
+				dancing: ['Dancing Script', 'cursive'],
+			},
+			fontSize: {
+				'10xl': ['10rem', { lineHeight: '1' }],
+				'11xl': ['12rem', { lineHeight: '1' }],
+				'12xl': ['14rem', { lineHeight: '1' }],
+			},
+			letterSpacing: {
+				'ultra-wide': '0.2em',
+				'mega-wide': '0.3em',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -147,6 +167,12 @@ export default {
 				shimmer: {
 					'0%': { backgroundPosition: '-500px 0' },
 					'100%': { backgroundPosition: '500px 0' }
+				},
+				float: {
+					'0%, 100%': { transform: 'translateY(0px) translateX(0px)' },
+					'25%': { transform: 'translateY(-10px) translateX(5px)' },
+					'50%': { transform: 'translateY(-5px) translateX(-5px)' },
+					'75%': { transform: 'translateY(-15px) translateX(3px)' }
 				}
 			},
 			animation: {
@@ -157,9 +183,14 @@ export default {
 				'slide-left': 'slideInLeft 0.8s ease-out',
 				'slide-right': 'slideInRight 0.8s ease-out',
 				'slide-up': 'slideInUp 0.8s ease-out',
-				'shimmer': 'shimmer 2s linear infinite'
+				'shimmer': 'shimmer 2s linear infinite',
+				float: 'float 6s ease-in-out infinite',
+				'spin-slow': 'spin 20s linear infinite'
 			},
 			backgroundImage: {
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+				'gradient-teal-gold': 'linear-gradient(135deg, #14b8a6 0%, #f59e0b 100%)',
+				'gradient-hero': 'linear-gradient(135deg, rgba(20, 184, 166, 0.1) 0%, rgba(245, 158, 11, 0.1) 100%)',
 				'sankofa-pattern': "url('/sankofa-pattern.svg')",
 				'africa-map': "url('/africa-outline.svg')",
 				'gradient-green': "linear-gradient(120deg, #1A6340 0%, #294D35 100%)",
