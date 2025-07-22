@@ -91,19 +91,39 @@
   }
 
   body {
-    @apply bg-background text-foreground font-montserrat;
+    @apply bg-background text-foreground font-inter;
   }
 
   html {
     scroll-behavior: smooth;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-montserrat tracking-tight;
+    @apply font-playfair tracking-tight;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "dlig" 1;
   }
 
   p {
-    @apply font-lora text-base leading-relaxed;
+    @apply font-inter text-base leading-relaxed;
+  }
+
+  /* Ultimate Text Visibility Classes */
+  .text-ultimate-visibility {
+    text-shadow: 
+      3px 3px 0px rgba(0,0,0,1),
+      6px 6px 0px rgba(0,0,0,0.8),
+      9px 9px 20px rgba(0,0,0,0.6),
+      0 0 30px rgba(255,255,255,0.3);
+    -webkit-text-stroke: 1px rgba(0,0,0,0.8);
+  }
+
+  .text-cinematic-glow {
+    text-shadow: 
+      2px 2px 0px rgba(0,0,0,1),
+      4px 4px 0px rgba(0,0,0,0.8),
+      0 0 30px rgba(249,115,22,1),
+      0 0 60px rgba(249,115,22,0.6);
   }
 }
 

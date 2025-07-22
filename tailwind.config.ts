@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -99,8 +98,22 @@ export default {
 				}
 			},
 			fontFamily: {
+				// Enhanced font system with premium fonts
 				montserrat: ['Montserrat', 'sans-serif'],
 				lora: ['Lora', 'serif'],
+				playfair: ['Playfair Display', 'serif'],
+				inter: ['Inter', 'sans-serif'],
+				oswald: ['Oswald', 'sans-serif'],
+				dancing: ['Dancing Script', 'cursive'],
+			},
+			fontSize: {
+				'10xl': ['10rem', { lineHeight: '1' }],
+				'11xl': ['12rem', { lineHeight: '1' }],
+				'12xl': ['14rem', { lineHeight: '1' }],
+			},
+			letterSpacing: {
+				'ultra-wide': '0.2em',
+				'mega-wide': '0.3em',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
