@@ -108,7 +108,7 @@
     @apply font-open-sans text-base leading-relaxed;
   }
 
-  /* Modern Text Effects */
+  /* Enhanced Text Effects */
   .text-hero-gradient {
     background: linear-gradient(135deg, #14b8a6 0%, #06b6d4 30%, #f59e0b 100%);
     background-size: 200% 100%;
@@ -128,6 +128,21 @@
     text-shadow: 
       0 1px 4px rgba(0,0,0,0.4),
       0 2px 8px rgba(0,0,0,0.3);
+  }
+
+  /* Enhanced 3D Text Effects */
+  .text-3d-depth {
+    text-shadow: 
+      0 1px 0 rgba(0,0,0,0.8),
+      0 2px 0 rgba(0,0,0,0.7),
+      0 3px 0 rgba(0,0,0,0.6),
+      0 4px 0 rgba(0,0,0,0.5),
+      0 5px 0 rgba(0,0,0,0.4),
+      0 6px 1px rgba(0,0,0,0.3),
+      0 0 5px rgba(0,0,0,0.2),
+      0 1px 3px rgba(0,0,0,0.1),
+      0 3px 5px rgba(0,0,0,0.1),
+      0 5px 10px rgba(0,0,0,0.1);
   }
 }
 
@@ -219,44 +234,85 @@
   }
 }
 
-/* Modern Glass Effects */
+/* Enhanced Glass Effects */
 .glass-morphism-modern {
-  backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
   background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.08) 0%, 
-    rgba(255, 255, 255, 0.02) 50%,
-    rgba(0, 0, 0, 0.05) 100%
+    rgba(255, 255, 255, 0.1) 0%, 
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(0, 0, 0, 0.1) 100%
   );
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
-/* Modern Button Effects */
+/* Enhanced Button Effects with 3D Transforms */
 .btn-modern-teal {
   background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
   box-shadow: 
     0 4px 15px rgba(20, 184, 166, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 1px 0 rgba(255, 255, 255, 0.1);
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: perspective(1000px) rotateX(0deg);
 }
 
 .btn-modern-teal:hover {
-  transform: translateY(-2px) scale(1.02);
+  transform: perspective(1000px) rotateX(-5deg) translateY(-2px) scale(1.02);
   box-shadow: 
-    0 8px 25px rgba(20, 184, 166, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    0 12px 35px rgba(20, 184, 166, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    0 2px 0 rgba(255, 255, 255, 0.15);
 }
 
-/* Responsive enhancements */
+/* Advanced Hotspot Animations */
+.hotspot-glow {
+  position: relative;
+}
+
+.hotspot-glow::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  animation: rotate-border 3s linear infinite;
+}
+
+@keyframes rotate-border {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive enhancements with better mobile support */
 @media (max-width: 768px) {
   .glass-morphism-modern {
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(16px);
     background: linear-gradient(135deg, 
-      rgba(0, 0, 0, 0.3) 0%, 
-      rgba(0, 0, 0, 0.1) 100%
+      rgba(0, 0, 0, 0.4) 0%, 
+      rgba(0, 0, 0, 0.2) 100%
     );
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .btn-modern-teal:hover {
+    transform: translateY(-1px) scale(1.01);
+  }
+
+  /* Mobile hero optimizations */
+  h1, h2 {
+    line-height: 1.1 !important;
+  }
+  
+  /* Prevent horizontal scroll on mobile */
+  .animate-shimmer {
+    background-size: 150% 100% !important;
   }
 }
 
@@ -286,22 +342,58 @@
     @apply w-16 h-1 bg-api-teal mb-6;
   }
   
-  /* Focus states */
+  /* Enhanced Focus states with 3D effects */
   button:focus-visible, a:focus-visible {
     @apply outline-none ring-2 ring-api-teal ring-offset-2;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
   }
   
-  /* Modern link hover effects */
+  /* Advanced link hover effects with shimmer */
   .link-underline-modern {
-    @apply relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-gradient-to-r after:from-teal-400 after:to-amber-400 after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
+    @apply relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-gradient-to-r after:from-api-teal after:to-api-gold after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
   }
   
-  /* Modern button styles */
+  .link-underline-modern::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+  }
+  
+  .link-underline-modern:hover::before {
+    transform: translateX(100%);
+  }
+  
+  /* Revolutionary button styles with advanced effects */
   .btn-primary-modern {
-    @apply bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white font-montserrat font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105;
+    @apply bg-gradient-to-r from-api-teal to-api-gold hover:from-api-gold hover:to-api-teal text-white font-montserrat font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn-primary-modern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+  }
+  
+  .btn-primary-modern:hover::before {
+    left: 100%;
   }
   
   .btn-outline-modern {
-    @apply bg-transparent hover:bg-white/15 border-2 border-white/20 text-white font-montserrat font-medium px-6 py-3 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 backdrop-blur-sm;
+    @apply bg-transparent hover:bg-white/15 border-2 border-white/20 text-white font-montserrat font-medium px-6 py-3 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 backdrop-blur-sm hover:border-white/40;
+    position: relative;
   }
 }
