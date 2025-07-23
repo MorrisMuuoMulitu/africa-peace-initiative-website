@@ -304,6 +304,16 @@
   .btn-modern-teal:hover {
     transform: translateY(-1px) scale(1.01);
   }
+
+  /* Mobile hero optimizations */
+  h1, h2 {
+    line-height: 1.1 !important;
+  }
+  
+  /* Prevent horizontal scroll on mobile */
+  .animate-shimmer {
+    background-size: 150% 100% !important;
+  }
 }
 
 /* High contrast mode support */

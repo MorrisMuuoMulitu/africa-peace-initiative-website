@@ -28,7 +28,7 @@ const ModernHeroTypography = ({ onScrollToSection }: ModernHeroTypographyProps) 
       <div className="flex flex-col lg:flex-row w-full h-full">
         
         {/* Left Section - Main Content (2/3 on desktop) */}
-        <div className="w-full lg:w-2/3 flex flex-col justify-center px-4 sm:px-6 lg:px-12 py-8 lg:py-16 relative">
+        <div className="w-full lg:w-2/3 flex flex-col justify-center px-4 sm:px-6 lg:px-12 py-12 pb-20 sm:pb-16 lg:py-16 relative">
           
           {/* Floating Brand Card */}
           <div className={`mb-6 lg:mb-8 transition-all duration-1200 ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}>
@@ -56,17 +56,17 @@ const ModernHeroTypography = ({ onScrollToSection }: ModernHeroTypographyProps) 
             <div className={`transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent blur-xl rounded-3xl transform scale-110" />
-                <h1 className="relative font-montserrat text-3xl sm:text-4xl lg:text-6xl xl:text-7xl font-black leading-tight">
-                  <span className="block bg-gradient-to-r from-api-teal via-api-gold to-api-teal bg-clip-text text-transparent animate-shimmer"
-                        style={{
-                          backgroundSize: '200% 100%',
-                          textShadow: '0 0 40px rgba(20,184,166,0.6)',
-                          filter: 'drop-shadow(0 4px 20px rgba(0,0,0,0.8))',
-                          WebkitTextStroke: '1px rgba(255,255,255,0.1)'
-                        }}>
-                    We Believe Peace Is Possible
-                  </span>
-                </h1>
+                 <h1 className="relative font-montserrat text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl font-black leading-tight">
+                   <span className="block bg-gradient-to-r from-api-teal via-api-gold to-api-teal bg-clip-text text-transparent animate-shimmer"
+                         style={{
+                           backgroundSize: '200% 100%',
+                           textShadow: '0 0 40px rgba(20,184,166,0.6)',
+                           filter: 'drop-shadow(0 4px 20px rgba(0,0,0,0.8))',
+                           WebkitTextStroke: '1px rgba(255,255,255,0.1)'
+                         }}>
+                     We Believe Peace Is Possible
+                   </span>
+                 </h1>
               </div>
             </div>
             
@@ -74,13 +74,13 @@ const ModernHeroTypography = ({ onScrollToSection }: ModernHeroTypographyProps) 
             <div className={`transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
               <div className="relative ml-4 lg:ml-8">
                 <div className="absolute inset-0 bg-gradient-to-l from-black/60 via-black/40 to-transparent blur-lg rounded-2xl" />
-                <h2 className="relative font-montserrat text-2xl sm:text-3xl lg:text-5xl xl:text-6xl font-black leading-tight text-white"
-                    style={{
-                      textShadow: '0 0 30px rgba(0,0,0,0.9), 0 4px 20px rgba(0,0,0,0.7)',
-                      filter: 'drop-shadow(0 2px 12px rgba(0,0,0,0.8))'
-                    }}>
-                  In The Great Lakes Regions And Africa
-                </h2>
+                 <h2 className="relative font-montserrat text-xl sm:text-2xl md:text-3xl lg:text-5xl xl:text-6xl font-black leading-tight text-white"
+                     style={{
+                       textShadow: '0 0 30px rgba(0,0,0,0.9), 0 4px 20px rgba(0,0,0,0.7)',
+                       filter: 'drop-shadow(0 2px 12px rgba(0,0,0,0.8))'
+                     }}>
+                   In The Great Lakes Regions And Africa
+                 </h2>
               </div>
             </div>
           </div>
@@ -94,50 +94,66 @@ const ModernHeroTypography = ({ onScrollToSection }: ModernHeroTypographyProps) 
                   <div className="flex-shrink-0 mt-1">
                     <Sparkles className="w-5 h-5 lg:w-6 lg:h-6 text-api-gold animate-pulse" />
                   </div>
-                  <p className="text-white font-montserrat text-lg lg:text-xl xl:text-2xl font-bold leading-relaxed"
-                     style={{
-                       textShadow: '0 2px 10px rgba(0,0,0,0.8)'
-                     }}>
-                    We Are Committed To Work Together Towards Sustainable Peace
-                  </p>
+                   <p className="text-white font-montserrat text-base sm:text-lg lg:text-xl xl:text-2xl font-bold leading-relaxed"
+                      style={{
+                        textShadow: '0 2px 10px rgba(0,0,0,0.8)'
+                      }}>
+                     We Are Committed To Work Together Towards Sustainable Peace
+                   </p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Enhanced Action Buttons */}
-          <div className={`mt-8 lg:mt-10 transition-all duration-1000 delay-900 ${textRevealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <div className="flex flex-col sm:flex-row gap-4 lg:gap-6">
+          {/* Enhanced Action Buttons - Mobile Optimized */}
+          <div className={`mt-6 sm:mt-8 lg:mt-10 transition-all duration-1000 delay-900 ${textRevealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 max-w-lg sm:max-w-none">
               
               {/* Primary CTA with 3D Effect */}
               <button
                 onClick={() => onScrollToSection("contact")}
-                className="group relative overflow-hidden px-8 py-4 lg:px-10 lg:py-5 bg-gradient-to-r from-api-teal to-api-gold hover:from-api-gold hover:to-api-teal text-white font-montserrat font-bold text-lg lg:text-xl rounded-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 shadow-2xl hover:shadow-3xl border border-white/20"
+                className="group relative overflow-hidden px-6 py-3 sm:px-8 sm:py-4 lg:px-10 lg:py-5 bg-gradient-to-r from-api-teal to-api-gold hover:from-api-gold hover:to-api-teal text-white font-montserrat font-bold text-base sm:text-lg lg:text-xl rounded-xl lg:rounded-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-1 sm:hover:-translate-y-2 shadow-xl sm:shadow-2xl hover:shadow-2xl sm:hover:shadow-3xl border border-white/20"
                 style={{
-                  boxShadow: '0 0 40px rgba(20, 184, 166, 0.4), 0 10px 30px rgba(0,0,0,0.4)',
+                  boxShadow: '0 0 30px rgba(20, 184, 166, 0.3), 0 8px 25px rgba(0,0,0,0.4)',
                   textShadow: '0 2px 4px rgba(0,0,0,0.6)'
                 }}
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                <span className="relative flex items-center justify-center gap-3">
+                <span className="relative flex items-center justify-center gap-2 sm:gap-3">
                   Join Our Mission
-                  <Users className="w-5 h-5 lg:w-6 lg:h-6 group-hover:scale-110 transition-transform duration-300" />
+                  <Users className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 group-hover:scale-110 transition-transform duration-300" />
                 </span>
               </button>
               
               {/* Secondary CTA with Glass Effect */}
               <button
                 onClick={() => onScrollToSection("mission")}
-                className="group px-6 py-4 lg:px-8 lg:py-5 glass-morphism-modern text-white font-montserrat font-semibold text-lg lg:text-xl rounded-2xl transition-all duration-300 hover:scale-105 border border-white/30 hover:border-white/50 hover:bg-white/10"
+                className="group px-5 py-3 sm:px-6 sm:py-4 lg:px-8 lg:py-5 glass-morphism-modern text-white font-montserrat font-semibold text-base sm:text-lg lg:text-xl rounded-xl lg:rounded-2xl transition-all duration-300 hover:scale-105 border border-white/30 hover:border-white/50 hover:bg-white/10"
                 style={{
                   textShadow: '0 2px 6px rgba(0,0,0,0.8)'
                 }}
               >
                 <span className="flex items-center justify-center gap-2">
                   Learn More
-                  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                  <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </span>
               </button>
+            </div>
+          </div>
+
+          {/* Mobile Stats Cards - Only visible on mobile */}
+          <div className="lg:hidden mt-8 grid grid-cols-3 gap-3 max-w-sm mx-auto">
+            <div className={`glass-morphism-modern p-3 rounded-lg border border-api-teal/30 text-center transition-all duration-1200 delay-1000 ${textRevealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <div className="text-lg sm:text-xl font-black text-api-teal mb-1">15+</div>
+              <div className="text-white/90 font-montserrat text-xs font-medium">Nations</div>
+            </div>
+            <div className={`glass-morphism-modern p-3 rounded-lg border border-api-gold/30 text-center transition-all duration-1200 delay-1100 ${textRevealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <div className="text-lg sm:text-xl font-black text-api-gold mb-1">500+</div>
+              <div className="text-white/90 font-montserrat text-xs font-medium">Ambassadors</div>
+            </div>
+            <div className={`glass-morphism-modern p-3 rounded-lg border border-white/30 text-center transition-all duration-1200 delay-1200 ${textRevealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <div className="text-lg sm:text-xl font-black text-white mb-1">2025</div>
+              <div className="text-white/90 font-montserrat text-xs font-medium">Founded</div>
             </div>
           </div>
         </div>

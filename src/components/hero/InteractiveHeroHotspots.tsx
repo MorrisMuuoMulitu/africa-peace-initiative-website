@@ -61,7 +61,7 @@ const InteractiveHeroHotspots = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="absolute inset-0 pointer-events-none z-10">
+    <div className="absolute inset-0 pointer-events-none z-10 hidden sm:block">
       {hotspots.map((hotspot) => {
         const Icon = hotspot.icon;
         return (

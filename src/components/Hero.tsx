@@ -59,10 +59,10 @@ const Hero: React.FC = () => {
           </div>
         </div>
 
-        {/* Enhanced Social Links with Glass Morphism */}
-        <div className="absolute bottom-6 left-6 sm:left-8 lg:left-12 xl:left-16 z-30">
+        {/* Enhanced Social Links with Mobile-Optimized Positioning */}
+        <div className="absolute top-6 right-6 sm:top-8 sm:right-8 lg:bottom-6 lg:left-12 lg:top-auto lg:right-auto xl:left-16 z-30">
           <div className={`transition-all duration-1000 delay-1400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <div className="glass-morphism-modern p-4 rounded-2xl border border-white/20 hover:border-white/30 transition-all duration-300 hover:scale-105">
+            <div className="glass-morphism-modern p-3 lg:p-4 rounded-xl lg:rounded-2xl border border-white/20 hover:border-white/30 transition-all duration-300 hover:scale-105">
               <SocialLinks />
             </div>
           </div>
