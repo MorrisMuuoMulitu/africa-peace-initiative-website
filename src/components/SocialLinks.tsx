@@ -33,7 +33,7 @@ const SocialLinks = () => {
   ];
 
   return (
-    <div className="flex space-x-3" aria-label="Follow us on social media">
+    <div className="flex space-x-2 sm:space-x-3" aria-label="Follow us on social media">
       <TooltipProvider delayDuration={300}>
         {socialLinks.map((social) => (
           <Tooltip key={social.name}>
@@ -42,13 +42,13 @@ const SocialLinks = () => {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`p-2 rounded-full bg-white/10 ${social.color} hover:text-white transition-all duration-300 transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-api-gold focus:ring-offset-2 focus:ring-offset-api-darkgreen`}
+                className={`p-3 sm:p-2.5 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 ${social.color} hover:text-white text-white/90 transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-transparent min-h-[44px] min-w-[44px] flex items-center justify-center`}
                 aria-label={`Visit our ${social.name} page`}
               >
                 {social.icon}
               </a>
             </TooltipTrigger>
-            <TooltipContent>
+            <TooltipContent side="top" className="bg-black/80 text-white border-white/20">
               <p>Follow us on {social.name}</p>
             </TooltipContent>
           </Tooltip>

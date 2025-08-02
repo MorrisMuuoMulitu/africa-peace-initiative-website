@@ -62,7 +62,7 @@ const Hero: React.FC = () => {
         {/* Enhanced Social Links with Mobile-Optimized Positioning */}
         <div className="absolute bottom-20 left-4 sm:bottom-24 sm:left-6 lg:bottom-6 lg:left-12 xl:left-16 z-30">
           <div className={`transition-all duration-1000 delay-1400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <div className="glass-morphism-modern p-2 sm:p-3 lg:p-4 rounded-lg sm:rounded-xl lg:rounded-2xl border border-white/20 hover:border-white/30 transition-all duration-300 hover:scale-105">
+            <div className="glass-morphism-modern p-3 sm:p-4 lg:p-4 rounded-xl sm:rounded-2xl lg:rounded-2xl border border-white/30 hover:border-white/40 transition-all duration-300 hover:scale-105 bg-black/40 backdrop-blur-md shadow-2xl">
               <SocialLinks />
             </div>
           </div>

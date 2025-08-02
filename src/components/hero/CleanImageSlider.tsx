@@ -152,17 +152,17 @@ const CleanImageSlider = () => {
         </Button>
       </div>
 
-      {/* Clean Dots Navigation */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20 pointer-events-auto">
-        <div className="flex space-x-2 p-2 rounded-full backdrop-blur-sm bg-black/15 border border-white/10">
+      {/* Enhanced Dots Navigation */}
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20 pointer-events-auto">
+        <div className="flex items-center space-x-2 px-4 py-3 rounded-full backdrop-blur-md bg-black/30 border border-white/20 shadow-xl">
           {heroImages.map((_, index) => (
             <button
               key={index}
               onClick={() => scrollTo(index)}
-              className={`transition-all duration-300 rounded-full ${
+              className={`transition-all duration-500 ease-out rounded-full border ${
                 index === selectedIndex
-                  ? 'w-6 h-2 bg-teal-400'
-                  : 'w-2 h-2 bg-white/50 hover:bg-white/70'
+                  ? 'w-8 h-3 bg-gradient-to-r from-teal-400 to-teal-300 border-teal-300/50 shadow-lg shadow-teal-400/30'
+                  : 'w-3 h-3 bg-white/40 border-white/30 hover:bg-white/60 hover:border-white/50 hover:scale-110'
               }`}
               aria-label={`Go to image ${index + 1}`}
             />
