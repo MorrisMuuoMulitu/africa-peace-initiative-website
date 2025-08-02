@@ -396,4 +396,48 @@
     @apply bg-transparent hover:bg-white/15 border-2 border-white/20 text-white font-montserrat font-medium px-6 py-3 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 backdrop-blur-sm hover:border-white/40;
     position: relative;
   }
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .glass-morphism-modern {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  
+  .text-hero-gradient {
+    background-size: 200% 200%;
+  }
+  
+  .btn-primary-modern,
+  .btn-outline-modern {
+    font-size: 0.875rem;
+    padding: 0.75rem 1rem;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Prevent horizontal scroll on mobile */
+  body {
+    overflow-x: hidden;
+  }
+  
+  /* Mobile typography improvements */
+  h1 {
+    line-height: 1.1;
+    word-break: break-word;
+  }
+  
+  /* Touch target optimization */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Improve social links visibility on mobile */
+  .glass-morphism-modern {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+}
 }

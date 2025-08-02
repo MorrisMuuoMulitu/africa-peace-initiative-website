@@ -28,7 +28,7 @@ const ModernHeroTypography = ({ onScrollToSection }: ModernHeroTypographyProps) 
       <div className="flex flex-col lg:flex-row w-full h-full">
         
         {/* Left Section - Main Content (2/3 on desktop) */}
-        <div className="w-full lg:w-2/3 flex flex-col justify-center px-4 sm:px-6 lg:px-12 py-12 pb-20 sm:pb-16 lg:py-16 relative">
+        <div className="w-full lg:w-2/3 flex flex-col justify-center px-4 sm:px-6 lg:px-12 pt-16 sm:pt-20 lg:pt-16 pb-24 sm:pb-28 lg:pb-16 relative">
           
           {/* Floating Brand Card */}
           <div className={`mb-6 lg:mb-8 transition-all duration-1200 ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}>
@@ -105,14 +105,14 @@ const ModernHeroTypography = ({ onScrollToSection }: ModernHeroTypographyProps) 
             </div>
           </div>
 
-          {/* Enhanced Action Buttons - Mobile Optimized */}
+           {/* Enhanced Action Buttons - Mobile Optimized */}
           <div className={`mt-6 sm:mt-8 lg:mt-10 transition-all duration-1000 delay-900 ${textRevealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 max-w-lg sm:max-w-none">
               
               {/* Primary CTA with 3D Effect */}
               <button
                 onClick={() => onScrollToSection("contact")}
-                className="group relative overflow-hidden px-6 py-3 sm:px-8 sm:py-4 lg:px-10 lg:py-5 bg-gradient-to-r from-api-teal to-api-gold hover:from-api-gold hover:to-api-teal text-white font-montserrat font-bold text-base sm:text-lg lg:text-xl rounded-xl lg:rounded-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-1 sm:hover:-translate-y-2 shadow-xl sm:shadow-2xl hover:shadow-2xl sm:hover:shadow-3xl border border-white/20"
+                className="group relative overflow-hidden px-4 py-3 sm:px-6 sm:py-4 lg:px-8 lg:py-5 bg-gradient-to-r from-api-teal to-api-gold hover:from-api-gold hover:to-api-teal text-white font-montserrat font-bold text-sm sm:text-base lg:text-lg xl:text-xl rounded-lg sm:rounded-xl lg:rounded-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-1 sm:hover:-translate-y-2 shadow-xl sm:shadow-2xl hover:shadow-2xl sm:hover:shadow-3xl border border-white/20 min-h-[44px]"
                 style={{
                   boxShadow: '0 0 30px rgba(20, 184, 166, 0.3), 0 8px 25px rgba(0,0,0,0.4)',
                   textShadow: '0 2px 4px rgba(0,0,0,0.6)'
@@ -128,7 +128,7 @@ const ModernHeroTypography = ({ onScrollToSection }: ModernHeroTypographyProps) 
               {/* Secondary CTA with Glass Effect */}
               <button
                 onClick={() => onScrollToSection("mission")}
-                className="group px-5 py-3 sm:px-6 sm:py-4 lg:px-8 lg:py-5 glass-morphism-modern text-white font-montserrat font-semibold text-base sm:text-lg lg:text-xl rounded-xl lg:rounded-2xl transition-all duration-300 hover:scale-105 border border-white/30 hover:border-white/50 hover:bg-white/10"
+                className="group px-4 py-3 sm:px-5 sm:py-4 lg:px-6 lg:py-5 glass-morphism-modern text-white font-montserrat font-semibold text-sm sm:text-base lg:text-lg xl:text-xl rounded-lg sm:rounded-xl lg:rounded-2xl transition-all duration-300 hover:scale-105 border border-white/30 hover:border-white/50 hover:bg-white/10 min-h-[44px]"
                 style={{
                   textShadow: '0 2px 6px rgba(0,0,0,0.8)'
                 }}
