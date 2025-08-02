@@ -42,7 +42,7 @@ const SocialLinks = () => {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`p-3 sm:p-2.5 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 ${social.color} hover:text-white text-white/90 transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-transparent min-h-[44px] min-w-[44px] flex items-center justify-center`}
+                className={`p-2.5 sm:p-2.5 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 ${social.color} hover:text-white text-white/90 transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-transparent min-h-[40px] min-w-[40px] sm:min-h-[44px] sm:min-w-[44px] flex items-center justify-center`}
                 aria-label={`Visit our ${social.name} page`}
               >
                 {social.icon}

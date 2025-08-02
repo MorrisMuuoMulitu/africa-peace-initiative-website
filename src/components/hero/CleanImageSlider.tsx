@@ -153,8 +153,8 @@ const CleanImageSlider = () => {
       </div>
 
       {/* Enhanced Dots Navigation */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20 pointer-events-auto">
-        <div className="flex items-center space-x-2 px-4 py-3 rounded-full backdrop-blur-md bg-black/30 border border-white/20 shadow-xl">
+      <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 lg:bottom-6 lg:left-1/2 lg:transform lg:-translate-x-1/2 z-20 pointer-events-auto">
+        <div className="flex items-center space-x-2 px-3 py-2 sm:px-4 sm:py-3 rounded-full backdrop-blur-md bg-black/30 border border-white/20 shadow-xl">
           {heroImages.map((_, index) => (
             <button
               key={index}
